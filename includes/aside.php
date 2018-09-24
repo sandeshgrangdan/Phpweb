@@ -1,0 +1,103 @@
+<aside class="col-md-4">
+			<div>
+				   <!-- <form class="form-horizontal" action="search.php" role="form">
+						<div class="card text-white " style="background-color: #4e0b5f">
+						   <div class="card-body">
+								<h4>Search Something</h4>
+						   
+						   
+							   <div class="input-group">
+							       <input type="search" name="search" class="form-control" placeholder="Search Something.....">
+								     <div class="input-group-btn">
+								         <button class="btn btn-default" name="search_submits" type="submit"><i class="fa fa-search"></i></button>
+								     </div>  
+						       </div>
+						   </div>
+							 
+						</div>
+				   </form>
+				      <br> -->
+
+					 <form class=" form-horizontal" role="form" action="acounts/login.php" method="post">
+						<div class="card ">
+						<div class="card-header"><h4>Login Area</h4 >
+								<div class="input-group input-group-lg">
+									 <span class="input-group-addon">
+										 <span class="glyphicon glyphicon-envelope"></span>
+									 </span>
+									 <input class="form-control" type="text" placeholder="insert email" name="username" id="username">
+								</div>
+								<br>
+								<div class="input-group input-group-lg">
+									 <span class="input-group-addon">
+										 <span class=" "></span>
+									 </span>
+									 <input class="form-control" type="password" placeholder="insert fucking password" name="password" id="password">
+								</div>
+
+								<br>
+	          					<div class="form-group">
+											<div class="col-sm-12">
+												<input type="submit" class="btn btn-success btn-block"  name="submitlogin">
+											</div> 
+								</div>
+									<div class="col-sm-12">
+									<a class="btn btn-block btn-social btn-google btt-lg">
+										<span class="fa fa-google"></span> Sign in with google
+									</a>
+								</div>
+								</div>
+							</div>
+						</div>
+				     </form>
+
+				     <br>
+				     
+                  
+
+					 <div class="card  ">
+						 <div class="card-header "> 
+							<div class="list-group list-group-flush"> 
+								 <?php
+									 $sel_side="SELECT * FROM post WHERE status = 'published' ORDER BY id DESC LIMIT 6";
+									 $run_side=mysqli_query($conn,$sel_side);
+									 while($rows=mysqli_fetch_assoc($run_side)){
+										 if(isset($_GET['post_id'])){
+
+											 if($_GET['post_id']==$rows['id']){
+												 $class='active';
+											 }else{
+												 $class='';
+											 }
+
+										 } else{
+											 $class='';
+										 }
+										 
+										  echo '
+										  	
+											<a href="post.php?post_id='.$rows['id'].'" class="list-group-item-action '.$class.'">
+												<div class="row">
+													<div class="col-sm-4">
+														 <img src="'.$rows['image'].'" width="100%">
+													</div>
+													<div class="col-sm-8">
+														 <h5 class="list-group-item-heading">'.substr($rows['title'],0,100).'</h5>
+														 <p class="list-group-item-text" style="font-size: 13px">'.substr($rows['discription'],0,54).'</p>
+													</div>
+													<div style="clear:both"></div>							
+												</div>
+											</a>
+											
+
+										  ';
+									}
+								?>
+							</div>
+						 </div>
+					 </div>
+			</div>
+			<br>
+					
+					
+ </aside>
