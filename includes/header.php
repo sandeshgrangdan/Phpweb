@@ -4,8 +4,9 @@
 </div>
 
  <header class="navbar navbar-expand-md navbar-dark bg-dark sticky-top" role="navigation">
- 	<span class="navbar-text"><b>Dherai Sasto Deal</b></span>
+ 	
  	<div class="container">
+ 		<span class="navbar-text"><b>Dherai Sasto Deal</b></span>
 		<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse-target" >
 			<span class="navbar-toggler-icon"></span>
 		</button>

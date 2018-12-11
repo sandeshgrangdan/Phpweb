@@ -4,7 +4,8 @@
      <head> 
 	        <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="assets/css/docs.css" rel="stylesheet" >
-            <link rel="stylesheet" type="text/css" href="css/style.css">
+            <link rel="stylesheet" type="text/css" href="CSS/btn.css">
+            <link rel="stylesheet" type="text/css" href="CSS/style1.css">
 	 
 	 
 	     <title>Dherai Sasto Deal</title>
@@ -14,11 +15,11 @@
 		 <link rel="stylesheet" href="../bootstrap-social/bootstrap-social.css">
 		
 	 <body>
-	     <?php include 'includes/header.php' ?>
+	     <?php include 'includes/header1.php' ?>
 
 		 <br>
 		 
-		<!--  <div class="container" > -->
+		 <div class="container" >
 		     <article class="row">
 			     <section class="col-lg-8">
 				     <?php
@@ -37,6 +38,7 @@
 											<p>'.substr($rows['discription'],0,300).'...... </p>
 										 </div>
 					            	 <a href="post.php?post_id='.$rows['id'].'" class="btn btn-primary">Read more</a>
+					            	 <a class="btn btn-primary">Read more</a>
 					               </div>
 					          </div>
 					          <br/>
