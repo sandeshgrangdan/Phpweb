@@ -1,6 +1,6 @@
 .input {
   position: absolute;
-  top: 8px;
+  top: 12px;
   right: 50px;
   box-sizing: border-box;
   width: 0px;
@@ -23,7 +23,7 @@
   background: green;
   border-radius: 50%;
   right: 45px;
-  top: 1px;
+  top: 4px;
   cursor: pointer;
   text-align: center;
   line-height: 60px;

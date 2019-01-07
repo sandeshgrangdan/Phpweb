@@ -46,15 +46,15 @@
 							 ';
 						 }
 					 ?>
-				 
-				     
+		     
 		
 			 	</section>
 			 
 			    <?php include 'includes/aside.php';?>
-			 </article>
-		<!--  </div> -->
-		 
+			 </article>	 
+		</div>
+		<?php include 'includes/form.php'; ?> 
+		
 		 <?php include 'includes/footer.php';?> 
 		 
 		 

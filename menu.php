@@ -52,6 +52,7 @@
 			 
 			    <?php include 'includes/aside.php';?>
 			 </article>
+			 <?php include 'includes/form.php'?>
 		 </div>
 		 
 		 <?php include 'includes/footer.php';?> 

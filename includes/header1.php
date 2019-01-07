@@ -9,11 +9,11 @@
  		
  	  <!--  <span class="navbar-text"><b>Dherai Sasto Deal</b></span> -->		
 			<ul class="pull-left">
-				<li><b>Home</li>
-				<li>Shop</li>
-				<li>Contact Us</li>
-				<li>Registration</li>
-				<li>Category</b>
+				<li><b><span class="fa fa-home"></span> Home</li>
+				<li><span class="fa fa-shopping-bag"></span> Shop</li>
+				<li><span class="fa fa-address-book"></span> Contact Us</li>
+				<li><span class="fa fa-registered"></span> Registration</li>
+				<li><span class="fa fa-arrow-circle-down"></span> Category</b>
 					<ul>
 			        	<?php
 										 $sel_side="SELECT * FROM category ";

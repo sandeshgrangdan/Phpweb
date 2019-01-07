@@ -18,34 +18,39 @@
 				   </form>
 				      <br> -->
 
+
 					 <form class=" form-horizontal" role="form" action="acounts/login.php" method="post">
+
 						<div class="card ">
-						<div class="card-header"><h4>Login Area</h4 >
-								<div class="input-group input-group-lg">
-									 <span class="input-group-addon">
-										 <span class="glyphicon glyphicon-envelope"></span>
+						    <div class="card-header">
+							  	<img src="images/avatar.png" class="avatar">
+								<h2>Login Here</h2>
+								<div class="input-group input-group-md">
+									 <span class="login">
+										  <i class="fa fa-envelope" for="username"></i>
 									 </span>
 									 <input class="form-control" type="text" placeholder="insert email" name="username" id="username">
 								</div>
 								<br>
-								<div class="input-group input-group-lg">
-									 <span class="input-group-addon">
-										 <span class=" "></span>
+								<div class="input-group input-group-md">
+									 <span class="login">
+										 <i class="fa fa-unlock-alt"></i>
 									 </span>
 									 <input class="form-control" type="password" placeholder="insert fucking password" name="password" id="password">
 								</div>
 
 								<br>
 	          					<div class="form-group">
-											<div class="col-sm-12">
-												<input type="submit" class="btn btn-success btn-block"  name="submitlogin">
+											<div class="col-md-12">
+												<input type="submit" class="btn btn-success btn-block"  name="submitlogin" id="login_btns">
 											</div> 
 								</div>
-									<div class="col-sm-12">
-									<a class="btn btn-block btn-social btn-google btt-lg">
-										<span class="fa fa-google"></span> Sign in with google
-									</a>
-								</div>
+								<div class="form-group">
+											<div class="col-md-12">
+												<a class="btn btn-block btn-social btn-google btn-md" id="login_btns">
+													<span class="fa fa-google"></span> <b>Sign in with google</b>
+												</a>
+											</div>
 								</div>
 							</div>
 						</div>
