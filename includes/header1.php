@@ -9,7 +9,7 @@
  		
  	  <!--  <span class="navbar-text"><b>Dherai Sasto Deal</b></span> -->		
 			<ul class="pull-left">
-				<li><a href="index.php" class="a"><span class="fa fa-home"> <b>Home</b></span></a></li>
+				<li><a href="index.php" class="a"><span class="fa fa-home"> <b style="font-family: 'Times New Roman', Times, serif;">Home</b></span></a></li>
 				<li><a href="#" class="a"><span class="fa fa-shopping-bag"> <b>Shop</b></span></a></li>
 				<li><a href="contact.php" class="a"><span class="fa fa-address-book"> <b>Contact Us</b></span></a></li>
 				<li><a href="regs.php" class="a"><span class="fa fa-registered"> <b>Registration</b></span></a></li>

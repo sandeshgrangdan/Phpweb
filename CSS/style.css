@@ -172,7 +172,7 @@ body{
   padding:0;
   font-size:100%;
   line-height: 1.6;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   background-color: #eeeeee;
 }
 
@@ -281,10 +281,11 @@ body{
 a{
 	text-decoration: none !important;
 }
-.a , .span {
+.a , span {
 	color:#fff;
 	font-weight: block;
 	font-size: 22px;
+	font-family: "Times New Roman", Times, serif;
 	
 }
 a , span:hover  {
@@ -357,14 +358,14 @@ a , span:hover  {
 #arrow-left {
   border-width: 30px 40px 30px 0;
   border-color: transparent #fff transparent transparent;
-  left: 0;
+  left: -20px;
   margin-left: 30px;
 }
 
 #arrow-right {
   border-width: 30px 0 30px 40px;
   border-color: transparent transparent transparent #fff;
-  right: 0;
+  right: 10px;
   margin-right: 30px;
 }
 

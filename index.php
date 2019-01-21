@@ -110,6 +110,8 @@
 
 				       <div class="handle"></div>
 				 </section>
+				 <br>
+				 <!-- <?php include'includes/newfooter.php';?> -->
 		
 		 <?php include 'includes/footer.php';?> 
 		 
