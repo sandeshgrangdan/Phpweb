@@ -9,11 +9,11 @@
  		
  	  <!--  <span class="navbar-text"><b>Dherai Sasto Deal</b></span> -->		
 			<ul class="pull-left">
-				<li><b><span class="fa fa-home"></span> Home</li>
-				<li><span class="fa fa-shopping-bag"></span> Shop</li>
-				<li><span class="fa fa-address-book"></span> Contact Us</li>
-				<li><span class="fa fa-registered"></span> Registration</li>
-				<li><span class="fa fa-arrow-circle-down"></span> Category</b>
+				<li><a href="index.php" class="a"><span class="fa fa-home"> <b>Home</b></span></a></li>
+				<li><a href="#" class="a"><span class="fa fa-shopping-bag"> <b>Shop</b></span></a></li>
+				<li><a href="contact.php" class="a"><span class="fa fa-address-book"> <b>Contact Us</b></span></a></li>
+				<li><a href="regs.php" class="a"><span class="fa fa-registered"> <b>Registration</b></span></a></li>
+				<li><a class="a"><span class="fa fa-arrow-circle-down"> <b>Category</b></span> </a>
 					<ul>
 			        	<?php
 										 $sel_side="SELECT * FROM category ";
@@ -27,6 +27,9 @@
 										  }
 								?>
 					</ul>
+				</li>
+				<li>
+					<a class="a"><span class="fa fa-cart-plus"> <b>Cart</b></span></a> 
 				</li>
 			</ul>
 			<form class="from-group pull-right" action="search.php" role="form">

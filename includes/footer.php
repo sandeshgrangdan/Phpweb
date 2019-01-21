@@ -3,7 +3,7 @@
 <footer>
 		      <div class="container">
 			  
-				     <p class="navbar-text pull-left"><b>Created by Sandesh</b>-</p>
+				     <p class="navbar-text pull-left"><strong>Created by Sandesh</strong></p>
 					 <a href="#" class="btn btn-warning pull-right navbar-btn">Feedback</a>
 					 <ul class="links">
 							<li><a href="https://lip.is" onclick="_gaq.push(['_trackEvent', 'exit', 'footer', 'Lipis']);"><span class="fa fa-facebook"></span> Facebook</a></li>

@@ -2,9 +2,10 @@
 <?php  include 'includes/db.php' ?>
 <html>
      <head> 
-	        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="assets/css/docs.css" rel="stylesheet" >
-            <link rel="stylesheet" type="text/css" href="css/style.css">
+	       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="../assets/css/docs.css" rel="stylesheet" >
+            <link rel="stylesheet" type="text/css" href="CSS/btn.css">
+            <link rel="stylesheet" type="text/css" href="CSS/style.css">
 	 
 	 
 	     <title>Dherai Sasto Deal</title>
@@ -12,9 +13,9 @@
 		 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
 		 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 		 <link rel="stylesheet" href="../bootstrap-social/bootstrap-social.css">
-		
+	</head>
 	 <body>
-	     <?php include 'includes/header.php' ?>
+	     <?php include 'includes/header1.php' ?>
 
 		 <br>
 		 
@@ -52,7 +53,6 @@
 			 
 			    <?php include 'includes/aside.php';?>
 			 </article>
-			 <?php include 'includes/form.php'?>
 		 </div>
 		 
 		 <?php include 'includes/footer.php';?> 
@@ -60,9 +60,10 @@
 		 
 		 
 		 
+		<script src="js/main.js"></script>
 		<script src="../bootstrap/dist/js/jquery-slim.min.js"></script>
 		<script src="../bootstrap/dist/js/popper.min.js"></script> 
-		 <script src="../bootstrap/dist/js/bootstrap.min.js"></script> 
+		 <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 		 <script src="js/script.js"></script>
 	 </body>
 </html>

@@ -60,7 +60,7 @@
 				     
                   
 
-					 <div class="card  ">
+					 <div class="card  " id="scroll">
 						 <div class="card-header "> 
 							<div class="list-group list-group-flush"> 
 								 <?php
@@ -103,6 +103,32 @@
 					 </div>
 			</div>
 			<br>
+			<article >
+			<div class="box">
+				<div class="icon"><i class="fa fa-user"></i></div>
+				<div class="content">
+					<h3>Search</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					</p> 
+				</div>
+			</div>
+			<div class="box">
+				<div class="icon"><i class="fa fa-search"></i></div>
+				<div class="content">
+					<h3>Search</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					</p> 
+				</div>
+			</div>
+			<div class="box">
+				<div class="icon"><i class="fa fa-map"></i></div>
+				<div class="content">
+					<h3>Search</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					</p> 
+				</div>
+			</div>
+		</article>
 					
 					
  </aside>

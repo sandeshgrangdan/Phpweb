@@ -15,11 +15,10 @@
 ?>
          <div class="login-box">
          	<div class="container">
-			 <article class="row" style=" width: 100%">
+			 <article class="row" style=" width: 100%;">
 			 	
 				 <section class="col-lg-11">
-					 <fieldset>
-						 <ledgend><b>Registration Form</b></ledgend>
+						 <b><h2>Registration Form</h2></b>
 					 <form class="form-horizontal" action="regs.php" method="post" role="form">
 						 <div class="form-group">
 						 	<div class="col-md-10 ml-md-auto control-label" >
@@ -48,11 +47,11 @@
 						 </div>
 						 <div class="form-group">
 						 	<div class="col-md-10 ml-md-auto control-label" >
-						 		 <label for="password">password *</label>
+						 		 <label for="passwor">password *</label>
 						 	</div>
 							
 							 <div class="col-md-10 ml-md-auto">
-								 <input type="password" class="form-control" name="password" placeholder="insert your password" id="password" required="" style="background: blanchedalmond;">
+								 <input type="password" class="form-control" name="password" placeholder="insert your password" id="passwor" required="" style="background: blanchedalmond;">
 							 </div>
 						 </div>
 						 <div class="form-group">
@@ -146,7 +145,6 @@
 						 </div>
 						 
 					 </form>
-					 </fieldset>
 					 
 				 </section>
 				 

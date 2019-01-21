@@ -2,19 +2,21 @@
 <?php  include 'includes/db.php'?>
 <html>
      <head>
-	         <link href="assets/css/bootstrap.css" rel="stylesheet">
-             <link href="assets/css/font-awesome.css" rel="stylesheet">
-             <link href="assets/css/docs.css" rel="stylesheet" >
+	         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="../assets/css/docs.css" rel="stylesheet" >
+            <link rel="stylesheet" type="text/css" href="CSS/btn.css">
+            <link rel="stylesheet" type="text/css" href="CSS/style.css">
 	 
-	     <title>CMS System</title>
-		 <link rel="stylesheet" href="../bootstrap/bootstrap-social.css">
-		 <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-		 <script src="../bootstrap/js/bootstrap.jss"></script>
-		 <script src="../js/jquery.js"></script>
+	 
+	     <title>Dherai Sasto Deal</title>
+
+		 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+		 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+		 <link rel="stylesheet" href="../bootstrap-social/bootstrap-social.css">
 	 </head>
 	 <body>
-	     <?php include 'includes/header.php';?>
-		 
+	     <?php include 'includes/header1.php';?>
+		 <br>
 		 <div class="container">
 		     <article class="row">
 			     <section class="col-lg-8">
@@ -47,6 +49,13 @@
 		 
 		 <?php include 'includes/footer.php';?> 
 		 		 
-		 
+		 <script src="js/main.js"></script>
+		<script src="../bootstrap/dist/js/jquery-slim.min.js"></script>
+		<script src="../bootstrap/dist/js/popper.min.js"></script> 
+		 <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+		
+
+		 <script src="js/script.js"></script>
+		 <script src="js/main.js"></script>
 	 </body>
 </html>
