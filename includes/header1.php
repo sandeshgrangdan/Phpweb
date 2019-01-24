@@ -29,7 +29,7 @@
 					</ul>
 				</li>
 				<li>
-					<a class="a"><span class="fa fa-cart-plus"> <b>Cart</b></span></a> 
+					<a class="a"><b><span class="fa fa-cart-plus" style="font-size: 45px;"></span></b></a> 
 				</li>
 			</ul>
 			<form class="from-group pull-right" action="search.php" role="form">

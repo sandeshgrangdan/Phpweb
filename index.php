@@ -1,3 +1,39 @@
+<?php 
+session_start();
+
+if(isset($_POST["add_to_cart"]))
+{
+	if(isset($_SESSION["shopping_cart"]))
+	{
+		$item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
+		if(!in_array($_GET["id"], $item_array_id))
+		{
+			$count = count($_SESSION["shopping_cart"]);
+			$item_array = array(
+				'item_id'			=>	$_GET["id"],
+				'item_name'			=>	$_POST["hidden_name"],
+				'item_price'		=>	$_POST["hidden_price"],
+				'item_quantity'		=>	$_POST["quantity"]
+			);
+			$_SESSION["shopping_cart"][$count] = $item_array;
+		}
+		else
+		{
+			echo '<script>alert("Item Already Added")</script>';
+		}
+	}
+	else
+	{
+		$item_array = array(
+			'item_id'			=>	$_GET["id"],
+			'item_name'			=>	$_POST["hidden_name"],
+			'item_price'		=>	$_POST["hidden_price"],
+			'item_quantity'		=>	$_POST["quantity"]
+		);
+		$_SESSION["shopping_cart"][0] = $item_array;
+	}
+}
+
   <!DOCTYPE html>
 <?php  include 'includes/db.php' ?>
 <html>
@@ -13,49 +49,73 @@
 		 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
 		 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 		 <link rel="stylesheet" href="../bootstrap-social/bootstrap-social.css">
-	
+	</head>
 	 <body style="background : #eeeeee;">
 	     <?php include 'includes/header1.php' ?>
 
-	    <!--  <div class="slider">
-		 	<ul class="slides">
-		 		<li class="slide">
-		 			<img src="images/img2.jpg" alt="">
-		 		</li>
-		 		<li class="slide">
-		 			<img src="images/img1.jpg" alt="">
-		 		</li>
-		 	</ul>
-		 	
-		 </div> -->
 		 <div class="wrap">
 			  <div id="arrow-left" class="arrow"></div>
 			  <div id="slider">
 			    <div class="slide slide1">
 			      <div class="slide-content">
-			        <span>Image One</span>
+			        <span>Dherai Sasto Deal</span>
 			      </div>
 			    </div>
 			    <div class="slide slide2">
 			      <div class="slide-content">
-			        <span>Image Two</span>
+			        <span>Dherai Sasto Deal</span>
 			      </div>
 			    </div>
 			    <div class="slide slide3">
 			      <div class="slide-content">
-			        <span>Image Three</span>
+			        <span>Dherai Sasto Deal</span>
 			      </div>
 			    </div>
 			  </div>
 			  <div id="arrow-right" class="arrow"></div>
 			</div>
 			<br>
-		 <div class="container" >
-				
-               
-		     
+		 <div class="container"> 
 		     <article class="row">
-			     <section class="col-lg-8">
+		        
+			     	<?php
+			     	$i = 2;		
+					$query = "SELECT * FROM tbl_product ORDER BY id ASC";
+					$result = mysqli_query($conn, $query);
+					if(mysqli_num_rows($result) > 0)
+					{
+						
+						while($row = mysqli_fetch_array($result))
+						{ 
+					?>
+				  <div class="col-sm-4">
+					<form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>">
+						<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:10px;" align="center">
+							<img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
+
+							<h4 class="text-info"><?php echo $row["name"]; ?></h4>
+
+							<h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
+
+							<input type="text" name="quantity" value="1" class="form-control" />
+
+							<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
+
+							<input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
+
+							<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
+
+						</div>
+					</form>
+				</div>
+				
+				
+				
+					<?php
+							}
+						}
+					?>
+			     <!-- <section class="col-lg-8">
 				     <?php
 					     $sel_sql ="SELECT *FROM post WHERE  status='published'";
 						 $run_sql = mysqli_query($conn,$sel_sql);
@@ -82,12 +142,13 @@
 		     
 		
 			 	</section>
-			 
+			  -->
 			    <?php include 'includes/aside.php';?>
 			 </article>	 
 		</div>
 		<?php include 'includes/form.php'; ?> 
 		<section id="wrapper" class="skewed">
+
 				    <div class="layer bottom">
 				      <div class="content-wrap">
 				        <div class="content-body">
@@ -111,7 +172,6 @@
 				       <div class="handle"></div>
 				 </section>
 				 <br>
-				 <!-- <?php include'includes/newfooter.php';?> -->
 		
 		 <?php include 'includes/footer.php';?> 
 		 
