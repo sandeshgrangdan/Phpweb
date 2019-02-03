@@ -14,7 +14,7 @@ if(isset($_POST['mail'])){
    $mail ->Port = 465; // or 587
    $mail ->IsHTML(true);
    $mail ->Username = "sandesht801@gmail.com";
-   $mail ->Password = "PHYSICS12345";
+   $mail ->Password = "";
    $mail ->SetFrom("sandesht801@gmail.com");
    $mail ->Subject = $mailSub;
    $mail ->Body = $mailMsg;
