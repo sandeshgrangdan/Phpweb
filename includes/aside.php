@@ -47,7 +47,7 @@
 								</div>
 								<div class="form-group">
 											<div class="col-md-12">
-												<a class="btn btn-block btn-social btn-google btn-md" id="login_btns">
+												<a class="btn btn-block btn-social btn-google btn-md" id="login_btns" onclick=" window.location = '<?php echo $loginURL ?>'">
 													<span class="fa fa-google"></span> <b>Sign in with google</b>
 												</a>
 											</div>
@@ -59,7 +59,7 @@
 				     <br>
 				     
                   
-
+<!-- 
 					 <div class="card  " id="scroll">
 						 <div class="card-header "> 
 							<div class="list-group list-group-flush"> 
@@ -102,8 +102,8 @@
 						 </div>
 					 </div>
 			</div>
-			<br>
-			<article >
+			<br> -->
+			<!-- <article >
 			<div class="box">
 				<div class="icon"><i class="fa fa-user"></i></div>
 				<div class="content">
@@ -128,7 +128,7 @@
 					</p> 
 				</div>
 			</div>
-		</article>
+		</article> -->
 					
 					
  </aside>

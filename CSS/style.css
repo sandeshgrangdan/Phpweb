@@ -88,8 +88,8 @@ ul li:hover ul li{
 .box{
 	font-family: sans-serif;
 	position: relative;
-	width: calc(400px - 30px);
-	height: calc(300px - 30px);
+	width: calc(400px - 50px);
+	height: calc(300px - 50px);
 	background: #000;
 	margin: 15px;
 	box-shadow: 10px;
@@ -160,12 +160,12 @@ ul li:hover ul li{
 	color: #fff;
 }
 
-article .box:nth-child(1) .icon{
+/*article .box:nth-child(1) .icon{
 	background: #319635;
 }
 article .box:nth-child(1){
 	background: #4caf50;
-}
+}*/
 body{
   margin:0;
   padding:0;
@@ -359,3 +359,27 @@ a , span:hover  {
   right: 10px;
   margin-right: 30px;
 }
+
+.StripeElement {
+  background-color: white;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+

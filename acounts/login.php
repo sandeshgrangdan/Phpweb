@@ -11,10 +11,15 @@
 						 if(mysqli_num_rows($result) == 1){
 							 while($rows = mysqli_fetch_assoc($result)){
 							 $_SESSION['user'] = $get_username;
-							 $_SESSION['password'] = $get_password;
 							 $_SESSION['role'] = $rows['role'];
-							 }
-							 header('Location: ../admin/aindex.php');
+							 $_SESSION['email'] = $rows['user_email'];
+							 $_SESSION['familyName'] = $rows['user_l_name'];
+	                         $_SESSION['givenName'] = $rows['user_f_name'];
+							 }if(isset($_SESSION["shopping_cart"]))
+							       header('Location: ../paypage.php');
+							   elseif ( $get_username = "sandesht801@gmail.com"  ) {
+							   		header('Location: adminpanel/index.php');
+							   }
 						 }else{
 							 header('Location: ../index.php?login_error=wrong');
 						 }

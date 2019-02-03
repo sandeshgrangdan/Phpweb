@@ -4,7 +4,7 @@
 		      <div class="container">
 			  
 				     <p class="navbar-text pull-left"><strong>Created by Sandesh</strong></p>
-					 <a href="#" class="btn btn-warning pull-right navbar-btn">Feedback</a>
+					 <a href="#" class="btn btn-warning pull-right navbar-btn" data-toggle="modal" data-target="#addpage">Feedback</a>
 					 <ul class="links">
 							<li><a href="https://www.facebook.com/sandesh.tamang.773" onclick="_gaq.push(['_trackEvent', 'exit', 'footer', 'Lipis']);"><span class="fa fa-facebook"></span> Facebook</a></li>
 							<li><a href="https://github.com/sandeshgrangdan" onclick="_gaq.push(['_trackEvent', 'exit', 'footer', 'GitHub']);"><span class="fa fa-github"></span> GitHub</a></li>

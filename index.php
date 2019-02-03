@@ -1,5 +1,50 @@
 <?php 
-session_start();
+require_once "config.php";
+include 'includes/db.php';
+
+	if (isset($_SESSION['access_token'])) {
+		header('Location: adminpanel/index.php');
+		exit();
+	}
+
+
+	$loginURL = $gClient->createAuthUrl();
+
+
+	  $match='';
+	 if(isset($_POST['confirm'])){
+		 $date = date('Y-m-d h:i:s');
+		 
+		 if($_POST['password'] == $_POST['con_password']){
+			 
+		 
+		 
+		 $ins_sql= "INSERT INTO user (role, user_f_name,user_l_name,user_email,user_password,user_gender,user_marital_status,user_phone_no,user_designation,user_website,user_address,user_about_me,user_date) 
+		 VALUES ('subscriber','$_POST[first_name]','$_POST[last_name]','$_POST[email]','$_POST[password]','$_POST[gender]','$_POST[marital_status]','$_POST[phone_no]','$_POST[designation]','$_POST[website]','$_POST[address]','$_POST[editor1]','$date')";
+		 $run_sql=mysqli_query($conn,$ins_sql);
+		 }else{
+			 $match='
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success alert-dismissable fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="alert-heading">This is an alert!</h2>
+                    <p>Password does&apos;t match!
+                        <a href="" data-toggle="modal" data-target="#regs" class="alert-link">Click me to continue!</a>
+                    </p>
+                </div>
+            </div>
+            </div>';
+		 }
+	 }
+
+
+
+// session_destroy();
+// echo "<pre>";
+// print_r($_SESSION['shopping_cart']);
 
 if(isset($_POST["add_to_cart"]))
 {
@@ -33,9 +78,12 @@ if(isset($_POST["add_to_cart"]))
 		$_SESSION["shopping_cart"][0] = $item_array;
 	}
 }
+?>
 
   <!DOCTYPE html>
-<?php  include 'includes/db.php' ?>
+<?php  include 'includes/db.php';
+include 'includes/feadback.php';
+include 'includes/mail.php'; ?>
 <html>
      <head> 
 	        <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,9 +97,11 @@ if(isset($_POST["add_to_cart"]))
 		 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
 		 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 		 <link rel="stylesheet" href="../bootstrap-social/bootstrap-social.css">
+		 <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 	</head>
 	 <body style="background : #eeeeee;">
-	     <?php include 'includes/header1.php' ?>
+	 	<?php include 'includes/modal.php'?>
+	     <?php include 'includes/header1.php'; ?>
 
 		 <div class="wrap">
 			  <div id="arrow-left" class="arrow"></div>
@@ -76,45 +126,47 @@ if(isset($_POST["add_to_cart"]))
 			</div>
 			<br>
 		 <div class="container"> 
-		     <article class="row">
-		        
-			     	<?php
-			     	$i = 2;		
-					$query = "SELECT * FROM tbl_product ORDER BY id ASC";
-					$result = mysqli_query($conn, $query);
-					if(mysqli_num_rows($result) > 0)
-					{
-						
-						while($row = mysqli_fetch_array($result))
-						{ 
-					?>
-				  <div class="col-sm-4">
-					<form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>">
-						<div style="border:1px solid #333; background-color:#f1f1f1; border-radius:5px; padding:10px;" align="center">
-							<img src="images/<?php echo $row["image"]; ?>" class="img-responsive" /><br />
+		     <article class="row">	
+		     	<?php echo $match;?>
 
-							<h4 class="text-info"><?php echo $row["name"]; ?></h4>
-
-							<h4 class="text-danger">$ <?php echo $row["price"]; ?></h4>
-
-							<input type="text" name="quantity" value="1" class="form-control" />
-
-							<input type="hidden" name="hidden_name" value="<?php echo $row["name"]; ?>" />
-
-							<input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" />
-
-							<input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-success" value="Add to Cart" />
-
-						</div>
-					</form>
+			 <div class="col-md-4" style="align-items: center;">
+			 	<h2 style="font-size: 55px ;color: #black;">Special Offer</h2>
+			 	<p style="align-content: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			 	tempor incididunt ut labore et dolore magna aliqua.</p>
+			    <div class="box">
+					<div class="icon"><i class="fa fa-user"></i></div>
+					<div class="content">
+						<h3>Search</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						</p> 
+					</div>
 				</div>
-				
-				
-				
-					<?php
-							}
-						}
-					?>
+			</div>
+			<div class="col-md-4" style="align-items: center;">
+				<h2 style="font-size: 55px ;color: #black;">Special Offer</h2>
+				<p style=" align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			 	tempor incididunt ut labore et dolore magna aliqua.</p>
+				<div class="box" style="background: #4caf50;">
+					<div class="icon" style="background: #319635;"><i class="fa fa-search"></i></div>
+					<div class="content">
+						<h3>Search</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						</p> 
+					</div>
+				</div>
+			</div>
+			<!-- <div class="box">
+				<div class="icon"><i class="fa fa-map"></i></div>
+				<div class="content">
+					<h3>Search</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					</p> 
+				</div>
+			</div>
+ -->
+		       
+			     	
+					
 			     <!-- <section class="col-lg-8">
 				     <?php
 					     $sel_sql ="SELECT *FROM post WHERE  status='published'";
@@ -144,15 +196,20 @@ if(isset($_POST["add_to_cart"]))
 			 	</section>
 			  -->
 			    <?php include 'includes/aside.php';?>
+
+
 			 </article>	 
+			 <?php include 'includes/content.php';?>
 		</div>
 		<?php include 'includes/form.php'; ?> 
 		<section id="wrapper" class="skewed">
 
 				    <div class="layer bottom">
+				    	
 				      <div class="content-wrap">
+				      	<h2>About US</h2>
 				        <div class="content-body">
-				          <h1>Look Sharp</h1>
+				          <h2>Look Sharp</h2>
 				          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam temporibus dolore vero reiciendis atque debitis. Sequi at consequatur deserunt?</p>
 				        </div>
 				        <img src="images/DSDf.png" alt="">
@@ -161,17 +218,19 @@ if(isset($_POST["add_to_cart"]))
 
 				    <div class="layer top">
 				        <div class="content-wrap">
+				        	<h2 style="color: #fff;">About US</h2>
 				          <div class="content-body">
-				            <h1>Dherai Sasto Deal</h1>
-				            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam temporibus dolore vero reiciendis atque debitis. Sequi at consequatur deserunt?</p>
+				            <h2>Dherai Sasto Deal</h2>
+				            <p>Welcome to Dherai Sasto Deal and the world most advance shoping technology.No lines, no checkout just grab and go.
+				            Thanks For Visiting Us</p>
 				          </div>
-				          <img src="images/DSD.png" alt="">
+				          <img src="images/DSD.png" " 
+				          alt="">
 				        </div>
 				      </div>
 
 				       <div class="handle"></div>
 				 </section>
-				 <br>
 		
 		 <?php include 'includes/footer.php';?> 
 		 
@@ -257,5 +316,8 @@ if(isset($_POST["add_to_cart"]))
 			startSlide();
 
 		 </script>
+		   <script>
+			     CKEDITOR.replace( 'editor1' );
+			 </script>
 	 </body>
 </html>

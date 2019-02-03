@@ -1,28 +1,33 @@
 <?php session_start();
      include'includes/db.php';
-	 if(isset($_SESSION['user']) && isset($_SESSION['password']) == true){
-		 $sel_sql ="SELECT * FROM user WHERE user_email = '$_SESSION[user]' AND user_password = '$_SESSION[password]'";
-		 if($run_sql = mysqli_query($conn, $sel_sql)){
-			 while($rows = mysqli_fetch_assoc($run_sql)){
-				 if(mysqli_num_rows($run_sql) == 1 ){
-					     $name=$rows['user_f_name'].' '.$rows['user_l_name'];
-						 $job = $rows['user_designation'];
-						 $gender = ucfirst($rows['user_gender']);
-						 $phone_no = $rows['user_phone_no'];
-						 if($rows['role'] ==  'admin'){
+     	if (!isset($_SESSION['access_token'])) {
+		// header('Location: aindex.php');
+		exit();
+	}
+	// }else if(isset($_SESSION['user']) && isset($_SESSION['password']) == true){
+	// 	 $sel_sql ="SELECT * FROM user WHERE user_email = '$_SESSION[user]' AND user_password = '$_SESSION[password]'";
+	// 	 if($run_sql = mysqli_query($conn, $sel_sql)){
+	// 		 while($rows = mysqli_fetch_assoc($run_sql)){
+	// 			 if(mysqli_num_rows($run_sql) == 1 ){
+	// 				     $name=$rows['user_f_name'].' '.$rows['user_l_name'];
+	// 					 $job = $rows['user_designation'];
+	// 					 $gender = ucfirst($rows['user_gender']);
+	// 					 $phone_no = $rows['user_phone_no'];
+	// 					 if($rows['role'] ==  'admin'){
 							 
-						 }else{
-							 header('Location: ../index.php');
-						 }
+	// 					 }else{
+	// 						 header('Location: ../index.php');
+	// 					 }
 					
-				 }else{
-						 header('Location: ../index.php');
-				    } 
-			 }
-		 }
-	 }else{
-		 header('Location: ../index.php');
-	 }
+	// 			 }else{
+	// 					 header('Location: ../index.php');
+	// 			    } 
+	// 		 }
+	// 	 }
+	//  }else{
+	// 	 header('Location: ../index.php');
+	//  }
+	
 	 
 	 /// counting posts
 	$sql ="SELECT * FROM post WHERE status = 'published'";
@@ -48,24 +53,31 @@
 ?>
 <html>
 	 <head>
-		 <title>Admin panel</title>
-		 <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
-		 <script src="../../js/jquery.js"></script>
-		 <script src="../../bootstrap/js/bootstrap.js"></script>
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="../../assets/css/docs.css" rel="stylesheet" >
+            <link rel="stylesheet" type="text/css" href="CSS/btn.css">
+            <link rel="stylesheet" type="text/css" href="CSS/style.css">
+	 
+	 
+	     <title>Dherai Sasto Deal</title>
+
+		 <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css">
+		 <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+		 <link rel="stylesheet" href="../../bootstrap-social/bootstrap-social.css">
 		 
 	 </head>
 	 <body>
-		 <?php include 'includes/header.php';?>
+		 <!-- <?php include 'includes/header.php';?> -->
 		  <div style="width:50px;height:50px;"></div>
-		  
-		  <?php echo $_SESSION['user'];?>
+		 <h1>fuck</h1>
+		 <div class="row">
+		 
 		 <?php include 'includes/side.php';?>
+
 		 
 		 <div class="col-lg-10">
 		 
 				 <div class="col-md-3">
-				 
-				
 					 <div class="panel panel-danger"> 
 						 <div class="panel-heading">
 							 <div class="row">
@@ -152,6 +164,9 @@
 					 </a>
 				 </div>
 			 </div>
+			 
+			</div>
+			</div>
 			 <div class="clearfix"></div>
 			 
 			 <!---- top blocks ends----->
