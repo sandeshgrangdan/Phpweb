@@ -17,6 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
   <title>View Transactions</title>
 </head>
 <body>
@@ -35,6 +36,8 @@
           <th>Product</th>
           <th>Amount</th>
           <th>Date</th>
+          <th>Received</th>
+          <th>Location</th>
         </tr>
       </thead>
       <tbody>
@@ -45,12 +48,14 @@
             <td><?php echo $t->product; ?></td>
             <td><?php echo sprintf('%.2f', $t->amount / 100); ?> <?php echo strtoupper($t->currency); ?></td>
             <td><?php echo $t->created_at; ?></td>
+            <td><?php echo $t->received; ?></td>
+            <td><a href="../admin_map.php?t_id=<?php echo $t ->id ;?>" class="btn btn-success btn-xs"><i class="fa fa-map" style="font-size: 15px;"> Location</i></a></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
     </table>
     <br>
-    <p><a href="index.php">Pay Page</a></p>
+    <p><a href="index.php">Home</a></p>
   </div>
 </body>
 </html>

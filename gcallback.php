@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'includes/db.php';
 	require_once "config.php";
 
 	if (isset($_SESSION['access_token']))
@@ -24,13 +26,25 @@
 	$_SESSION['familyName'] = $userData['familyName'];
 	$_SESSION['givenName'] = $userData['givenName'];
 	
-	if($_SESSION['email'] == "sandesht801@gmail.com"){
-	  header('Location: adminpanel/index.php');
-	  exit();
-	  }
-	  else
-	  {
-	  	header('Location: ');
-	  	exit();
-	  }
+
+
+	$sql = "SELECT * FROM user WHERE user_email = '$userData[email]'";
+	$result = mysqli_query($conn,$sql);
+	if(mysqli_num_rows($result) == 1){
+							 while($rows = mysqli_fetch_assoc($result)){
+							 	if($rows['role'] == "admin"){
+							 		$_SESSION['role'] = "admin";
+							 		header('Location: adminpanel/index.php');
+							 		exit();
+							 	}else{
+							 		$_SESSION['role'] = "subscribes";
+							 		header('Location: index.php');
+							 		exit();
+							 	}
+							 }
+	}else{
+		$_SESSION['role'] = "subscribes";
+		header('Location: index.php?withouacount');
+		exit();
+	}
 ?>

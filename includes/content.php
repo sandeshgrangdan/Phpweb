@@ -50,7 +50,7 @@
 	foreach ($category as $key) {
 	if( $d['c_id'] == $key['c_id'] && $bol == "true" ){
 		// echo '<br><br><br><br><br><br><br><br><br><br><br><br>';
-		echo '<div class="col-12 text-center" style="top:15px;"><a href="menu.php?cat_id='.$d['c_id'].'"><button class="btn btn-success" style="padding = 20px;">View More '.$d['category_name'].'</button></a></div>';
+		echo '<div class="col-12 text-center" style="top:15px;"><a href="category.php?cat_id='.$d['c_id'].'&name='.$d['category_name'].'"><button class="btn btn-secondary btn-lg" style="padding = 20px;">View More '.$d['category_name'].'</button></a></div>';
 		$bol = "false";
 	}
 	}

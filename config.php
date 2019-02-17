@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
 	require_once "gplus-lib/vendor/autoload.php";
 	$gClient = new Google_Client();
 	$gClient->setClientId("41971263255-80j88r206iph3s34h8k3864i4a31bm8i.apps.googleusercontent.com");

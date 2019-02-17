@@ -1,11 +1,12 @@
 <?php
 session_start();
-session_destroy();
+unset($_SESSION["shopping_cart"]);
   if(!empty($_GET['tid'] && !empty($_GET['product']))) {
     $GET = filter_var_array($_GET, FILTER_SANITIZE_STRING);
 
     $tid = $GET['tid'];
     $product = $GET['product'];
+    $_SESSION['c_id'] = $_GET['tid'];
   } else {
     header('Location: index.php');
   }
@@ -26,7 +27,7 @@ session_destroy();
     <hr>
     <p>Your transaction ID is <?php echo $tid; ?></p>
     <p>Check your email for more info</p>
-    <p><a href="index.php" class="btn btn-light mt-2">Continue Shoping</a></p>
+    <p><a href="user_map.php?c_id=<?php echo $tid; ?>" class="btn btn-light mt-2">Continue Shoping</a></p>
   </div>
 </body>
 </html>

@@ -2,11 +2,11 @@
 
 session_start();
 
-  if (!isset($_SESSION['access_token'])) {
-    header('Location: ../index.php');
-    exit();
-  }
-$_email = $_SESSION['email'];
+  // if (!isset($_SESSION['access_token'])) {
+  //   header('Location: ../index.php');
+  //   exit();
+  // }
+
    
    $result = '';
    if(isset($_GET['new_status'])){
@@ -115,7 +115,7 @@ $_email = $_SESSION['email'];
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -139,18 +139,14 @@ $_email = $_SESSION['email'];
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Posts<small>Manage Blog Posts</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Posts <small> Manage Blog Posts</small></h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Create Content
+              <button class="btn btn-default dropdown-toggle" type="button"  aria-haspopup="true" aria-expanded="true" data-toggle="modal" data-target="#addPage">
+                <b>Add Post</b>
                 <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Post</a></li>
-                <li><a href="#">Add User</a></li>
-              </ul>
             </div>
           </div>
         </div>
@@ -160,8 +156,8 @@ $_email = $_SESSION['email'];
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html">Dashboard</a></li>
-          <li class="active">Posts</li>
+          <li><a href="posts.php">Post</a></li>
+          <li class="active">Post Detail</li>
         </ol>
       </div>
     </section>

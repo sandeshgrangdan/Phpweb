@@ -8,7 +8,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                              <form class=" form-horizontal" role="form" action="acounts/login.php" method="post">
+                              <form class=" form-horizontal" role="form" action="login.php" method="post" name="signin" onsubmit="return signinValidation()">
 
             <div class="card ">
                 <div class="card-header">
@@ -18,20 +18,22 @@
                    <span class="login">
                       <i class="fa fa-envelope" for="username"></i>
                    </span>
-                   <input class="form-control" type="text" placeholder="insert email" name="username" id="username">
+                   <input class="form-control" type="text" placeholder="Insert Email" name="email" id="username">
                 </div>
                 <br>
                 <div class="input-group input-group-md">
                    <span class="login">
                      <i class="fa fa-unlock-alt"></i>
                    </span>
-                   <input class="form-control" type="password" placeholder="insert fucking password" name="password" id="password">
+                   <input class="form-control" type="password" placeholder="Insert Password" name="password" id="password">
                 </div>
+                <br>
+                <input type="checkbox" name="remember" value="remember" id="s"> <label for="s"><b >Remember Me</b></label>
 
                 <br>
                       <div class="form-group">
                       <div class="col-md-12">
-                        <input type="submit" class="btn btn-success btn-block"  name="submitlogin" id="login_btns">
+                        <input type="submit" class="btn btn-success btn-block"  name="cart" id="login_btns">
                       </div> 
                 </div>
                 <div class="form-group">

@@ -2,8 +2,8 @@
 if(isset($_POST['mail'])){
 
     $mailto = "dheraisastodeal@gmail.com";
-    $mailSub = $_POST['mail_sub'];
-    $mailMsg = $_POST['editor1'];
+    $mailSub = "Feadback";
+    $mailMsg = strip_tags($_POST['editor1']);
    require 'PHPMailer/PHPMailerAutoload.php';
    $mail = new PHPMailer();
    $mail ->IsSmtp();
@@ -14,7 +14,7 @@ if(isset($_POST['mail'])){
    $mail ->Port = 465; // or 587
    $mail ->IsHTML(true);
    $mail ->Username = "sandesht801@gmail.com";
-   $mail ->Password = "";
+   $mail ->Password = "PHYSICS12345";
    $mail ->SetFrom("sandesht801@gmail.com");
    $mail ->Subject = $mailSub;
    $mail ->Body = $mailMsg;
@@ -22,11 +22,15 @@ if(isset($_POST['mail'])){
 
    if(!$mail->Send())
    {
-       echo "Mail Not Sent";
+       echo '<script>
+        alert("Feadback Not Send")
+       </script>';
    }
    else
    {
-       echo "Mail Sent";
+       echo '<script>
+        alert("Feadback Send")
+       </script>';
    }
 
 

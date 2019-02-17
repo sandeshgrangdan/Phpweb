@@ -54,7 +54,7 @@
       });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkMSISyjapXy18IU9Z0kjCQuu7sLfCY0c&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBISQUK7ltRgWLOhmn_9iAInDNP4cQpmr0&callback=initMap"
     async defer></script>
   </body>
 </html>

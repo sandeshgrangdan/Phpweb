@@ -1,25 +1,8 @@
+
 <aside class="col-md-4">
 			<div>
-				   <!-- <form class="form-horizontal" action="search.php" role="form">
-						<div class="card text-white " style="background-color: #4e0b5f">
-						   <div class="card-body">
-								<h4>Search Something</h4>
-						   
-						   
-							   <div class="input-group">
-							       <input type="search" name="search" class="form-control" placeholder="Search Something.....">
-								     <div class="input-group-btn">
-								         <button class="btn btn-default" name="search_submits" type="submit"><i class="fa fa-search"></i></button>
-								     </div>  
-						       </div>
-						   </div>
-							 
-						</div>
-				   </form>
-				      <br> -->
-
-
-					 <form class=" form-horizontal" role="form" action="acounts/login.php" method="post">
+				<?php if(!isset($_SESSION['email']) ) { ?>
+					 <form class=" form-horizontal" role="form" action="login.php" method="post" name="signin" onsubmit="return signinValidation()">
 
 						<div class="card ">
 						    <div class="card-header">
@@ -29,16 +12,17 @@
 									 <span class="login">
 										  <i class="fa fa-envelope" for="username"></i>
 									 </span>
-									 <input class="form-control" type="text" placeholder="insert email" name="username" id="username">
+									 <input class="form-control" type="text" placeholder="Insert Email" name="email" id="username">
 								</div>
 								<br>
 								<div class="input-group input-group-md">
 									 <span class="login">
 										 <i class="fa fa-unlock-alt"></i>
 									 </span>
-									 <input class="form-control" type="password" placeholder="insert fucking password" name="password" id="password">
+									 <input class="form-control" type="password" placeholder="Insert Password" name="password" id="password">
 								</div>
-
+								<br>
+								<input type="checkbox" name="remember" value="remember" id="s"> <label for="s"><b >Remember Me</b></label>
 								<br>
 	          					<div class="form-group">
 											<div class="col-md-12">
@@ -47,88 +31,86 @@
 								</div>
 								<div class="form-group">
 											<div class="col-md-12">
+												<div class="input-group input-group-md">
 												<a class="btn btn-block btn-social btn-google btn-md" id="login_btns" onclick=" window.location = '<?php echo $loginURL ?>'">
 													<span class="fa fa-google"></span> <b>Sign in with google</b>
 												</a>
 											</div>
+										</div>
 								</div>
 							</div>
 						</div>
 				     </form>
 
 				     <br>
-				     
-                  
-<!-- 
-					 <div class="card  " id="scroll">
-						 <div class="card-header "> 
-							<div class="list-group list-group-flush"> 
-								 <?php
-									 $sel_side="SELECT * FROM post WHERE status = 'published' ORDER BY id DESC LIMIT 6";
-									 $run_side=mysqli_query($conn,$sel_side);
-									 while($rows=mysqli_fetch_assoc($run_side)){
-										 if(isset($_GET['post_id'])){
+				     <?php } else { ?>
+                    
+                     <h2><strong>Total Transaction With DSD:</strong></h2>
+                     <?php 
+                     $tran = array();
+                     $cur = 0.00;
+                     $sql = "SELECT * FROM customers WHERE email = '$_SESSION[email]'";
+                        $Total = mysqli_query($conn,$sql);
+                         while( $rows= mysqli_fetch_assoc($Total) ){
+                         	array_push( $tran, $rows );
+                         }
 
-											 if($_GET['post_id']==$rows['id']){
-												 $class='active';
-											 }else{
-												 $class='';
-											 }
+                         foreach ($tran as $t) {
+                         	 
+                         	 $amount = "SELECT * FROM transactions where customer_id = '$t[id]'";
+                         	 $camount = mysqli_query($conn,$amount);
+                         	 while ( $row = mysqli_fetch_assoc($camount)) {
+                         	 	$cur = $cur + $row['amount']/100;
+                         	 }
+                         }
 
-										 } else{
-											 $class='';
-										 }
-										 
-										  echo '
-										  	
-											<a href="post.php?post_id='.$rows['id'].'" class="list-group-item-action '.$class.'">
-												<div class="row">
-													<div class="col-sm-4">
-														 <img src="'.$rows['image'].'" width="100%">
-													</div>
-													<div class="col-sm-8">
-														 <h5 class="list-group-item-heading">'.substr($rows['title'],0,100).'</h5>
-														 <p class="list-group-item-text" style="font-size: 13px">'.substr($rows['discription'],0,54).'</p>
-													</div>
-													<div style="clear:both"></div>							
-												</div>
-											</a>
-											
 
-										  ';
-									}
-								?>
-							</div>
-						 </div>
-					 </div>
-			</div>
-			<br> -->
-			<!-- <article >
-			<div class="box">
-				<div class="icon"><i class="fa fa-user"></i></div>
-				<div class="content">
-					<h3>Search</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					</p> 
-				</div>
-			</div>
-			<div class="box">
-				<div class="icon"><i class="fa fa-search"></i></div>
-				<div class="content">
-					<h3>Search</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					</p> 
-				</div>
-			</div>
-			<div class="box">
-				<div class="icon"><i class="fa fa-map"></i></div>
-				<div class="content">
-					<h3>Search</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					</p> 
-				</div>
-			</div>
-		</article> -->
+                     ?>
+                    <h2 style="font-size: 50px;"><b><?php echo  sprintf('%.2f' ,$cur).'$'; ?></b><h2>
+
+					<table class="table table-dark" style="font-size: 24px;">
+							<caption>Order Detail</caption>
+					             	<thead>
+					             		<tr>
+					             			<th>Iteam</th>
+					             			<th>Receved</th>
+					             			<th>Claim</th>
+					             		</tr>
+					             		
+					             	</thead>
+					             	<tbody>
+					             		<?php
+					             		
+             		                  foreach ($tran as $t) {
+                         	 
+                                    	 $amount = "SELECT * FROM transactions where customer_id = '$t[id]' ORDER BY id DESC LIMIT 5";
+                         	             $camount = mysqli_query($conn,$amount);
+                         	             while ( $row = mysqli_fetch_assoc($camount)) {
+                         	          	if ( $row['received'] == "yes") {
+                         	       		$s = "fa-check";
+                         	         	}else 
+                             	 		$s = "fa-times";
+                         	        	echo '<tr>
+                         	 				<td>'.ucfirst($row['product']).'</td>
+                         	 				<td><span style="font-size: 20px;" class="fa '.$s.'"></span></td>
+                         	 				<td>'.($row['received'] == 'yes' ? '<a href="index.php?new_status=no&id='.$row['id'].'" class="btn btn-danger btn-xs">No</a>' : 
+                                         '<a href="index.php?new_status=yes&id='.$row['id'].'" class="btn btn-success btn-xs">Yes</a>').'
+                                        </td>
+
+
+                         	 	      </tr>';	
+                         	 }
+                         }
+                    ?>
+             		
+             	</tbody>
+
+
+
+             </table>
+
+ <?php  } ?>
+       <div>
 					
 					
  </aside>

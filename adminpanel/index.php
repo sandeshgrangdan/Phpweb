@@ -1,10 +1,25 @@
 <?php
+$admin = "";
 session_start();
-
-  if (!isset($_SESSION['access_token'])) {
-    header('Location: ../index.php');
+if( isset($_SESSION['role']) ) {
+           if( $_SESSION['role'] == "subscriber" ) {
+             header('Location : ../index.php?fromrole');
+             exit();
+           }
+  }else{
+    header('Location : ../index.php?nosession');
     exit();
   }
+
+
+  // include '../config.php';
+  // if ( !isset($_SESSION['access_token']) ) {
+  //       header('Location: ../index.php?from_accesstoken');
+  //       exit();
+
+  //  }else{}
+    
+
   include '../includes/db.php';
   $data = array();
   $name = "sandesh@gmail.com";
@@ -102,7 +117,7 @@ session_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -116,7 +131,7 @@ session_start();
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="profile.php">Welcome, <?php echo ucfirst($_SESSION['givenName']);  ?></a></li>
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="../logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -136,7 +151,7 @@ session_start();
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a type="button" data-toggle="modal" data-target="#addPage">Add Post</a></li>
-                <li><a href="prodect.php">Add Product</a>Product</li>
+                <li><a href="product.php">Product</a>Product</li>
               </ul>
             </div>
           </div>
@@ -268,18 +283,22 @@ session_start();
                <div class="panel panel-primary">
              <div class="panel-heading main-color-bg">
                <div class ="col-md-8">
-                <div class="page-header"><h4><?php echo ucfirst($_SESSION['givenName'].' '.$_SESSION['familyName']); ?></h4></div> 
+                <div class="page-header"><h4><?php echo ucfirst($_SESSION['givenName']).' '.ucfirst($_SESSION['familyName']); ?></h4></div> 
                 </div>
+                <?php if( isset($_SESSION['picture']) ) { ?>
                   <div>
                      <img src="<?php echo $_SESSION['picture'];  ?>" width="33%" class="img-circle pull-right">
                   </div>
+                  <?php 
+                }else{
+                  echo ' <div>
+                     <img src="../images/avatar.png" width="33%" class="img-circle pull-right">
+                  </div>';
+                }
+                ?>
                 
                    <table class="table table-condensed">
                       <tbody>
-                        <tr>
-                           <th>Job:</th>
-                           <td>Web Developer</td>
-                         </tr>
                          <tr>
                            <th>Role:</th>
                            <td>Admin</td>
@@ -289,12 +308,8 @@ session_start();
                            <td><?php echo $_SESSION['email'];  ?></td>
                          </tr>
                          <tr>
-                           <th>Contact:</th>
-                           <td>9866558715</td>
-                         </tr>
-                         <tr>
                            <th>Gender:</th>
-                           <td>Male</td>
+                           <td><?php echo $_SESSION['gender'];  ?></td>
                          </tr> 
                          <tr>
                            <th>Country:</th>
@@ -314,83 +329,80 @@ session_start();
           <div class="clearfix"></div>
           </div>
            <div class="col-lg-12">
-        <div class="panel panel-primary">
-           <div class="panel-heading main-color-bg"><h3>Latest Post</h3></div>
-         <div class=" panel-body">
-           <table class="table table-striped">
-             <thead>
-                <tr>
-                 <th>S.No</th>
-                 <th>Date</th>
-                 <th>Image</th>      
-                 <th>Title</th>
-                 <th>Description</th>
-                 <th>Category</th>
-                 <th>Author</th>
-                </tr>
-             </thead>
-             <tbody>
-             <?php
-               $sql= "SELECT * FROM post AS p JOIN category AS c ON c.c_id=p.category WHERE author = 'sandesh@gmail.com' AND status = 'published'";
-               $run = mysqli_query($conn, $sql);
-               $number=1;
-               while($rows = mysqli_fetch_assoc($run)){
-                 echo'
-                   <tr>
-                     <td>'.$number.'</td>
-                     <td>'.$rows['date'].'</td>
-                     <td>'.($rows['image'] == '' ? 'No Fucking Image' : '<img src="../'.$rows['image'].'" width="50px">').'</td>
-                     <td>'.$rows['title'].'</td>
-                     <td>'.substr($rows['discription'],0,50).'......</td>
-                     <td>'.ucfirst($rows['category_name']).'</td>
-                     <td>'.ucfirst($name).'</td>
-                       </tr>     
-                 ';
-                 $number++;
-               }
-             ?>
-             </tbody>
-           </table>
-         </div>
-         
-       </div>
+         <div class="panel panel-primary">
+                       <div class="panel-heading main-color-bg"><h3>Latest Product</h3></div>
+                     <div class=" panel-body">
+                       <table class="table table-striped">
+                         <thead>
+                            <tr>
+                             <th>S.No</th>
+                             <th>Name</th>
+                             <th>Image</th>
+                             <th>Price</th>
+                            </tr>
+
+                             
+                         </thead>
+                         <tbody>
+                         <?php
+                           $number = 1;
+                           $query = "SELECT * FROM tbl_product ORDER BY id DESC LIMIT 5 ";
+                           $result = mysqli_query($conn, $query);
+                           if(mysqli_num_rows($result) > 0){
+                              while($rows = mysqli_fetch_array($result))
+                                  { 
+                                    if($rows['display'] == "on"){
+                                           $boolen = "ok";
+                                    }else
+                                    {
+                                             $boolen = "remove";  
+                                    }
+                                     echo'
+                                       <tr>
+                                         <td>'.$number.'</td>
+                                         <td>'.$rows['name'].'</td>
+                                         <td>'.($rows['image'] == '' ? 'No Image' : '<img src="../images/'.$rows['image'].'" width="50px">').'</td>
+                                         <td>'.($rows['price']).'</td>
+                                     ';
+                                 $number++;
+                               }
+                             }
+                             ?>
+                             </tbody>
+                           </table>
+                         </div>
+                         
+                   </div>
        </div>
       <div class="col-lg-12">
        <div class="panel panel-primary">
-           <div class="panel-heading main-color-bg"><h3>Latest Comments</h3></div>
+           <div class="panel-heading main-color-bg"><h3>Latest Category</h3></div>
          <div class=" panel-body">
-           <table class="table table-striped">
-             <thead>
-                <tr>
-                 <th>S.No</th>
-                 <th>Date</th>
-                 <th>author</th>       
-                 <th>Email</th>
-                 <th>Post</th>
-                 <th>Components</th>
-                </tr>
-             </thead>
-             <tbody>
-            <?php 
-             $c_sql="SELECT *FROM comments ";
-             $c_run=mysqli_query($conn, $c_sql);
-             $numb=1;
-             while($rows = mysqli_fetch_assoc($c_run)){
-               echo '
-                   <tr>
-                     <td>'.$numb.'</td>
-                     <td>'.$rows['date'].'</td>
-                     <td>'.$name.'</td>
-                     <td>'.$rows['email'].'</td>
-                     <td>2</td>
-                     <td>'.$rows['comment'].'</td>
-                   </tr>
-                  ';
-                  $numb++;
-             }
-             ?>
-             </tbody>
-           </table>
+          <table class="table table-striped table-hover">
+                           <th>S.No</th>
+                           <th>S.No</th>
+                           <th>Category Name</th>
+                      <?php
+                         $sql ="SELECT * FROM category";
+                         $run = mysqli_query($conn,$sql);
+                         $num = 1;
+                         while($rows = mysqli_fetch_assoc($run)){
+                           if( $rows['category_name'] == 'home'){
+                                continue;
+                           } else {
+                               echo '
+                                                        
+                                 <tr>                                
+                                   <td>'.$num.'</td>
+                                   <td>'.$rows['c_id'].'</td>
+                                   <td>'.ucfirst($rows['category_name']).'</td>      
+                                 </tr>
+                                 '; 
+                                 $num++;
+                              }
+                         }                             
+                      ?>  
+                    </table>
          </div>
          
        </div>

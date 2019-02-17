@@ -2,25 +2,26 @@
 include '../includes/db.php';
 session_start();
 
-  if (!isset($_SESSION['access_token'])) {
-    header('Location: ../index.php');
+ if( isset($_SESSION['role']) ) {
+           if( $_SESSION['role'] == "subscriber" ) {
+             header('Location : ../index.php?fromrole');
+             exit();
+           }
+  }else{
+    header('Location : ../index.php?nosession');
     exit();
   }
 $email = $_SESSION['email'];
-$pass = "123";
-     $sel_sql ="SELECT * FROM user WHERE user_email = '$email' AND user_password = '$pass'";
+
+     $sel_sql ="SELECT * FROM user WHERE user_email = '$email'";
      if($run_sql = mysqli_query($conn, $sel_sql)){
        while($rows= mysqli_fetch_assoc($run_sql)){
          
          $user_f_name = $rows['user_f_name'];
          $user_l_name = $rows['user_l_name'];
          $user_gender = $rows['user_gender'];
-         $user_marital_status = $rows['user_marital_status'];
          $user_phone_no = $rows['user_phone_no'];
-         $user_designation = $rows['user_designation'];
-         $user_website = $rows['user_website'];
-         $user_address = $rows['user_address'];
-         $user_about_me = $rows['user_about_me'];
+         $role = $rows['role'];
          
          if(mysqli_num_rows($run_sql) == 1 ){
            if($rows['role'] == 'admin'){
@@ -75,7 +76,7 @@ $pass = "123";
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -99,9 +100,9 @@ $pass = "123";
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small>Manage Your Site</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Profile <small> Manage Your Site</small></h1>
           </div>
-          <div class="col-md-2">
+         <!--  <div class="col-md-2">
             <div class="dropdown create">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Create Content
@@ -112,7 +113,7 @@ $pass = "123";
                 <li><a href="#">Add Post</a></li>
                 <li><a href="#">Add User</a></li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -121,7 +122,7 @@ $pass = "123";
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li class="active">Dashboard</li>
+          <li class="active"><b>Profile</b></li>
         </ol>
       </div>
     </section>
@@ -166,26 +167,26 @@ $pass = "123";
               <div class="panel-body">
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 203</h2>
+                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $total_user;?></h2>
                     <h4>Users</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 12</h2>
+                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>  <?php echo $total_category;?></h2>
                     <h4>Pages</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 33</h2>
+                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>  <?php echo $total_post;?></h2>
                     <h4>Posts</h4>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 12,334</h2>
-                    <h4>Visitors</h4>
+                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>  <?php echo $total_pro;?></h2>
+                    <h4>Product</h4>
                   </div>
                 </div>
               </div>
@@ -195,15 +196,26 @@ $pass = "123";
                
                <div class="panel panel-primary">
                  <div class="panel-heading">
-               
+               <?php if (isset($_SESSION['picture']))
+                {           
+                 ?>
                    <div class="col-md-3">
                      <img src="<?php echo $_SESSION['picture'] ?>" width="100%" class="img-thumbnail">
                    </div>
+                   <?php
+                    }else{
+                   ?>
+                        <div class="col-md-3">
+                     <img src="../images/avatar.png" width="100%" class="img-thumbnail">
+                   </div>
+                   <?php 
+                      }
+                   ?>
+                   
                      <div class ="col-md-7">
-                         <h3><u><?php echo $user_f_name.' '.$user_l_name;?></u></h3>
-                     <p><i class="glyphicon glyphicon-heart"></i> <?php echo $user_designation;?></p>
-                     <p><i class="glyphicon glyphicon-road"></i> <?php echo $user_address;?></p>
+                         <h3><u><?php echo ucfirst($user_f_name).' '.ucfirst($user_l_name);?></u></h3>
                      <p><i class="glyphicon glyphicon-phone"></i> <?php echo $user_phone_no;?></p>
+                     <p><i class="glyphicon glyphicon-road"></i> <?php echo $role;?></p>
                      <p><i class="glyphicon glyphicon-envelope"></i> <?php echo $_SESSION['email'];?></p>
                      
                        </div>
@@ -224,12 +236,12 @@ $pass = "123";
                      <td><?php echo ucfirst($user_gender);?></td>
                    </tr>
                    <tr>
-                     <th>M. Status</th>
-                     <td><?php echo ucfirst($user_marital_status);?></td>
+                     <th>First Name</th>
+                     <td><?php echo ucfirst($user_f_name);?></td>
                    </tr>
                    <tr>
-                     <th>Website</th>
-                     <td><?php echo $user_website;?></td>
+                     <th>Last Name</th>
+                     <td><?php echo ucfirst($user_l_name);?></td>
                    </tr>
                  </tbody>
                </table>
@@ -242,24 +254,22 @@ $pass = "123";
              <div class="panel-heading">
                <table class="table table-condensed">
                  <tbody>
+                  <?php
+                  $num = 1; 
+                  $sel_sql = "SELECT * FROM tbl_product WHERE author = '$_SESSION[email]' ORDER BY id DESC LIMIT 3";
+                     $run_sql = mysqli_query($conn, $sel_sql);
+                     while($rows = mysqli_fetch_assoc($run_sql)) { ?>
                    <tr>
-                                    <td width="5%">1</td>
+                    <td width="5%"><?php echo $num; ?></td>
                      <td>
-                       <a href="">The First Post</a>
+                       <a href="product.php"><?php echo ucfirst($rows['name']); ?></a>
                      </td>
                    </tr>
-                   <tr>
-                              <td width="5%">2</td>
-                     <td>
-                       <a href="">The Second Post</a>
-                     </td>
-                   </tr>
-                   <tr>
-                     <td width="5%">3</td>
-                     <td>
-                       <a href="">The Third Post</a>
-                     </td>
-                   </tr>
+
+                   <?php 
+                   $num++;
+                      }
+                   ?>
                  </tbody>
                </table>
              </div>
@@ -269,7 +279,7 @@ $pass = "123";
            <div class="panel panel-default">
              <div class="panel-heading">
                <h4>About Me</h4>
-               <p><?php echo $user_about_me;?></p>
+               <!-- <p><?php echo $user_about_me;?></p> -->
              </div>
            </div>
          </div>

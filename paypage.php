@@ -34,7 +34,7 @@ $total = 0;
                     <div class="card-block text-center">
                       <?php
                             foreach($_SESSION["shopping_cart"] as $keys => $values){
-                              $desc = $desc.' '.$values['item_name'];
+                              $desc = $desc.' '.ucfirst($values['item_name']);
                               echo '<div class="card-title"><h4>
                             '.ucfirst($values['item_name']).'</h4>
                                   </div> ';

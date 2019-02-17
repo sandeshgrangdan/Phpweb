@@ -90,7 +90,7 @@ ul li:hover ul li{
 	position: relative;
 	width: calc(400px - 50px);
 	height: calc(300px - 50px);
-	background: #000;
+	background: black;
 	margin: 15px;
 	box-shadow: 10px;
 	box-sizing: border-box;
@@ -104,7 +104,7 @@ ul li:hover ul li{
 	left: 0;
 	width: 100%;
 	height: 100% ;
-	background: red;
+	background: #dc3545;
 	transition: 0.5s;
 	z-index: 1;
 
@@ -251,7 +251,7 @@ body{
   width:5px;
   top:0;
   left: 50%;
-  z-index:3;
+  z-index:4;
 }
 
 .skewed .handle{

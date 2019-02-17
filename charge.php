@@ -63,7 +63,8 @@ $transaction->addTransaction($transactionData);
 
 $mailto = $_SESSION['email'];
     $mailSub = "Order Payment";
-    $mailMsg = $_SESSION['description'];
+    $mailMsg = 'Thank you for using Dherai Sasto Deal.
+                 Your Product is:'.$_SESSION['description'];
    require 'PHPMailer/PHPMailerAutoload.php';
    $mail = new PHPMailer();
    $mail ->IsSmtp();
@@ -83,6 +84,7 @@ $mailto = $_SESSION['email'];
    if(!$mail->Send())
    {
        echo "Mail Not Send";
+       header('Location: success.php?tid='.$charge->id.'&product='.$charge->description);
    }
    else
    {

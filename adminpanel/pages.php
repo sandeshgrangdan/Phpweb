@@ -2,10 +2,10 @@
      include'../includes/db.php';
      session_start();
 
-  if (!isset($_SESSION['access_token'])) {
-    header('Location: ../index.php');
-    exit();
-  }
+  // if (!isset($_SESSION['access_token'])) {
+  //   header('Location: ../index.php');
+  //   exit();
+  // }
    
    $result ='';
    if(isset($_POST['submit_category'])){
@@ -38,7 +38,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Pages</title>
+    <title>Admin Area | Category</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -56,11 +56,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.php">Dashboard</a></li>
+            <li><a href="index.php">Category</a></li>
             <li class="active"><a href="pages.php">Category</a></li>
             <li><a href="posts.php">Posts</a></li>
             <li><a href="users.php">Users</a></li>
@@ -80,7 +80,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Pages<small>Manage Site Pages</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Category<small> Manage Site Pages</small></h1>
           </div>
           <div class="col-md-2">
             <div class="dropdown create">
@@ -97,8 +97,8 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="index.html">Dashboard</a></li>
-          <li class="active">Pages</li>
+          <li><a href="index.html">Category</a></li>
+          <li class="active">Category Detail</li>
         </ol>
       </div>
     </section>
@@ -138,7 +138,7 @@
             <!-- Website Overview -->
             <div class="panel panel-default">
               <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Pages</h3>
+                <h3 class="panel-title">Category</h3>
               </div>
               <div class="panel-body">
                 <div class="row">

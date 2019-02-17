@@ -2,23 +2,18 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Sign Up!</h2>
+                    <h2 class="modal-title">Send FeadBack!</h2>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                               <form class="form-horizontal" action="#" method="post" role="form">
-                                     <div class="form-group">
-                                       <label for="mail_sub">Subject</label>
-                                  
-                                         <input type="text" class="form-control" name="mail_sub" placeholder="insert your fucking name" id="mail_sub" required>
-                                       </div>
+                               <form class="form-horizontal" action="#" method="post" role="form" name="feadback" onsubmit=" return feadbackvalid() ">
                                       
                            
                                      <div class="form-group">
-                                       <label for="address" >Message</label>
-                                                   <textarea class="form-control" name="editor1" id="address" required></textarea>
+                                       <label for="address" >Feadback</label>
+                                                   <textarea class="form-control" name="editor1" id="address" Placeholder="Insert Your Feadback" required></textarea>
                                       </div>
                                      <div class="form-group">
                                                     <input type="submit" value="Confirms" class="btn btn-default btn-block btn-danger" name="mail">
@@ -37,3 +32,15 @@
               </div>
         </div>
     </div>
+    <script >
+      function feadbackvalid() {
+        var feadback = document.feadback.editor1.value;
+        if(feadback.trim() == ''){
+          document.feadback.editor1.focus();
+          swal ( "Feadback is empty!" ,  "Please give some feadback to us" ,  "error" );
+          return false;
+        }
+
+        return true
+      }
+    </script>

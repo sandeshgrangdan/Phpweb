@@ -92,7 +92,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Posts</title>
+    <title>Admin Area | Edit product</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -109,7 +109,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -145,7 +145,7 @@
       <div class="container">
         <ol class="breadcrumb">
           <li><a href="index.php">Dashboard</a></li>
-          <li class="active">Edit Product
+          <li class="active">Edit Product</li>
         </ol>
       </div>
     </section>
@@ -225,7 +225,7 @@
                          <label for="status" value="<?php echo $rows['status']?>">Status</label>
                          <select id="status" name="display" class="form-control">
                            <option value="on">On</option>
-                           <option value="ofs">OfF</option> 
+                           <option value="of">OFF</option> 
                          </select>
                        </div>
                        <div class="form-group">

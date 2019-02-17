@@ -85,7 +85,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Area | Dashboard</title>
+    <title>Admin Area | User</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -103,7 +103,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">AdminStrap</a>
+          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -127,10 +127,10 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10">
-            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small>Manage Your Site</small></h1>
+            <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> User <small>Manage Your Site</small></h1>
           </div>
           <div class="col-md-2">
-            <div class="dropdown create">
+           <!--  <div class="dropdown create">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Add Content
                 <span class="caret"></span>
@@ -139,7 +139,7 @@
                 <li><a type="button" data-toggle="modal" data-target="#addPage">Add Post</a></li>
                 <li><a href="new_category.php">Add category</a>Product</li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@
     <section id="breadcrumb">
       <div class="container">
         <ol class="breadcrumb">
-          <li class="active">Dashboard</li>
+          <li class="active">User Details</li>
         </ol>
       </div>
     </section>
