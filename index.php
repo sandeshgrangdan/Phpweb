@@ -123,7 +123,7 @@ if(isset($_POST["add_to_cart"]))
 <html>
      <head> 
 	        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="../assets/css/docs.css" rel="stylesheet" >
+            <link href="../bootstrap/assets/css/docs.css" rel="stylesheet" >
             <link rel="stylesheet" type="text/css" href="CSS/btn.css">
             <link rel="stylesheet" type="text/css" href="CSS/style.css">
             <link rel="stylesheet" type="text/css" href="../alert/dist/sweetalert2.css">
@@ -138,31 +138,12 @@ if(isset($_POST["add_to_cart"]))
 	</head>
 	 <body style="background : #eeeeee;">
 	 	<?php include 'includes/modal.php'?>
-	     <?php include 'includes/header1.php'; ?>
+	     <?php include 'includes/header.php'; ?>
+	     <?php include 'includes/slider.php'; ?>
+	     <br>
 
-		 <div class="wrap">
-			  <div id="arrow-left" class="arrow"></div>
-			  <div id="slider">
-			    <div class="slide slide1">
-			      <div class="slide-content">
-			        <span>Dherai Sasto Deal</span>
-			      </div>
-			    </div>
-			    <div class="slide slide2">
-			      <div class="slide-content">
-			        <span>Dherai Sasto Deal</span>
-			      </div>
-			    </div>
-			    <div class="slide slide3">
-			      <div class="slide-content">
-			        <span>Dherai Sasto Deal</span>
-			      </div>
-			    </div>
-			  </div>
-			  <div id="arrow-right" class="arrow"></div>
-			</div>
-			<br>
 		 <div class="container">
+
 		 <?php echo $match;?> 
 		     <article class="row">	
 		     	
@@ -191,48 +172,7 @@ if(isset($_POST["add_to_cart"]))
 					</div>
 				</div>
 			</div>
-			<!-- <div class="box">
-				<div class="icon"><i class="fa fa-map"></i></div>
-				<div class="content">
-					<h3>Search</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					</p> 
-				</div>
-			</div>
- -->
-		       
-			     	
-					
-			     <!-- <section class="col-lg-8">
-				     <?php
-					     $sel_sql ="SELECT *FROM post WHERE  status='published'";
-						 $run_sql = mysqli_query($conn,$sel_sql);
-						 while($rows = mysqli_fetch_assoc($run_sql)){
-							 echo '
-							 <div class="card ">
-						           <div class="card-header" style="background: #eeeeee">
-							        <h3><a href="post.php?post_id='.$rows['id'].'">'.$rows['title'].'</a></h3>
-									
-										  <div class="col-lg-12">
-											 <img src="'.$rows['image'].'" width="100%">
-										  </div>
-										  <div class="col-lg-12">
-											<p>'.substr($rows['discription'],0,300).'...... </p>
-										 </div>
-					            	 <a href="post.php?post_id='.$rows['id'].'" class="btn btn-primary">Read more</a>
-					               </div>
-					          </div>
-					          <br/>
-					 
-							 ';
-						 }
-					 ?>
-		     
-		
-			 	</section>
-			  -->
-			    <?php include 'includes/aside.php';?>
-
+			<?php include 'includes/aside.php';?>
 
 			 </article>	 
 			 

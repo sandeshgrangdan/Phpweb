@@ -10,27 +10,59 @@ if(isset($_POST['mail'])){
    $mail ->SMTPDebug = 0;
    $mail ->SMTPAuth = true;
    $mail ->SMTPSecure = 'ssl';
-   $mail ->Host = "smtp.gmail.com";
-   $mail ->Port = 465; // or 587
+   $mail ->Host = "smtp.gmail.com";//smtp.gmail.com
+   $mail ->Port = 465; // or  465
    $mail ->IsHTML(true);
-   $mail ->Username = "sandesht801@gmail.com";
+   $mail ->Username = "sandesht801@gmail.com"; //Source email address
    $mail ->Password = "PHYSICS12345";
    $mail ->SetFrom("sandesht801@gmail.com");
+   $mail ->addAttachment('walpaper/concert.jpg');
    $mail ->Subject = $mailSub;
    $mail ->Body = $mailMsg;
+   // $mail ->AltBody = "";
    $mail ->AddAddress($mailto);
 
    if(!$mail->Send())
    {
-       echo '<script>
-        alert("Feadback Not Send")
-       </script>';
+       echo '<style type="text/css">
+    div.messages{
+      background-color: #ff6b6b;
+      color: #f7fff7;
+      font-size: 20px;
+    }
+    ul.messages{
+      list-style-type: none;
+    }
+  </style>
+
+    <div class="messages">
+
+    <ul class="messages">
+      <li style="text-align: center;">Feadback is not sended!</li>
+    </ul>
+
+    </div>';
    }
    else
    {
-       echo '<script>
-        alert("Feadback Send")
-       </script>';
+       echo '<style type="text/css">
+    div.messages{
+      background-color: #ff6b6b;
+      color: #f7fff7;
+      font-size: 20px;
+    }
+    ul.messages{
+      list-style-type: none;
+    }
+  </style>
+
+    <div class="messages">
+
+    <ul class="messages">
+      <li style="text-align: center;">Successfully, Sended!</li>
+    </ul>
+
+    </div>';
    }
 
 

@@ -24,7 +24,7 @@ function formvalidate(){
 
   if (lname.trim() == '') {
     	 document.form.last.focus();
-      swal ( " Last is empty!" ,  "Please Enter Last Name" ,  "error" );
+      swal ( " Last Name is empty!" ,  "Please Enter Last Name" ,  "error" );
       return false;
     }else if(!namepattern.test(lname)){
         document.form.last.focus();

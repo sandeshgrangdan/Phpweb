@@ -1,6 +1,6 @@
 <?php
 	 
-	 include 'includes/db.php';
+	 include '../includes/db.php';
 	 if(isset($_POST['submitlogin'])){
 		 if(!empty($_POST['email'])  && !empty($_POST['password']) ){
 			 $get_username = mysqli_real_escape_string($_POST['email']);
