@@ -23,7 +23,48 @@ if(isset($_GET["action"]))
 		}
 	}
 }
+if(isset($_GET["d_id"])){
+	foreach($_SESSION["shopping_cart"] as $keys => $values)
+		{
+			if($values["item_id"] == $_GET["d_id"])
+			{
+				if( $_SESSION["shopping_cart"][$keys]['item_quantity'] == 1)
+					unset($_SESSION["shopping_cart"][$keys]);
+				else{
+						$_SESSION["shopping_cart"][$keys]['item_quantity'] = $values["item_quantity"] - 1;
+						echo ' 	<style type="text/css">
+				 		div.messages{
+				 			background-color: #ff6b6b;
+				 			color: #f7fff7;
+				 			font-size: 20px;
+				 		}
+				 		ul.messages{
+				 			list-style-type: none;
+				 		}
+				 	</style>
+
+				    <div class="messages">
+
+				    <ul class="messages">
+				      <li style="text-align: center;">Iteam Increased by 1</li>
+				    </ul>
+
+				    </div>';
+				}
+			}
+		}
+}
+if(isset($_GET["i_id"])){
+	foreach($_SESSION["shopping_cart"] as $keys => $values)
+		{
+			if($values["item_id"] == $_GET["i_id"])
+			{
+				$_SESSION["shopping_cart"][$keys]['item_quantity'] = $values["item_quantity"] + 1;
+			}
+		}
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -133,11 +174,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td class="invert">
 											<div class="quantity">
 												<div class="quantity-select">
-													<div class="entry value-minus">&nbsp;</div>
+													<a href="checkout.php?d_id='.$values["item_id"].'"><div class="entry value-minus">&nbsp;</div>
 													<div class="entry value">
 														<span>'.$values["item_quantity"].'</span>
 													</div>
-													<div class="entry value-plus active">&nbsp;</div>
+													<a href="checkout.php?i_id='.$values["item_id"].'"><div class="entry value-plus active">&nbsp;</div></a>
 												</div>
 											</div>
 										</td>

@@ -1,4 +1,5 @@
-<header>
+ <header>
+	<script src="js/cartpop.js"></script>
 
 			<div class="row">
 				<div class="col-md-3 top-info text-left mt-lg-4">
@@ -13,7 +14,17 @@
 					<h1 class="logo-w3layouts">
 						<a class="navbar-brand" href="index.php">
 							Dherai Sasto Deal </a>
-					</h1>
+					</h1>					
+					<div class="form-group">	
+						<div class="input-group">
+							<input class="form-control " type="text" name="text_search" id="text_search" placeholder="Search">
+						</div>
+						<ul class="list-group" id="result">
+								
+						</ul>
+					</div>	
+					
+    
 				</div>
 
 				<div class="col-md-3 top-info-cart text-right mt-lg-4">
@@ -115,13 +126,13 @@
 				</div>
 				<?php include 'include/signin.php'; ?>
 			</div>
-			<div class="search">
+			<!-- <div class="search">
 				<div class="mobile-nav-button">
 					<button id="trigger-overlay" type="button">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
-				<!-- open/close -->
+				
 				<div class="overlay overlay-door">
 					<button type="button" class="overlay-close">
 						<i class="fa fa-times" aria-hidden="true"></i>
@@ -134,8 +145,8 @@
 					</form>
 
 				</div>
-				<!-- open/close -->
-			</div>
+				
+			</div> -->
 			<label class="top-log mx-auto"></label>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
 
@@ -319,7 +330,7 @@
 			<script src="../js/regs.js"></script>
 			<script src="../js/modal.js"></script>
 		</header>
-		    <div class="modal fade" id="logout" tabindex="-1">
+	<div class="modal fade" id="logout" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -330,7 +341,6 @@
                 </div>
                 <div class="modal-body">
                          
-
                 </div>
                 <div class="modal-footer">
                   <div class="form-group">

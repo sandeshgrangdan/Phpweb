@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 17, 2019 at 07:14 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: localhost
+-- Generation Time: May 18, 2019 at 06:02 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,18 +30,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `c_id` int(11) NOT NULL,
-  `category_name` text NOT NULL
+  `category_name` text NOT NULL,
+  `image` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`c_id`, `category_name`) VALUES
-(2, 'home'),
-(4, 'laptop'),
-(6, 'watch'),
-(7, 'mobiles');
+INSERT INTO `category` (`c_id`, `category_name`, `image`) VALUES
+(2, 'Guitar', 'mantra.png'),
+(4, 'Hemp Bag', 'hemp.jpg'),
+(6, 'laptop', ''),
+(7, 'mobiles', '');
 
 -- --------------------------------------------------------
 
@@ -102,7 +103,9 @@ INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `created_at`)
 ('cus_EWLzfcrTaX5IV4', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '2019-02-13 14:25:17'),
 ('cus_EWM6vV98tqGdyo', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '2019-02-13 14:31:55'),
 ('cus_EWM9Q4Ww0m004T', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '2019-02-13 14:34:39'),
-('cus_EWRfkPwR74OC8I', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '2019-02-13 20:17:18');
+('cus_EWRfkPwR74OC8I', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '2019-02-13 20:17:18'),
+('cus_Exgcp94nhBt0wW', 'safal', 'tamang', 'safal@gmail.com', '2019-04-27 13:32:20'),
+('cus_ExhK0yPSjhaRiv', 'safal', 'tamang', 'safal@gmail.com', '2019-04-27 14:15:56');
 
 -- --------------------------------------------------------
 
@@ -127,7 +130,8 @@ INSERT INTO `locations` (`id`, `lat`, `lng`, `description`, `location_status`, `
 (9, 27.696142, 85.334381, 'location', 0, 'ch_1E2wC7Cbu1nAmf4O64Lt'),
 (10, 27.696133, 85.334274, 'shai hoo', 1, 'ch_1E2wC7Cbu1nAmf4O64Lth9xp'),
 (11, 27.697412, 85.334717, 'Home', 0, 'ch_1E3JQyCbu1nAmf4OWIMfO2w6'),
-(12, 27.695370, 85.331512, 'This is my loaction  for macbook', 1, 'ch_1E3OmcCbu1nAmf4OHLR03Rsu');
+(12, 27.695370, 85.331512, 'This is my loaction  for macbook', 1, 'ch_1E3OmcCbu1nAmf4OHLR03Rsu'),
+(13, 27.695953, 85.334518, 'This is  my location', 1, 'ch_1ETlFjCbu1nAmf4OwHGjXKua');
 
 -- --------------------------------------------------------
 
@@ -168,20 +172,22 @@ CREATE TABLE `tbl_product` (
   `image` varchar(255) NOT NULL,
   `price` double(10,2) NOT NULL,
   `display` varchar(50) DEFAULT NULL,
-  `author` varchar(50) NOT NULL
+  `author` varchar(50) NOT NULL,
+  `Description` text NOT NULL,
+  `info` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_product`
 --
 
-INSERT INTO `tbl_product` (`id`, `c_id`, `name`, `image`, `price`, `display`, `author`) VALUES
-(1, 7, 'Samsung J2 Pro', '1.jpg', 100.00, 'on', 'sandesht801@gmail.com'),
-(2, 4, 'HP Notebook', '2.jpg', 299.00, 'on', 'sandesht801@gmail.com'),
-(3, 7, 'Panasonic T44 Lite', '3.jpg', 125.00, 'on', 'sandesht801@gmail.com'),
-(11, 4, 'alienware', 'alian.png', 679.00, 'on', 'sandesht801@gmail.com'),
-(20, 7, 'Iphone 10', 'iphone 10.jpg', 999.00, 'on', 'sandesht801@gmail.com'),
-(24, 4, 'Macbook Pro', 'mac.jpg', 1704.00, 'on', 'sandesht801@gmail.com');
+INSERT INTO `tbl_product` (`id`, `c_id`, `name`, `image`, `price`, `display`, `author`, `Description`, `info`) VALUES
+(1, 7, 'Samsung J2 Pro', '1.jpg', 100.00, 'on', 'sandesht801@gmail.com', '    Operating System. Android v6.0 (Marshmallow)     5.0 inches (12.7 cm) display.     Spreadtrum SC8830 Quad core Processor. 2 GB RAM. ...     8 MP Rear Camera. 5 MP Front Camera.     2600 mAh battery.     Dual SIM: Micro + Micro. SIM2: Supports 3G.     No Fingerprint Sensor.', 'The device is shipped with Android v6.0 (Marshmallow) operating system. Under the hood, the smartphone is equipped with 1.5GHz quad-core Spreadtrum SC8830 processor, paired with 2GB RAM and Mali-400 MP2 GPU. Performance of this device is further boosted by Turbo Speed Technology, that loads applications 40% faster.'),
+(2, 4, 'HP Notebook', '2.jpg', 299.00, 'on', 'sandesht801@gmail.com', 'Product Name	15-3040NR US Product Number	A9P60UA Microprocessor	2.20 GHz 2nd generation Intel Core i7-2670QM Processor with Turbo Boost Technology up to 3.10 GHz Memory	8GB 1600MHz DDR3 SDRAM (2 DIMM) Memory Max	Maximum supported = 8GB', 'HP Pavilion is a line of personal computers produced by Hewlett-Packard and introduced in 1995. The name is applied to both desktops and laptops for the Home and Home Office product range. ... As a result, HP sold both HP and Compaq-branded machines until 2013.'),
+(3, 7, 'Panasonic T44 Lite', '3.jpg', 125.00, 'on', 'sandesht801@gmail.com', '    Display4.00-inch.     Processor1.3GHz quad-core.     Front Camera0.3-megapixel.     Resolution800x480 pixels.     RAM512MB.     OSAndroid Marshmallow.     Battery Capacity2400mAh.', 'The Panasonic T44 Lite features a 4-inch TFT display with a pixel density of 233ppi. It has a weight of 137 grams which makes it very easy to pocket. It runs on Android v6.0 (Marshmallow) OS and is driven by a 1.3GHz quad-core processor. Paired with 512MB of RAM, it ensures decent performance.'),
+(11, 4, 'alienware', 'alian.png', 679.00, 'on', 'sandesht801@gmail.com', '    CPU: 2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)     Graphics: Nvidia GeForce GTX 1080 OC (8GB GDDR5X)     RAM: 32GB DDR4 (2,666MHz)     Screen: 17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync.     Storage: 512GB PCIe SSD, 1TB HDD (7,200 rpm)', 'Alienware is an American computer hardware subsidiary of Dell. Their products are designed for gaming and can be identified by their alien-themed designs. Alienware was founded in 1996 by Nelson Gonzalez and Alex Aguila. The company\'s corporate headquarters is located in The Hammocks, in Miami, Florida.'),
+(20, 7, 'Iphone 10', 'iphone 10.jpg', 999.00, 'on', 'sandesht801@gmail.com', '    Get to know Apple\'s new iPhones. ...     Bigger screen sizes. ...     Beastly A12 Bionic processor. ...     Camera enhancements. ...     A new tool for portrait shots. ...     More colorful OLED screens. ...     Long battery life. ...     Faster Face ID.', 'The iPhone X is intended to showcase what Apple considers technology of the future, specifically adopting OLED screen technology for the first time in iPhone history, as well as using a glass and stainless-steel form factor, offering wireless charging, and removing the home button in favor of introducing a new \"bezel-less\" design, shrinking the bezels, and not having a \"chin\", unlike many Android phones. It also released a new type of password authentication called Face ID. Face ID is a new authentication method using advanced technologies to scan the user\'s face to unlock the device, as well as for the use of animated emojis called Animoji. The new, nearly bezel-less form factor marks a significant change to the iPhone user interaction, involving swipe-based gestures to navigate around the operating system rather than the typical home button used in every previous iteration of the iPhone lineup. At the time of its November 2017 launch, its price tag of US$999 also made it the most expensive iPhone ever, with even higher prices internationally due to additional local sales and import taxes. '),
+(24, 4, 'Macbook Pro', 'mac.jpg', 1704.00, 'on', 'sandesht801@gmail.com', '    6-core Intel Core i7 and Core i9 processors up to 2.9GHz    with Turbo Boost up to 4.8GHz.\r\n    Up to 32GB of DDR4 RAM.\r\n    Radeon Pro discrete graphics with 4GB of video memory.\r\n    Up to 4TB SSD storage.\r\n    True Tone display.\r\n    Apple T2 chip.\r\n    Touch Bar.', '\"MacBook\" is a term used for a brand of Mac notebook computers that Apple started producing in 2006. The American multinational corporation created MacBook computers when it consolidated its PowerBook and iBook lines during its transition to Intel processor-based products. As of 2013, there are two types of MacBook computers: the base-level MacBook Air and the upper-level MacBook Pro.');
 
 -- --------------------------------------------------------
 
@@ -222,7 +228,9 @@ INSERT INTO `transactions` (`id`, `customer_id`, `product`, `amount`, `currency`
 ('ch_1E3JHxCbu1nAmf4OVVdN7cjH', 'cus_EWLzfcrTaX5IV4', ' Panasonic T44 Lite', '12500', 'usd', 'succeeded', '2019-02-13 14:25:17', ''),
 ('ch_1E3JOMCbu1nAmf4OiirmqrGt', 'cus_EWM6vV98tqGdyo', ' Samsung J2 Pro', '10000', 'usd', 'succeeded', '2019-02-13 14:31:55', ''),
 ('ch_1E3JQyCbu1nAmf4OWIMfO2w6', 'cus_EWM9Q4Ww0m004T', ' Samsung J2 Pro', '10000', 'usd', 'succeeded', '2019-02-13 14:34:39', ''),
-('ch_1E3OmcCbu1nAmf4OHLR03Rsu', 'cus_EWRfkPwR74OC8I', ' Macbook Pro', '170400', 'usd', 'succeeded', '2019-02-13 20:17:18', '');
+('ch_1E3OmcCbu1nAmf4OHLR03Rsu', 'cus_EWRfkPwR74OC8I', ' Macbook Pro', '170400', 'usd', 'succeeded', '2019-02-13 20:17:18', ''),
+('ch_1ETlFjCbu1nAmf4OwHGjXKua', 'cus_Exgcp94nhBt0wW', ' Panasonic T44 Lite', '12500', 'usd', 'succeeded', '2019-04-27 13:32:20', ''),
+('ch_1ETlvvCbu1nAmf4OwetMBe11', 'cus_ExhK0yPSjhaRiv', ' Alienware', '67900', 'usd', 'succeeded', '2019-04-27 14:15:56', '');
 
 -- --------------------------------------------------------
 
@@ -231,13 +239,13 @@ INSERT INTO `transactions` (`id`, `customer_id`, `product`, `amount`, `currency`
 --
 
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `role` text NOT NULL,
-  `user_f_name` text NOT NULL,
-  `user_l_name` text NOT NULL,
-  `user_email` text NOT NULL,
-  `user_password` text NOT NULL,
-  `user_gender` text NOT NULL,
+  `user_f_name` varchar(20) NOT NULL,
+  `user_l_name` varchar(20) NOT NULL,
+  `user_email` varchar(40) NOT NULL,
+  `user_password` varchar(20) NOT NULL,
+  `user_gender` varchar(10) NOT NULL,
   `user_phone_no` text NOT NULL,
   `user_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -247,10 +255,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `role`, `user_f_name`, `user_l_name`, `user_email`, `user_password`, `user_gender`, `user_phone_no`, `user_date`) VALUES
-(1, 'admin', 'sandesh', 'tamang', 'sandesht801@gmail.com', '123', 'male', '9866558715', '2019-02-03 08:53:15'),
-(2, 'subscriber', 'safal', 'tamang', 'safal@gmail.com', '1234', 'male', '9804033099', '2019-02-03 08:53:18'),
-(3, 'subscriber', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '123', 'male', '9869814323', '2019-02-03 08:53:20'),
-(4, 'subscriber', 'ram', 'thapa', 'narenpyakurel@gmail.com', '123', 'male', '9843433343', '2019-02-06 03:57:09');
+(1, 'admin', 'sandesh', 'tamang', 'sandesht801@gmail.com', '123', 'male', '9866558715', '2019-05-13 17:11:51'),
+(10, 'subscriber', 'safal', 'tamang', 'safal@gmail.com', '123', 'male', '9845356585', '2019-05-13 01:28:50');
 
 --
 -- Indexes for dumped tables
@@ -302,7 +308,9 @@ ALTER TABLE `transactions`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_email` (`user_email`),
+  ADD UNIQUE KEY `user_phone_no` (`user_phone_no`(15));
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -324,7 +332,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `post`
@@ -342,7 +350,7 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

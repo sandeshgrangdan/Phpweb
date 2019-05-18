@@ -137,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="row">
 					<!-- /womens -->
 					<?php
-						$sel_side="SELECT id,c_id,name,image,price,display FROM tbl_product ORDER BY id DESC LIMIT 8";
+						$sel_side="SELECT id,c_id,name,image,price,display FROM tbl_product WHERE display = 'on' ORDER BY id DESC LIMIT 8";
 						$run_side=mysqli_query($conn,$sel_side);
 						while($rows=mysqli_fetch_assoc($run_side)){ 
 							echo '
@@ -148,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<img src="../images/'.$rows['image'].'" class="img-fluid" alt="">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.php?id='.$rows['id'].'" class="link-product-add-cart">Quick View</a>
+											<a href="single.php?id='.$rows['id'].'&c_id='.$rows['c_id'].'" class="link-product-add-cart">Quick View</a>
 										</div>
 									</div>
 									<span class="product-new-top">New</span>
@@ -158,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="grid_meta">
 											<div class="product_price">
 												<h4>
-													<a href="single.php?id='.$rows['id'].'">'.ucfirst($rows['name']).'</a>
+													<a href="single.php?id='.$rows['id'].'&c_id='.$rows['c_id'].'">'.ucfirst($rows['name']).'</a>
 												</h4>
 												<div class="grid-price mt-2">
 													<span class="money ">$'.$rows['price'].'</span>
@@ -193,17 +193,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</ul>
 										</div>
 										
-											<form method="post" action="index.php?action=add&id='.$rows["id"].'">
+											<form method="post" action="index.php?action=add&id='.$rows["id"].'" onsubmit="return pop()">
 															
 
-																<input type="number" name="quantity" value="1" class="form-control" />
+																<input type="hidden" name="quantity" value="1" class="form-control" />
 
 																<input type="hidden" name="hidden_name" value="'.$rows["name"].'" />
 
 																<input type="hidden" name="hidden_price" value="'.$rows["price"].'" /> 
 																<input type="hidden" name="hidden_image" value="'.$rows["image"].'" /> 
 
-																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart" style="font-size:40px;">
+																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart">
 																	<i class="fas fa-cart-plus"></i>
 																</button>
 
@@ -254,7 +254,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<img src="../images/'.$rows['image'].'" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="single.php?id='.$rows['id'].'" class="link-product-add-cart">Quick View</a>
+															<a href="single.php?id='.$rows['id'].'&c_id='.$rows['c_id'].'" class="link-product-add-cart">Quick View</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>
@@ -265,7 +265,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="single.php?id='.$rows['id'].'">'.$rows['name'].' </a>
+																	<a href="single.php?id='.$rows['id'].'&c_id='.$rows['c_id'].'">'.$rows['name'].' </a>
 																</h4>
 																<div class="grid-price mt-2">
 																	<span class="money ">'.$rows['price'].'</span>
@@ -299,21 +299,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																</li>
 															</ul>
 														</div>
-														<form method="post" action="index.php?action=add&id='.$rows["id"].'">
+														<form method="post" action="index.php?action=add&id='.$rows["id"].'" onsubmit="return pop()">
 															
 
-																<input type="number" name="quantity" value="1" class="form-control" />
+																<input type="hidden" name="quantity" value="1" class="form-control" />
 
 																<input type="hidden" name="hidden_name" value="'.$rows["name"].'" />
 
 																<input type="hidden" name="hidden_price" value="'.$rows["price"].'" /> 
 																<input type="hidden" name="hidden_image" value="'.$rows["image"].'" /> 
 
-																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart" style="font-size:40px;">
+																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart">
 																	<i class="fas fa-cart-plus"></i>
 																</button>
 
 														</form>
+
 													</div>
 
 												</div>
@@ -538,9 +539,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- // modal -->
 
 	<!--search jQuery-->
+	
 	<script src="../../alert/dist/sweetalert2.min.js"></script>
 	<script src="../js/validation.js"></script>
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	
 	<script src="js/classie-search.js"></script>
 	<script src="js/demo1-search.js"></script>
 	<!--//search jQuery-->
@@ -633,6 +636,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					$(this).toggleClass('open');
 				}
 			);
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			$('#text_search').keyup(function(){
+				var txt = $(this).val();
+				if (txt != '') {
+					$.ajax({
+						url:"fetch.php",
+						method:"post",
+						data:{search:txt},
+						dataType:"text",
+						success:function(data){
+							$('#result').html(data);
+						}
+					});
+				}else{
+					$('#result').html('');
+				}
+			});
 		});
 	</script>
 	<!-- //dropdown nav -->

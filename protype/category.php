@@ -195,17 +195,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											</ul>
 										</div>
 										
-											<form method="post" action="index.php?action=add&id='.$rows["id"].'">
+											<form method="post" action="index.php?action=add&id='.$rows["id"].'" onsubmit="return pop()">
 															
 
-																<input type="number" name="quantity" value="1" class="form-control" />
+																<input type="hidden" name="quantity" value="1" class="form-control" />
 
 																<input type="hidden" name="hidden_name" value="'.$rows["name"].'" />
 
 																<input type="hidden" name="hidden_price" value="'.$rows["price"].'" /> 
 																<input type="hidden" name="hidden_image" value="'.$rows["image"].'" /> 
 
-																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart" style="font-size:40px;">
+																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart">
 																	<i class="fas fa-cart-plus"></i>
 																</button>
 

@@ -153,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 									<div class="occasion-cart">
 											<div class="googles single-item singlepage">
-											<form method="post" action="index.php?action=add&id='.$rows["id"].'">
+											<form method="post" action="index.php?action=add&id='.$rows["id"].'" onsubmit="return pop()">
 															
 
 																<input type="number" name="quantity" value="1" class="form-control" />
@@ -219,7 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<!--/tabs-->
 								<?php
-												$sel_side="SELECT Description,info,name FROM tbl_product WHERE id = '$_GET[id]' ";
+												$sel_side="SELECT Description,info,name FROM tbl_product WHERE id = $_GET[id] ";
 												$run_side=mysqli_query($conn,$sel_side);
 												while($rows=mysqli_fetch_assoc($run_side)){ 
 													echo '
@@ -295,7 +295,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="mid-slider">
 							<div class="owl-carousel owl-theme row">
 								<?php
-								$sel_side="SELECT id,c_id,name,image,price,display FROM tbl_product WHERE display = 'on' ORDER BY id DESC LIMIT 8 ";
+								$sel_side="SELECT id,c_id,name,image,price,display FROM tbl_product WHERE display = 'on' AND c_id = $_GET[c_id] ORDER BY id DESC LIMIT 8 ";
 								$run_side=mysqli_query($conn,$sel_side);
 								while($rows=mysqli_fetch_assoc($run_side)){ 
 									echo '<div class="item">
@@ -307,7 +307,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<img src="../images/'.$rows['image'].'" class="img-fluid" alt="">
 													<div class="men-cart-pro">
 														<div class="inner-men-cart-pro">
-															<a href="single.php?id='.$rows['id'].'" class="link-product-add-cart">Quick View</a>
+															<a href="single.php?id='.$rows['id'].'&c_id='.$rows['c_id'].'" class="link-product-add-cart">Quick View</a>
 														</div>
 													</div>
 													<span class="product-new-top">New</span>
@@ -318,7 +318,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														<div class="grid_meta">
 															<div class="product_price">
 																<h4>
-																	<a href="single.php?id='.$rows['id'].'">'.$rows['name'].' </a>
+																	<a href="single.php?id='.$rows['id'].'&c_id='.$rows['c_id'].'">'.$rows['name'].' </a>
 																</h4>
 																<div class="grid-price mt-2">
 																	<span class="money ">'.$rows['price'].'</span>
@@ -352,17 +352,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																</li>
 															</ul>
 														</div>
-														<form method="post" action="single.php?action=add&id='.$rows["id"].'">
+														<form method="post" action="single.php?action=add&id='.$rows["id"].'" onsubmit="return pop()">
 															
 
-																<input type="number" name="quantity" value="1" class="form-control" />
+																<input type="hidden" name="quantity" value="1" class="form-control" />
 
 																<input type="hidden" name="hidden_name" value="'.$rows["name"].'" />
 
 																<input type="hidden" name="hidden_price" value="'.$rows["price"].'" /> 
 																<input type="hidden" name="hidden_image" value="'.$rows["image"].'" /> 
 
-																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart" style="font-size:40px;">
+																<button type="submit" name="add_to_cart" class="googles-cart pgoogles-cart">
 																	<i class="fas fa-cart-plus"></i>
 																</button>
 

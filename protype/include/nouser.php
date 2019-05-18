@@ -12,7 +12,7 @@
     <div class='messages'>
 
     <ul class="messages">
-      <li style="text-align: center;">Email address is already existed! </li>
+      <li style="text-align: center;">Email address or phone number is already existed! </li>
     </ul>
 
     </div>
