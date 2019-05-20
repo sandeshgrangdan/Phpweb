@@ -292,7 +292,7 @@
             <option value="of">Off</option>
           </select>
         </div>
-        <!-- <div class="checkbox">
+         <div class="checkbox">
           <label>
             <input type="checkbox"> Published
           </label>
