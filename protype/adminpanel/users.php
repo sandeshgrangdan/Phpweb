@@ -3,8 +3,13 @@
   $data = array();
   session_start();
 
-  if (!isset($_SESSION['access_token'])) {
-    header('Location: ../index.php');
+  if( isset($_SESSION['role']) ) {
+           if( $_SESSION['role'] == "subscriber" ) {
+             header('Location : ../index.php?fromrole');
+             exit();
+           }
+  }else{
+    header('Location : ../index.php?nosession');
     exit();
   }
   $name = $_SESSION['email'];
@@ -66,7 +71,7 @@
   $run = mysqli_query($conn, $sql);
   $total_pro = mysqli_num_rows($run);
 
-  $sql ="SELECT * FROM post";
+  $sql ="SELECT * FROM transactions";
   $run = mysqli_query($conn, $sql);
   $total_post = mysqli_num_rows($run);
 
@@ -87,7 +92,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Area | User</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
@@ -103,13 +108,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
+          <a class="navbar-brand" href="index.php">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="pages.php">Category</a></li>
-            <li><a href="posts.php">Posts</a></li>
             <li class="active"><a href="users.php">Users</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="product.php">Product</a></li>
@@ -162,75 +166,29 @@
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <a href="pages.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Category <span class="badge"><?php echo $total_category;?></span></a>
-              <a href="posts.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge"><?php echo $total_post;?></span></a>
               <a href="users.php" class="list-group-item  active "><span class="fa fa-users" style="font-size: 15px;" aria-hidden="true"></span> Users <span class="badge"><?php echo $total_user;?></span></a>
               <a href="profile.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile <span class="badge"></span></a>
               <a href="product.php" class="list-group-item"><span  class="fa fa-product-hunt " aria-hidden="true" style="font-size: 15px;"></span> Product <span class="badge"><?php echo $total_pro;?></span></a>
-              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $total_pro;?></span></a>
+              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $total_post;?></span></a>
             </div>
 
-            <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div>
+            <?php include'include/bandwidth.php';?>
+
           </div>
           <div class="col-md-9">
             <?php echo $error;
             echo $result;?>
             <!-- Website Overview -->
-            <div class="panel panel-default">
-              <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Website Overview</h3>
-              </div>
-              <div class="panel-body">
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span>     <?php echo $total_user;?></h2>
-                    <h4>Users</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo $total_category;?></h2>
-                    <h4>Category</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?php echo $total_post;?></h2>
-                    <h4>Posts</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> <?php echo $total_pro;?></h2>
-                    <h4>Visitors</h4>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
+             <?php include 'include/overview.php';?>
 
-           <div class="col-lg-9">
         <div class="panel panel-primary">
            <div class="panel-heading main-color-bg"><h3>Latest Post</h3></div>
-         <div class=" panel-body">
-          <div class="row">
-                      <div class="col-md-12">
-                          <input class="form-control" type="text" placeholder="Filter User...">
-                      </div>
-                </div>
-           <table class="table table-striped table-hover">
+           <div class=" panel-body">
+              <div class="row">
+                  <div class="col-md-12">
+                      <input class="form-control" type="text" placeholder="Filter User...">
+                         
+                        <table class="table table-striped table-hover">
                       <tr>
                         <b>
                         <th>S.No</th>
@@ -257,30 +215,38 @@
                                  <td>'.$d['user_f_name'].' '.$rows['user_l_name'].'</td>
                                  <td>'.$d['user_email'].'</td>
                                  <td>'.$d['user_phone_no'].'</td>
-                                 <td>'.$d['role'].'</td>
-                                 <td>'.($d['role'] == 'admin' ? '<a href="users.php?new_statu=subscriber&i='.$d['user_id'].'" class="btn btn-primary btn-xs">Subscriber</a>' : 
-                     '<a href="users.php?new_statu=admin&i='.$d['user_id'].'" class="btn btn-info btn-xs">Admin</a>').'</td>
-                                 <td><a href="users.php?del_id='.$d['user_id'].'" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
+                                 <td>'.$d['role'].'</td>';
+
+                                  if ($d['user_email'] != "sandesht801@gmail.com" ) {
+                                    echo '<td>'.($d['role'] == 'admin' ? '<a href="users.php?new_statu=subscriber&i='.$d['user_id'].'" class="btn btn-primary btn-xs">Subscriber</a>' : 
+                                    '<a href="users.php?new_statu=admin&i='.$d['user_id'].'" class="btn btn-info btn-xs">Admin</a>').'
+                                    </td>';
+                                  }else
+                                    echo '<td></td>';
+
+                                  echo '<td><a href="users.php?del_id='.$d['user_id'].'" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a></td>
                                <td><a href="users.php?edit_id='.$d['user_id'].'" class="btn btn-sucess btn-xs"><i class="fa fa-user" style"font-size:20px;"></i> View Profile</a></td>
                                </tr>
                               ';
                               $num++;
                            }
                         ?>
-                </tbody>       
+                      </tbody>       
 
-                             </table>
-         </div>
-         
-       </div>
-       </div>
+                    </table>
+                         
+                      </div>
+             </div>
+           
+           </div>
+        </div>
      </div>
    </div>
  </section>
     
 
     <footer id="footer">
-      <p>Copyright AdminStrap, &copy; 2017</p>
+      <p>Dherai Sasto Deal</p>
     </footer>
 
     <!-- Modals -->

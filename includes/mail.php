@@ -14,7 +14,7 @@ if(isset($_POST['mail'])){
    $mail ->Port = 465; // or  465
    $mail ->IsHTML(true);
    $mail ->Username = "sandesht801@gmail.com"; //Source email address
-   $mail ->Password = "PHYSICS12345";
+   $mail ->Password = "";
    $mail ->SetFrom("sandesht801@gmail.com");
    $mail ->addAttachment('walpaper/concert.jpg');
    $mail ->Subject = $mailSub;

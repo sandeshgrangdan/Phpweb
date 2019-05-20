@@ -265,7 +265,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="row">
 									<!-- /womens -->
 									<?php
-						$sel_side="SELECT id,c_id,name,image,price,display FROM tbl_product ORDER BY id DESC LIMIT 8";
+						$sel_side="SELECT id,c_id,name,image,price,display FROM tbl_product WHERE display='on' ORDER BY id DESC LIMIT 8";
 						$run_side=mysqli_query($conn,$sel_side);
 						while($rows=mysqli_fetch_assoc($run_side)){ 
 							echo '

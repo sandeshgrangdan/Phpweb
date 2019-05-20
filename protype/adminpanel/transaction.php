@@ -16,8 +16,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../../../bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../font-awesome/css/font-awesome.min.css">
   <title>View Transactions</title>
 </head>
 <body>
@@ -25,6 +25,7 @@
     <div class="btn-group" role="group">
       <a href="customers.php" class="btn btn-secondary">Customers</a>
       <a href="transaction.php" class="btn btn-primary">Transactions</a>
+      <a href="index.php" class="btn btn-secondary">Home</a>
     </div>
     <hr>
     <h2>Transactions</h2>

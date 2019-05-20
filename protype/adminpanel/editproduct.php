@@ -1,7 +1,12 @@
 <?php session_start();
 
-  if (!isset($_SESSION['access_token'])) {
-    header('Location: ../index.php');
+if( isset($_SESSION['role']) ) {
+           if( $_SESSION['role'] == "subscriber" ) {
+             header('Location : ../index.php?fromrole');
+             exit();
+           }
+  }else{
+    header('Location : ../index.php?nosession');
     exit();
   }
      include'../includes/db.php';
@@ -78,9 +83,9 @@
   $run = mysqli_query($conn, $sql);
   $total_pro = mysqli_num_rows($run);
 
-  $sql ="SELECT * FROM post";
+   $sql ="SELECT * FROM transactions";
   $run = mysqli_query($conn, $sql);
-  $total_post = mysqli_num_rows($run);
+  $t = mysqli_num_rows($run);
 
   $sql ="SELECT * FROM category";
   $run = mysqli_query($conn, $sql);
@@ -94,7 +99,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Area | Edit product</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
@@ -109,13 +114,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
+          <a class="navbar-brand" href="index.php">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="pages.php">Category</a></li>
-            <li ><a href="posts.php">Posts</a></li>
             <li><a href="users.php">Users</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li class="active"><a href="product.php">Product</a></li>
@@ -159,27 +163,14 @@
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <a href="pages.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Category <span class="badge"><?php echo $total_category;?></span></a>
-              <a href="posts.php" class="list-group-item "><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge"><?php echo $total_post;?></span></a>
               <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Users <span class="badge"><?php echo $total_user;?></span></a>
               <a href="profile.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile <span class="badge"></span></a>
               <a href="product.php" class="list-group-item active main-color-bg"><span  class="fa fa-product-hunt " aria-hidden="true" style="font-size: 17px;"></span> Product <span class="badge"><?php echo $total_pro;?></span></a>
-              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $total_pro;?></span></a>
+              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $t;?></span></a>
             </div>
 
-            <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div>
+             <?php include'include/bandwidth.php';?>
+
           </div>
                <div class="col-lg-9">
                  <?php
@@ -247,9 +238,8 @@
     </section>
 
     <footer id="footer">
-      <p>Copyright AdminStrap, &copy; 2017</p>
+      <p>Dherai Sasto Deal</p>
     </footer>
-
     <!-- Modals -->
 
     <!-- Add Page -

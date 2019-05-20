@@ -16,7 +16,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../../bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../bootstrap/dist/css/bootstrap.min.css">
   <title>View Customers</title>
 </head>
 <body>
@@ -24,6 +24,7 @@
     <div class="btn-group" role="group">
       <a href="customers.php" class="btn btn-primary">Customers</a>
       <a href="transaction.php" class="btn btn-secondary">Transactions</a>
+      <a href="index.php" class="btn btn-secondary">Home</a>
     </div>
     <hr>
     <h2>Customers</h2>

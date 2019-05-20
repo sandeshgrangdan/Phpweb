@@ -24,51 +24,7 @@ if( isset($_SESSION['role']) ) {
   $data = array();
   $name = "sandesh@gmail.com";
   $error ='';
-   if(isset($_POST['submit_post'])){
-     $title = strip_tags($_POST['title']);
-     $date = date('Y-m-d h:i:s');
-     if(isset($_FILES['image'])){
-       $image_name = $_FILES['image']['name'];
-       $image_tmp = $_FILES['image']['tmp_name'];
-       $image_size = $_FILES['image']['size'];
-       $image_ext = pathinfo($image_name,PATHINFO_EXTENSION);
-       $image_path = '../images/'.$image_name;
-       $image_db_path = 'images/'.$image_name;
-       
-       if($image_size < 3000000){
-         if($image_ext == 'jpg' || $image_ext == 'png' || $image_ext == 'gif' ){
-          if(move_uploaded_file($image_tmp,$image_path)){
-            $ins_sql ="INSERT INTO post (title, discription, image, status, category, date, author) VALUES 
-            ('$title', '$_POST[editor1]','$image_db_path', '$_POST[status]', '$_POST[category]', '$date', '$_SESSION[email]')";
-            if(mysqli_query($conn, $ins_sql)){
-              header('Location: posts.php');
-            }
-            else {
-              $error = '<div class="alert alert-danger">FUCK the Query is not working</div>';
-            }
-          }else{
-            $error  = '<div class="alert alert-danger">Sorry, Unfortunately Image has not been upload!</div>';
-          }
-         }else{
-           $error= '<div class="alert alert-danger">Image Formate was not Correct</div>';
-         }
-         
-         
-       }else {
-         $error = '<div class="alert alert-danger">Image File is much bigger then Expect bitch!</div>';
-       }
-       
-     }else {
-       $ins_sql ="INSERT INTO post (title, discription, status, category, date, author) VALUES 
-            ('$title', '$_POST[description]', '$_POST[status]', '$_POST[category]', '$date', '$_SESSION[email]')";
-            if(mysqli_query($conn, $ins_sql)){
-              header('Location: view_post.php');
-            }
-            else {
-              $error = '<div class="alert alert-danger">FUCK the Query is not working</div>';
-            }
-     }
-   }
+
   $user = array();
     $sql ="SELECT * FROM user";
   $run = mysqli_query($conn, $sql);
@@ -78,7 +34,7 @@ if( isset($_SESSION['role']) ) {
   $run = mysqli_query($conn, $sql);
   $total_pro = mysqli_num_rows($run);
 
-  $sql ="SELECT * FROM post";
+  $sql ="SELECT * FROM transactions";
   $run = mysqli_query($conn, $sql);
   $total_post = mysqli_num_rows($run);
 
@@ -100,7 +56,7 @@ if( isset($_SESSION['role']) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Area | Dashboard</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
@@ -117,13 +73,12 @@ if( isset($_SESSION['role']) ) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
+          <a class="navbar-brand" href="index.php">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Dashboard</a></li>
             <li><a href="pages.php">Category</a></li>
-            <li><a href="posts.php">Posts</a></li>
             <li><a href="users.php">Users</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="product.php">Product</a></li>
@@ -150,7 +105,6 @@ if( isset($_SESSION['role']) ) {
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a type="button" data-toggle="modal" data-target="#addPage">Add Post</a></li>
                 <li><a href="product.php">Product</a>Product</li>
               </ul>
             </div>
@@ -176,62 +130,18 @@ if( isset($_SESSION['role']) ) {
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <a href="pages.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Category <span class="badge"><?php echo $total_category;?></span></a>
-              <a href="posts.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge"><?php echo $total_post;?></span></a>
               <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Users <span class="badge"><?php echo $total_user;?></span></a>
               <a href="profile.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile <span class="badge"></span></a>
               <a href="product.php" class="list-group-item"><span  class="fa fa-product-hunt " aria-hidden="true" style="font-size: 17px;"></span> Product <span class="badge"><?php echo $total_pro;?></span></a>
-              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $total_pro;?></span></a>
+              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $total_post;?></span></a>
             </div>
 
-            <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div>
+            <?php include'include/bandwidth.php';?>
           </div>
           <div class="col-md-9">
             <?php echo $error;?>
             <!-- Website Overview -->
-            <div class="panel panel-default">
-              <div class="panel-heading main-color-bg">
-                <h3 class="panel-title">Website Overview</h3>
-              </div>
-              <div class="panel-body">
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> <?php echo $total_user;?></h2>
-                    <h4>Users</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> <?php echo $total_category;?></h2>
-                    <h4>Category</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <?php echo $total_post;?></h2>
-                    <h4>Posts</h4>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="well dash-box">
-                    <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> <?php echo $total_pro;?></h2>
-                    <h4>Product</h4>
-                  </div>
-                </div>
-              </div>
-              </div>
+            <?php include 'include/overview.php';?>
 
               <!-- Latest Users -->
               <div class="col-lg-8">
@@ -292,7 +202,7 @@ if( isset($_SESSION['role']) ) {
                   <?php 
                 }else{
                   echo ' <div>
-                     <img src="../images/avatar.png" width="33%" class="img-circle pull-right">
+                     <img src="../../images/avatar.png" width="33%" class="img-circle pull-right">
                   </div>';
                 }
                 ?>
@@ -361,7 +271,7 @@ if( isset($_SESSION['role']) ) {
                                        <tr>
                                          <td>'.$number.'</td>
                                          <td>'.$rows['name'].'</td>
-                                         <td>'.($rows['image'] == '' ? 'No Image' : '<img src="../images/'.$rows['image'].'" width="50px">').'</td>
+                                         <td>'.($rows['image'] == '' ? 'No Image' : '<img src="../../images/'.$rows['image'].'" width="50px">').'</td>
                                          <td>'.($rows['price']).'</td>
                                      ';
                                  $number++;
@@ -412,7 +322,7 @@ if( isset($_SESSION['role']) ) {
     </section>
 
     <footer id="footer">
-      <p>Copyright AdminStrap, &copy; 2017</p>
+      <p>Dherai Sasto Deal</p>
     </footer>
 
     <!-- Modals -->

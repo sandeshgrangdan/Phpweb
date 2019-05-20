@@ -162,39 +162,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<?php $i=1; 
 								   foreach($_SESSION["shopping_cart"] as $keys => $values) { 
 
-									echo '
+								?>
 
 									<tr class="rem1">
-										<td class="invert">'.$i.'</td>
+										<td class="invert"><?php echo $i; ?></td>
 										<td class="invert-image">
-											<a href="single.php?id='.$values["item_id"].'">
-												<img src="../images/'.$values["image"].'" alt=" " class="img-responsive">
+											<a href="single.php?id=<?php echo $values["item_id"]; ?>">
+												<img src="../images/<?php echo $values["image"]; ?>" alt=" " class="img-responsive">
 											</a>
 										</td>
 										<td class="invert">
 											<div class="quantity">
 												<div class="quantity-select">
-													<a href="checkout.php?d_id='.$values["item_id"].'"><div class="entry value-minus">&nbsp;</div>
-													<div class="entry value">
-														<span>'.$values["item_quantity"].'</span>
-													</div>
-													<a href="checkout.php?i_id='.$values["item_id"].'"><div class="entry value-plus active">&nbsp;</div></a>
+													<div id="minus<?php echo $i; ?>" class="entry value-minus">&nbsp;</div>
+														<div class="entry value">
+															<span id="qt<?php echo $i; ?>"><?php echo $values["item_quantity"]; ?></span>
+														</div>
+															<input id="search<?php echo $i; ?>" type="hidden" value="<?php echo $values["item_id"]; ?>">
+													       <div id="plus<?php echo $i; ?>" class="entry value-plus active">&nbsp;</div>
 												</div>
 											</div>
 										</td>
-										<td class="invert">'.$values["item_name"].'</td>
+										<td class="invert"><?php echo $values["item_name"]; ?></td>
 
-										<td class="invert">'.number_format( $values["item_quantity"] * $values["item_price"], 2).'</td>
+										<td id="price<?php echo $i; ?>" class="invert"><?php echo number_format( $values["item_quantity"] * $values["item_price"], 2); ?></td>
 										<td class="invert">
 											<div class="rem">
-											<a href="checkout.php?action=delete&id='. $values["item_id"].'"><div class="close1"> </div></a>
+											<a href="checkout.php?action=delete&id=<?php echo $values["item_id"]; ?>"><div class="close1"> </div></a>
 												
 											</div>
 
 										</td>
-									</tr>';
+									</tr>
+
+								<?php
 									$i++;
-								}
+									}
 								 ?>
 								
 							</tbody>
@@ -215,24 +218,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								   	echo '
 								   	<li>Product'.$i.'
 										<i>-</i>
-										<span>$'.number_format( $values["item_quantity"] * $values["item_price"], 3).'</span>
+										<span id="basket">$'.number_format( $values["item_quantity"] * $values["item_price"], 3).'</span>
 									</li>
 									';
 									$c = $values["item_quantity"] * $values["item_price"];
 									
 									$total  = $total + $c;
-									$sc  = number_format($sc + 5.09,3);
+									$sc  = number_format($sc + 2.00,3);
 									$i++;
 								   }
 							} ?>
 							<li>Total Service Charges
 								<i>-</i>
-								<span><?php echo '$'.$sc; ?></span>
+								<span id="display_service">
+									<?php echo '$'.$sc; ?>
+									
+								</span>
 							</li>
 							<hr>
 							<li>Total
 								<i>-</i>
-								<span><?php echo '$'.number_format($total+$sc,3);?></span>
+								<span id="tp"><?php echo '$'.number_format($total+$sc,3);?></span>
 							</li>
 						</ul>
 					</div>
@@ -372,20 +378,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		});
 	</script>
-	<!--quantity-->
-	<script>
-		$('.value-plus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
-		});
+<!-- cart start !-->
 
-		$('.value-minus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
+<script src="js/cart.js"></script>
+
+<!-- cart !-->
+	<script>
+		$(document).ready(function(){
+			$('#text_search').keyup(function(){
+				var txt = $(this).val();
+				if (txt != '') {
+					$.ajax({
+						url:"fetch.php",
+						method:"post",
+						data:{search:txt},
+						dataType:"text",
+						success:function(data){
+							$('#result').html(data);
+						}
+					});
+				}else{
+					$('#result').html('');
+				}
+			});
 		});
 	</script>
+
+	<!--quantity-->
+	
+	
 	<!--quantity-->
 	<!--close-->
 	<script>

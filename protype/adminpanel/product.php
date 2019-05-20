@@ -2,10 +2,15 @@
   include '../includes/db.php';
   session_start();
 
-  // if (!isset($_SESSION['access_token'])) {
-  //   header('Location: ../index.php');
-  //   exit();
-  // }
+  if( isset($_SESSION['role']) ) {
+           if( $_SESSION['role'] == "subscriber" ) {
+             header('Location : ../index.php?fromrole');
+             exit();
+           }
+  }else{
+    header('Location : ../index.php?nosession');
+    exit();
+  }
   $data = array();
   $name = $_SESSION['email'];
   $error ='';
@@ -13,6 +18,7 @@
      $title = strip_tags($_POST['title']);
      $date = date('Y-m-d h:i:s');
      if(isset($_FILES['image'])){
+
        $image_name = $_FILES['image']['name'];
        $image_tmp = $_FILES['image']['tmp_name'];
        $image_size = $_FILES['image']['size'];
@@ -22,38 +28,29 @@
        
        if($image_size < 3000000){
          if($image_ext == 'jpg' || $image_ext == 'png' || $image_ext == 'gif' ){
-          if(move_uploaded_file($image_tmp,$image_path)){
-            $ins_sql ="INSERT INTO tbl_product (c_id, name, image, price, display) VALUES 
-            ( '$_POST[category]', '$title', '$image_db_path','$_POST[price]','$_POST[display]')";
+          if(move_uploaded_file($image_tmp,'../../images/'.$image_path)){
+            $ins_sql ="INSERT INTO tbl_product (c_id, name, image, price, display,author) VALUES 
+            ( '$_POST[category]', '$title', '$image_db_path','$_POST[price]','$_POST[display]','$_SESSION[email]')";
             if(mysqli_query($conn, $ins_sql)){
               $error ='<div class="alert alert-success">Product is Added '.$title.'</div>';
             }
-            else {
+            else 
               $error = '<div class="alert alert-danger"> Query is not working</div>';
-            }
-          }else{
+          }else
             $error  = '<div class="alert alert-danger">Sorry, Unfortunately Image has not been upload!</div>';
-          }
-         }else{
+         }else
            $error= '<div class="alert alert-danger">Image Formate was not Correct</div>';
-         }
-         
-         
-       }else {
+       }else 
          $error = '<div class="alert alert-danger">Image File is much bigger then Expect bitch!</div>';
-       }
-       
-     }else {             
-
+     }else
       $error = '<div class="alert alert-danger">FUCK the Query is not working</div>';
-            
-     }
    }
+
    if(isset($_GET['new_status'])){
      $new_status = $_GET['new_status'];
      $sql = "UPDATE tbl_product SET display='$new_status' WHERE id = $_GET[id]";
        if($run = mysqli_query($conn, $sql)){
-       $error = '<div class="alert alert-success"><h3>Updated Status to '.ucfirst($new_status).' </h3></div>';
+       $error = '<div class="alert alert-success"><h3>Updated Status to '.ucfirst($new_status).'f </h3></div>';
      }
    }
 
@@ -74,7 +71,7 @@
   $run_tp = mysqli_query($conn, $sql_tp);
   $total_pro = mysqli_num_rows($run_tp);
 
-  $sql_p ="SELECT * FROM post";
+  $sql_p ="SELECT * FROM transactions";
   $run_p = mysqli_query($conn, $sql_p);
   $total_post = mysqli_num_rows($run_p);
 
@@ -95,7 +92,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Area | Product</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../font-awesome/css/font-awesome.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
@@ -111,13 +108,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Dherai Sasto Deal</a>
+          <a class="navbar-brand" href="index.php">Dherai Sasto Deal</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="index.php">Dashboard</a></li>
             <li><a href="pages.php">Category</a></li>
-            <li><a href="posts.php">Posts</a></li>
             <li><a href="users.php">Users</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li class="active"><a href="product.php">Product</a></li>
@@ -166,27 +162,13 @@
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
               </a>
               <a href="pages.php" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Category <span class="badge"><?php echo $total_category;?></span></a>
-              <a href="posts.php" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge"><?php echo $total_post;?></span></a>
               <a href="users.php" class="list-group-item"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Users <span class="badge"><?php echo $total_user;?></span></a>
               <a href="profile.php" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile <span class="badge"></span></a>
               <a href="product.php" class="list-group-item  active main-color-bg"><span  class="fa fa-product-hunt " aria-hidden="true" style="font-size: 17px;"></span> Product <span class="badge"><?php echo $total_pro;?></span></a>
-              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $total_pro;?></span></a>
+              <a href="transaction.php" class="list-group-item"><span  class="fa fa-exchange" aria-hidden="true" style="font-size: 15px;"></span> Transaction <span class="badge"><?php echo $total_post;?></span></a>
             </div>
+       <?php include'include/bandwidth.php';?>
 
-            <div class="well">
-              <h4>Disk Space Used</h4>
-              <div class="progress">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                      60%
-              </div>
-            </div>
-            <h4>Bandwidth Used </h4>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    40%
-            </div>
-          </div>
-            </div>
           </div>
             
             <!-- Website Overview -->
@@ -230,7 +212,7 @@
                                        <tr>
                                          <td>'.$number.'</td>
                                          <td>'.$rows['name'].'</td>
-                                         <td>'.($rows['image'] == '' ? 'No Image' : '<img src="../images/'.$rows['image'].'" width="50px">').'</td>
+                                         <td>'.($rows['image'] == '' ? 'No Image' : '<img src="../../images/'.$rows['image'].'" width="50px">').'</td>
                                          <td>'.($rows['price']).'</td>
                                          <td><a href="product.php?del_id='.$rows['id'].'&name='.$rows['name'].'" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash">  Delete</i></a></td>
                                          <td><span class="glyphicon glyphicon-'.$boolen.'" aria-hidden="true"></span></td>
@@ -258,7 +240,7 @@
     
 
     <footer id="footer">
-      <p>Copyright AdminStrap, &copy; 2017</p>
+      <p>Dherai Sasto Deal</p>
     </footer>
 
     <!-- Modals -->
