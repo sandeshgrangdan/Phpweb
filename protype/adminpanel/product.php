@@ -291,12 +291,15 @@
             <option value="on">On</option>
             <option value="of">Off</option>
           </select>
-        </div>
-        <!-- <div class="checkbox">
-          <label>
-            <input type="checkbox"> Published
-          </label>
-        </div> -->
+       <div class="form-group">
+         <label for="descripion">Description</label>
+         <input id="Description" type="text" name="Description" class="form-control" required>
+       </div>
+<div class="form-group">
+       <label for="info">Information</label>
+       <input id="info" type="text" name="info" class="form-control" required>
+     </div>
+       
       
       <div class="modal-footer">
         <div class="form-group">
