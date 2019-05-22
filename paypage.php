@@ -19,8 +19,8 @@
                     <div class="card-header text-center">
                         <h3 class="price"><span class="currency"></span>
 <?php
-session_start();
-$total = 0;
+            session_start();
+            $total = 0;
             foreach($_SESSION["shopping_cart"] as $keys => $values)
             {
               $total = $total + ($values["item_quantity"] * $values["item_price"]);
@@ -40,7 +40,7 @@ $total = 0;
                                   </div> ';
                             } 
                             $_SESSION['description'] = $desc;
-                           ?>
+                      ?>
                         
 
                         <!-- PASTE HERE YOUR FORM CODE FROM PAYPAL -->

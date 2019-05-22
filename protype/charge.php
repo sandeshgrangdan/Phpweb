@@ -11,8 +11,8 @@ session_start();
  // Sanitize POST Array
  $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
 
- $first_name = $POST['first_name'];
- $last_name = $POST['last_name'];
+ $first_name = $_SESSION["givenName"];
+ $last_name = $_SESSION["familyName"];
  $email = $POST['email'];
  $token = $POST['stripeToken'];
 
@@ -24,7 +24,7 @@ $customer = \Stripe\Customer::create(array(
 
 // Charge Customer
 $charge = \Stripe\Charge::create(array(
-  "amount" => $_SESSION['total'],
+  "amount" => $_SESSION["full_price"],
   "currency" => "usd",
   "description" => $_SESSION['description'],
   "customer" => $customer->id

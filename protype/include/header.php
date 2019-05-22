@@ -15,14 +15,14 @@
 						<a class="navbar-brand" href="index.php">
 							Dherai Sasto Deal </a>
 					</h1>					
-					<div class="form-group">	
+					<!-- <div class="form-group">	
 						<div class="input-group">
 							<input class="form-control " type="text" name="text_search" id="text_search" placeholder="Search">
 						</div>
 						<ul class="list-group" id="result">
 								
 						</ul>
-					</div>	
+					</div> -->	
 					
     
 				</div>
@@ -126,14 +126,16 @@
 				</div>
 				<?php include 'include/signin.php'; ?>
 			</div>
-			<!-- <div class="search">
+			<div class="search">
 				<div class="mobile-nav-button">
-					<button id="trigger-overlay" type="button">
-						<i class="fas fa-search"></i>
-					</button>
+					<a href="search.php">
+						<button id="trigger-overlay" type="button">
+							<i class="fas fa-search"></i>
+						</button>
+					</a>
 				</div>
 				
-				<div class="overlay overlay-door">
+				<!-- <div class="overlay overlay-door">
 					<button type="button" class="overlay-close">
 						<i class="fa fa-times" aria-hidden="true"></i>
 					</button>
@@ -144,9 +146,9 @@
 						</button>
 					</form>
 
-				</div>
+				</div> -->
 				
-			</div> -->
+			</div>
 			<label class="top-log mx-auto"></label>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
 

@@ -174,18 +174,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td class="invert">
 											<div class="quantity">
 												<div class="quantity-select">
-													<div id="minus<?php echo $i; ?>" class="entry value-minus">&nbsp;</div>
+													<div id="<?php echo $values["item_id"]."minus"; ?>" class="entry value-minus">&nbsp;</div>
 														<div class="entry value">
-															<span id="qt<?php echo $i; ?>"><?php echo $values["item_quantity"]; ?></span>
+															<span id="<?php echo $values["item_id"]."span"; ?>"><?php echo $values["item_quantity"]; ?></span>
 														</div>
-															<input id="search<?php echo $i; ?>" type="hidden" value="<?php echo $values["item_id"]; ?>">
-													       <div id="plus<?php echo $i; ?>" class="entry value-plus active">&nbsp;</div>
+															<input id="<?php echo $values["item_id"]; ?>" type="hidden" value="<?php echo $values["item_id"]; ?>">
+													       <div id="<?php echo $values["item_id"]."plus"; ?>" class="entry value-plus active">&nbsp;</div>
 												</div>
 											</div>
 										</td>
 										<td class="invert"><?php echo $values["item_name"]; ?></td>
 
-										<td id="price<?php echo $i; ?>" class="invert"><?php echo number_format( $values["item_quantity"] * $values["item_price"], 2); ?></td>
+										<td id="<?php echo $values["item_id"]."total"; ?>" class="invert"><?php echo number_format( $values["item_quantity"] * $values["item_price"], 2); ?></td>
 										<td class="invert">
 											<div class="rem">
 											<a href="checkout.php?action=delete&id=<?php echo $values["item_id"]; ?>"><div class="close1"> </div></a>
@@ -218,27 +218,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								   	echo '
 								   	<li>Product'.$i.'
 										<i>-</i>
-										<span id="basket">$'.number_format( $values["item_quantity"] * $values["item_price"], 3).'</span>
+										<span id="'.$values["item_id"].'basket">$'.number_format( $values["item_quantity"] * $values["item_price"], 3).'</span>
 									</li>
 									';
 									$c = $values["item_quantity"] * $values["item_price"];
 									
 									$total  = $total + $c;
-									$sc  = number_format($sc + 2.00,3);
+									$sc  += $values["item_quantity"]*2.00;
 									$i++;
 								   }
 							} ?>
 							<li>Total Service Charges
 								<i>-</i>
-								<span id="display_service">
-									<?php echo '$'.$sc; ?>
+								<span id="service">
+									<?php echo '$'.number_format($sc); ?>
 									
 								</span>
 							</li>
 							<hr>
 							<li>Total
 								<i>-</i>
-								<span id="tp"><?php echo '$'.number_format($total+$sc,3);?></span>
+								<span id="total_p"><?php echo '$'.number_format($total+$sc,3);?></span>
 							</li>
 						</ul>
 					</div>
@@ -379,7 +379,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 <!-- cart start !-->
+<?php 
+if(isset($_SESSION["shopping_cart"]))
+	foreach($_SESSION["shopping_cart"] as $keys => $values){
+		echo "<script>
+				$(document).ready(function(){
+					$('#".$values["item_id"]."plus"."').click(function(){
+						
+							var txt = $('#".$values["item_id"]."').val();
+								$.ajax({
+									url:'add.php',
+									method:'post',
+									data: {add:txt},
+									dataType:'text',
+									success:function(value){
+										var data = value.split("."','".");
+										$('#".$values["item_id"]."span"."').html(data[0]);
 
+										$('#".$values["item_id"]."total').html(data[1]);
+										$('#".$values["item_id"]."basket').html(data[1]);
+									}
+								});
+						
+						
+					});
+				});
+
+		</script>
+		<script>
+				$(document).ready(function(){
+					$('#".$values["item_id"]."minus"."').click(function(){
+						var txt = $('#".$values["item_id"]."').val();
+							$.ajax({
+								url:'add.php',
+								method:'post',
+								data: {sub:txt},
+								dataType:'text',
+								success:function(value){
+									var data = value.split("."','".");
+									$('#".$values["item_id"]."span"."').html(data[0]);
+
+									$('#".$values["item_id"]."total').html(data[1]);
+									$('#".$values["item_id"]."basket').html(data[1]);
+								}
+							});
+						
+					});
+				});
+
+		</script>
+
+		";
+
+		
+	}
+
+?>
+<!-- if(confirm('Are you sure you want to increase?')){
+	}else{
+
+						} -->	
 <script src="js/cart.js"></script>
 
 <!-- cart !-->

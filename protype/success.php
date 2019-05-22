@@ -44,6 +44,7 @@ unset($_SESSION["shopping_cart"]);
 
 <body>
 <h1>Check Your Invoice With Scanner</h1>
+
 <a href="user_map.php?c_id=<?php echo $_GET["tid"];?>" >Continue</a>
 <form action="#" method="get" onsubmit="return false;">
   <table class="noborder" style="width:100%">
@@ -53,7 +54,7 @@ unset($_SESSION["shopping_cart"]);
         <td style="width:100%"><textarea placeholder="Enter your text to be put into the QR Code" id="text-input" style="width:100%; max-width:30em; height:5em; font-family:inherit" ><?php echo "
         TransactionID -> ".$tid."
         Product -> ".$product."
-        Amount -> ".$amt."
+        Amount -> ".number_format($amt,3)."
         Email -> ".$_SESSION['email'];?></textarea></td>
       </tr>
       <tr>
@@ -118,7 +119,6 @@ unset($_SESSION["shopping_cart"]);
     </tbody>
   </table>
 </form>
-<a href="user_map.php?c_id=<?php echo $_GET["tid"];?>" >Continue</a>
 <script type="application/javascript" src="js/qrcodegen.js"></script>
 <script type="application/javascript" src="js/qrcodegen-demo.js"></script>
 
