@@ -43,7 +43,7 @@
        }else 
          $error = '<div class="alert alert-danger">Image File is much bigger then Expect bitch!</div>';
      }else
-      $error = '<div class="alert alert-danger">FUCK the Query is not working</div>';
+      $error = '<div class="alert alert-danger">The Query is not working</div>';
    }
 
    if(isset($_GET['new_status'])){

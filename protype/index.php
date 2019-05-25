@@ -11,20 +11,114 @@ include 'include/session.php';
 include '../includes/db.php';
 if(isset($_POST['form'])){
 		 $date = date('Y-m-d h:i:s'); 
-		 $ins_sql= "INSERT INTO user (role, user_f_name,user_l_name,user_email,user_password,user_gender,user_phone_no,user_date) 
-		 VALUES ('subscriber','$_POST[first]','$_POST[last]','$_POST[email]','$_POST[password]','$_POST[gender]','$_POST[phone_no]','$date')";
-		      if(mysqli_query($conn, $ins_sql)){
-		      	    $_SESSION['email'] = $_POST['email'];
-		      		$_SESSION['role'] = "subscriber";
-		      		$_SESSION['givenName'] = $_POST['first'];
-		      		$_SESSION['familyName'] = $_POST['last'];
-		      		$_SESSION['gender'] = $_POST['gender'];
-		      		include 'include/user.php';
-		      		// echo '<script>alert("User Created Sucessfully")</script>';
-		      		// echo '<script>window.location="index.php"</script>';
-		      }
-		      else 
-		      	include 'include/nouser.php';
+		 $fname = $conn->real_escape_string($_POST["first"]);
+		 $lname = $conn->real_escape_string($_POST["last"]);
+	 	$email = $conn->real_escape_string($_POST["email"]);
+	 	$password = $conn->real_escape_string($_POST["password"]);
+	 	$gender = $conn->real_escape_string($_POST["gender"]);
+	 	$phone = $conn->real_escape_string($_POST["phone_no"]);
+
+	 	$sql =  $conn->query("SELECT user_id FROM user WHERE user_email='$email'");
+	 	$sql1 =  $conn->query("SELECT user_id FROM user WHERE user_phone_no ='$phone'");
+	 	if ($sql->num_rows > 0) {
+ 			echo '<script>alert("Email is already existed");</script>';
+ 		}elseif ($sql1->num_rows > 0) {
+ 			echo '<script>alert("Phone Number Is Already Existed");</script>';
+ 		}else{
+ 			$token = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789!@$%^&*()-=';
+ 			$token = str_shuffle($token);
+
+ 			$hp = password_hash($password, PASSWORD_BCRYPT);
+
+ 			
+
+ 			  $mailto = $email;
+			    $mailSub = "Verify your account";
+			    $mailMsg = $token;
+			   require '../PHPMailer/PHPMailerAutoload.php';
+			   $mail = new PHPMailer();
+			   $mail ->IsSmtp();
+			   $mail ->SMTPDebug = 0;
+			   $mail ->SMTPAuth = true;
+			   $mail ->SMTPSecure = 'ssl';
+			   $mail ->Host = "smtp.gmail.com";//smtp.gmail.com
+			   $mail ->Port = 465; // or  465
+			   $mail ->IsHTML(true);
+			   $mail ->Username = "dheraisastodeal@gmail.com";
+   				$mail ->Password = "dheraisastodeal123";
+   				$mail ->SetFrom("dheraisastodeal@gmail.com");
+			  // $mail ->addAttachment('walpaper/concert.jpg');
+			   $mail ->Subject = $mailSub;
+			   $mail ->Body = "
+			   			<body>
+						<div class='email-background' style='background: #eeeeee;padding: 10px;'>
+							<div class='pre-header' style='max-width: 500px;background: #eeeeee;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;color: #eeeeee;font-size: 5px;'>
+								This is email verification for Dherai Sasto Deal!
+							</div>
+							<div class='email-container' style='max-width: 500px;background: white;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;'>
+								<h1>Please Verify You Email To Register!</h1>
+							</div>
+							<br>
+							<img src='https://i.postimg.cc/9FGBbr4h/DSD.png' style='max-width: 200px;border-radius: 50%;display: block;margin-left: auto;margin-right: auto;'>
+							<p style='margin: 20px;font-size: 18px;font-weight: 300;line-height: 1.5;color: #666666;text-align: center;'>Dherai Sasto Deal(DSD) want you to confirm the email for registration for your security features,
+							Thank You!</p>
+							<div class='cat' style='margin: 20px;text-align: center;'>
+								<a href='http://localhost/Phpweb/protype/verify.php?email=$email&token=$token' style='text-decoration: none;display: inline-block;background: #3d87f5;padding: 10px 20px 10px;color: white;border-radius: 5px;text-align: center;'>Verify Password!</a>
+							</div>
+							<div class='footer-junk' style='text-align: center;'>
+								Visit Our Page <a href='http://localhost/Phpweb/protype/index.php'>Dherai Sasto Deal</a>
+							</div>
+						</div>
+					</body>
+
+			   ";
+			   // $mail ->AltBody = "";
+			   $mail ->AddAddress($mailto);
+
+			   if(!$mail->Send())
+			   {
+			   
+			       echo '<style type="text/css">
+			    div.messages{
+			      background-color: #ff6b6b;
+			      color: #f7fff7;
+			      font-size: 20px;
+			    }
+			    ul.messages{
+			      list-style-type: none;
+			    }
+			  </style>
+
+			    <div class="messages">
+
+			    <ul class="messages">
+			      <li style="text-align: center;">Please Insert Valid Email!</li>
+			    </ul>
+
+			    </div>';
+			   }
+			   else
+			   {
+				   	$conn->query( "INSERT INTO user (role, user_f_name,user_l_name,user_email,user_password,user_gender,user_phone_no,token,user_date) VALUES('subscriber','$fname','$lname','$email','$hp','$gender','$phone','$token','$date')");
+				       
+				       header('Location: verify.php');
+						exit();
+			   }
+ 		}
+		 // $ins_sql= "INSERT INTO user (role, user_f_name,user_l_name,user_email,user_password,user_gender,user_phone_no,user_date) 
+		 // VALUES ('subscriber','$_POST[first]','$_POST[last]','$_POST[email]','$_POST[password]','$_POST[gender]','$_POST[phone_no]','$date')";
+		 //      if(mysqli_query($conn, $ins_sql)){
+		 //      	    $_SESSION['email'] = $_POST['email'];
+		 //      		$_SESSION['role'] = "subscriber";
+		 //      		$_SESSION['givenName'] = $_POST['first'];
+		 //      		$_SESSION['familyName'] = $_POST['last'];
+		 //      		$_SESSION['gender'] = $_POST['gender'];
+		 //      		include 'include/user.php';
+		 //      		// echo '<script>alert("User Created Sucessfully")</script>';
+		 //      		// echo '<script>window.location="index.php"</script>';
+		 //      }
+		 //      else 
+		 //      	include 'include/nouser.php';
 		     
 }
 include 'include/cart.php';
