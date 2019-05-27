@@ -28,7 +28,7 @@
                    <input class="form-control" type="password" placeholder="Insert Password" name="password" id="password">
                 </div>
                 <br>
-                <input type="checkbox" name="remember" value="remember" id="s"> <label for="s"><b >Save Password</b></label> <a href=""><strong>Create an account?</strong></a>
+                <input type="checkbox" name="remember" value="remember" id="s"> <label for="s"><b >Save Password</b></label> <a href="reset/forget.php"><strong>Forget Password?</strong></a>
                 <hr>
                 <br>
                       <div class="form-group">
