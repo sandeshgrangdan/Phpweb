@@ -318,6 +318,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //footer -->
 	<!--jQuery-->
 	<script src="js/jquery-2.2.3.min.js"></script>
+	<script src="../js/validation.js"></script>
 	<!-- newsletter modal -->
 	<!--search jQuery-->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -542,6 +543,46 @@ if(isset($_SESSION["shopping_cart"]))
 
         });
     </script>
+    <script>
+		$(document).ready(function(){
+			$('#emailHelps').keyup(function(){
+				var email = $(this).val();
+				if (email != '') {
+					$.ajax({
+						url:"email.php",
+						method:"post",
+						data:{valid:email},
+						dataType:"text",
+						success:function(data){
+							$('#alertemail').html(data);
+						}
+					});
+				}else{
+					$('#alertemail').html('');
+				}
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			$('#phone_no').keyup(function(){
+				var number = $(this).val();
+				if (number != '') {
+					$.ajax({
+						url:"email.php",
+						method:"post",
+						data:{num:number},
+						dataType:"text",
+						success:function(data){
+							$('#phone_num').html(data);
+						}
+					});
+				}else{
+					$('#phone_num').html('');
+				}
+			});
+		});
+	</script>
     <!--// end-smoth-scrolling -->
 
 

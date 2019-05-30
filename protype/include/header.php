@@ -89,9 +89,13 @@
 					                	<input type="text" class="form-control" name="last" id="last_name">
 					                </div>
 									<div class="form-group">
+										
 										<label class="mb-2" for="email">Email address</label>
-										<input type="text" class="form-control" name="email" id="email">
+										<input type="text" id="emailHelps" class="form-control" name="email" id="email">
 										<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+										<span id="alertemail">
+											
+								    	</span>
 									</div>
 									<div class="form-group">
 										<label class="mb-2" for="passwor">Password</label>
@@ -113,7 +117,10 @@
 					                </div>
 					                <div class="form-group">
 					                	<label class="mb-2" for="phone_no" >Phone Number: </label>
-					                	<input type="text" class="form-control" name="phone_no"  id="phone_no">
+					                	<input type="number" class="form-control" name="phone_no"  id="phone_no">
+					                	<span id="phone_num">
+					                		
+					                	</span>
 					                </div>
 									
 									<button type="submit" class="btn btn-primary submit mb-4" name="form">Sign-Up</button>

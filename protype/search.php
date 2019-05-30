@@ -79,6 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- // modal -->
+	<script src="../js/validation.js"></script>
 
 	<!--search jQuery-->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -227,6 +228,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     </script>
     <!--// end-smoth-scrolling -->
+    <script>
+		$(document).ready(function(){
+			$('#emailHelps').keyup(function(){
+				var email = $(this).val();
+				if (email != '') {
+					$.ajax({
+						url:"email.php",
+						method:"post",
+						data:{valid:email},
+						dataType:"text",
+						success:function(data){
+							$('#alertemail').html(data);
+						}
+					});
+				}else{
+					$('#alertemail').html('');
+				}
+			});
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			$('#phone_no').keyup(function(){
+				var number = $(this).val();
+				if (number != '') {
+					$.ajax({
+						url:"email.php",
+						method:"post",
+						data:{num:number},
+						dataType:"text",
+						success:function(data){
+							$('#phone_num').html(data);
+						}
+					});
+				}else{
+					$('#phone_num').html('');
+				}
+			});
+		});
+	</script>
 
 	<script src="js/bootstrap.js"></script>
 
