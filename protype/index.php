@@ -25,7 +25,7 @@ if(isset($_POST['form'])){
  		}elseif ($sql1->num_rows > 0) {
  			echo '<script>alert("Phone Number Is Already Existed");</script>';
  		}else{
- 			$token = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789!@$%^&*()-=';
+ 			$token = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789';
  			$token = str_shuffle($token);
 
  			$hp = password_hash($password, PASSWORD_BCRYPT);

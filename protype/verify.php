@@ -31,10 +31,10 @@
 						$email = $conn->real_escape_string($_GET["email"]);
 						$token = $conn->real_escape_string($_GET["token"]);
 						$test  = substr($token, 0 ,10);
-						// echo $email;
-						// echo "<br>";
-						// echo $test;
-						// echo "<br>";
+						echo $email;
+						echo "<br>";
+						echo $test;
+						echo "<br>";
 
 						$sql = $conn-> query("SELECT user_id,user_f_name,user_l_name,user_email,user_gender FROM user WHERE user_email = '$email' AND Confirmed=0 AND token = '$test' ");
 
@@ -61,7 +61,7 @@
 						}else{
 							echo '
 									<div class="jumbotron">
-										  <h1 class="display-4">Please Verify Your Email!</h1>
+										  <h1 class="display-4">Please Verify Your Email else part!</h1>
 										  <p class="lead">Dherai Sasto Deal(DSD) Send Email for Verification </p>
 										  <hr class="my-4">
 										  <a class="btn btn-primary btn-lg" href="https://mail.google.com/mail/u/0/#inbox" role="button">Verify Email</a>
