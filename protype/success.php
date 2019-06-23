@@ -4,42 +4,141 @@ unset($_SESSION["shopping_cart"]);
   if(!empty($_GET['tid'] && !empty($_GET['product']))) {
     $GET = filter_var_array($_GET, FILTER_SANITIZE_STRING);
 
-    $tid = $GET['tid'];
-    $product = $GET['product'];
     $_SESSION['c_id'] = $_GET['tid'];
-    $amt = $_GET['amount'];
+    $amt = $_GET['amount']/100;
   } else {
     header('Location: index.php');
   }
+
+  $invoice =  "
+        TransactionID -> ".$GET['tid']."
+        <br>Product -> ".$GET['product']."
+        <br>Amount -> $".number_format($amt,3)."
+        <br>Email -> ".$_SESSION['email'];
+
+        $mailto = $_SESSION['email'];
+          $mailSub = "Please Check Your Invoice";
+         require '../PHPMailer/PHPMailerAutoload.php';
+         $mail = new PHPMailer();
+         $mail ->IsSmtp();
+         $mail ->SMTPDebug = 0;
+         $mail ->SMTPAuth = true;
+         $mail ->SMTPSecure = 'ssl';
+         $mail ->Host = "smtp.gmail.com";//smtp.gmail.com
+         $mail ->Port = 465; // or  465
+         $mail ->IsHTML(true);
+         $mail ->Username = "dheraisastodeal@gmail.com";
+          $mail ->Password = "dheraisastodeal123";
+          $mail ->SetFrom("dheraisastodeal@gmail.com");
+        // $mail ->addAttachment('walpaper/concert.jpg');
+         $mail ->Subject = $mailSub;
+         $mail ->Body = "
+             <body>
+            <div class='email-background' style='background: #eeeeee;padding: 10px;'>
+              <div class='pre-header' style='max-width: 500px;background: #eeeeee;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;color: #eeeeee;font-size: 5px;'>
+                  Please Check Your Invoice
+              </div>
+              <div class='email-container' style='max-width: 500px;background: white;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;'>
+                <h1>Please check your invoice! <img src='https://i.postimg.cc/9FGBbr4h/DSD.png' style='max-width: 50px;border-radius: 50%;display: block;margin-left: auto;margin-right: auto;'></h1>
+              </div>
+              <br>
+              
+              <div class='footer-junk' style='text-align: center;'> 
+                    <input type='hidden' value='$invoice' placeholder='Enter your text to be put into the QR Code' id='text-input' >
+                  <canvas id='qrcode-canvas' style='padding:1em; background-color:#E8E8E8'></canvas>
+                  <svg id='qrcode-svg' style='width:30em; height:30em; padding:1em; background-color:#E8E8E8'>
+                    <rect width='100%' height='100%' fill='#FFFFFF' stroke-width='0'></rect>
+                    <path d=' fill='#000000' stroke-width='0'></path>
+                  </svg>
+                  <input type='hidden' name='errcorlvl' id='errcorlvl-low' checked='checked'><label for='errcorlvl-low'></label>
+                  <input type='hidden' name='errcorlvl' id='errcorlvl-medium'><label for='errcorlvl-medium'></label>
+                  <input type='hidden' name='errcorlvl' id='errcorlvl-quartile'><label for='errcorlvl-quartile'></label>
+                  <input type='hidden' name='errcorlvl' id='errcorlvl-high'><label for='errcorlvl-high'></label>
+                  <input type='hidden' name='output-format' id='output-format-bitmap' checked='checked'>
+                  <input type='hidden' name='output-format' id='output-format-vector'><label for='output-format-vector'></label>
+                  <input type='hidden' value='4' min='0' max='100' step='1' id='border-input' style='width:4em'>
+                  <span id='scale-row'></span>
+                  <input type='hidden' value='8' min='1' max='30' step='1' id='scale-input' style='width:4em'>
+                  <input type='hidden' value='1'  min='1' max='40' step='1' id='version-min-input' style='width:4em' oninput='app.handleVersionMinMax('min');'>,
+                  <input type='hidden' value='40' min='1' max='40' step='1' id='version-max-input' style='width:4em' oninput='app.handleVersionMinMax('max');'>
+                  <input type='hidden' value='-1' min='-1' max='7' step='1' id='mask-input' style='width:4em'>
+                  <input type='hidden' checked='checked' id='boost-ecc-input'>
+                  <input type='hidden' id='statistics-output' style='white-space:pre'>
+                  <span id='svg-xml-row'></span>
+                  <input type='hidden' id='svg-xml-output'> 
+              </div>
+              <p style='margin: 20px;font-size: 18px;font-weight: 300;line-height: 1.5;color: #666666;text-align: center;'>Dherai Sasto Deal(DSD) send your invoice in QR code for security features,
+              Thank You!</p>
+              <div class='cat' style='margin: 20px;text-align: center;'>
+                                
+                <small>© 2019 Dhera Sasto Deal., All Rights Reserved.<br>
+                  New Baneshwor, Kathmandu Nepal, NP +(977)<br>
+                  Thanks for having us.
+                </small>
+                  <br>
+                Visit Our Page <a href='http://localhost/Phpweb/protype/index.php'>Dherai Sasto Deal</a>
+              </div>
+            </div>
+    <script type='application/javascript' src='https://www.nayuki.io/res/qr-code-generator-library/qrcodegen.js'></script>
+        <script type='application/javascript' src='https://www.nayuki.io/res/qr-code-generator-library/qrcodegen-demo.js'></script>
+
+
+</body>
+
+         ";
+         // $mail ->AltBody = "";
+         $mail ->AddAddress($mailto);
+
+         if(!$mail->Send())
+         {
+         
+             echo '<style type="text/css">
+          div.messages{
+            background-color: #ff6b6b;
+            color: #f7fff7;
+            font-size: 20px;
+          }
+          ul.messages{
+            list-style-type: none;
+          }
+        </style>
+
+          <div class="messages">
+
+          <ul class="messages">
+            <li style="text-align: center;">Please Insert Valid Email!</li>
+          </ul>
+
+          </div>';
+         }
+         else
+         {
+            echo '<style type="text/css">
+          div.messages{
+            background-color: #ff6b6b;
+            color: #f7fff7;
+            font-size: 20px;
+          }
+          ul.messages{
+            list-style-type: none;
+          }
+        </style>
+
+          <div class="messages">
+
+          <ul class="messages">
+            <li style="text-align: center;">Please cleck your email</li>
+          </ul>
+
+          </div>';
+         }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>QR Code generator</title>
-  <style type="text/css">
-  html {
-    font-family: sans-serif;
-  }
-  td {
-    vertical-align: top;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-  }
-  td:first-child {
-    white-space: pre;
-    padding-right: 0.5em;
-  }
-  input[type=radio], input[type=checkbox] {
-    margin: 0em;
-    padding: 0em;
-  }
-  input[type=radio] + label, input[type=checkbox] + label {
-    margin-right: 0.8em;
-    padding-left: 0.2em;
-  }
-  </style>
+  <title>Dherai Sasto deal Invoice</title>
 </head>
 
 <body>
@@ -51,11 +150,9 @@ unset($_SESSION["shopping_cart"]);
     <tbody>
       <tr>
         <td><strong>Text string:</strong></td>
-        <td style="width:100%"><textarea placeholder="Enter your text to be put into the QR Code" id="text-input" style="width:100%; max-width:30em; height:5em; font-family:inherit" ><?php echo "
-        TransactionID -> ".$tid."
-        Product -> ".$product."
-        Amount -> ".number_format($amt,3)."
-        Email -> ".$_SESSION['email'];?></textarea></td>
+        <td style="width:100%"><textarea placeholder="Enter your text to be put into the QR Code" id="text-input" style="width:100%; max-width:30em; height:5em; font-family:inherit" ><?php echo $invoice;?>
+          
+        </textarea></td>
       </tr>
       <tr>
         <td><strong>QR Code:</strong></td>
@@ -123,6 +220,7 @@ unset($_SESSION["shopping_cart"]);
 <script type="application/javascript" src="js/qrcodegen-demo.js"></script>
 
 <hr>
+
 </body>
 </html>
 

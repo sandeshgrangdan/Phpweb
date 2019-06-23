@@ -24,7 +24,7 @@ $customer = \Stripe\Customer::create(array(
 
 // Charge Customer
 $charge = \Stripe\Charge::create(array(
-  "amount" => $_SESSION["full_price"],
+  "amount" => $_SESSION["full_price"]*100,
   "currency" => "usd",
   "description" => $_SESSION['description'],
   "customer" => $customer->id

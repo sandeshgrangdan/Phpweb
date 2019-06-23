@@ -63,9 +63,17 @@ if(isset($_POST['form'])){
 							<p style='margin: 20px;font-size: 18px;font-weight: 300;line-height: 1.5;color: #666666;text-align: center;'>Dherai Sasto Deal(DSD) want you to confirm the email for registration for your security features,
 							Thank You!</p>
 							<div class='cat' style='margin: 20px;text-align: center;'>
-								<a href='http://localhost/Phpweb/protype/verify.php?email=$email&token=$token' style='text-decoration: none;display: inline-block;background: #3d87f5;padding: 10px 20px 10px;color: white;border-radius: 5px;text-align: center;'>Verify Password!</a>
-							</div>
-							<div class='footer-junk' style='text-align: center;'>
+								<a href='http://localhost/Phpweb/protype/verify.php?email=$email&token=$token' style='text-decoration: none;display: inline-block;background: #3d87f5;padding: 15px 25px 15px;color: white;border-radius: 50px;text-align: center;
+								    -webkit-box-shadow: 15px 10px 35px 10px rgba(0,0,0,1);
+									-moz-box-shadow: 15px 10px 35px 10px rgba(0,0,0,1);
+									box-shadow: 15px 10px 35px 10px rgba(0,0,0,1);'>Verify Password!</a>
+																</div>
+																<div class='footer-junk' style='text-align: center;'>
+																<small>© 2019 Dhera Sasto Deal., All Rights Reserved.<br>
+									New Baneshwor, Kathmandu Nepal, NP +(977)<br>
+									Thanks for having with us.</small>
+									<br>
+							
 								Visit Our Page <a href='http://localhost/Phpweb/protype/index.php'>Dherai Sasto Deal</a>
 							</div>
 						</div>
@@ -633,9 +641,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- // modal -->
 
 	<!--search jQuery-->
-	
-	<script src="../../alert/dist/sweetalert2.min.js"></script>
 	<script src="../js/validation.js"></script>
+	<script src="../../alert/dist/sweetalert2.min.js"></script>
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	
 	<script src="js/classie-search.js"></script>

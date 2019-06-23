@@ -116,12 +116,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					 <div class="col-md-3 team-main-gd">
 							<div class="team-grid text-center">
-								<h3><b>Shrijan Maharjan</b></h3>
+								<h3><b>Srijan Maharjan</b></h3>
 								<div class="team-img">
 									<img class="img-fluid rounded" src="../images/shrijan.jpg" alt="">
 								</div>
 								<div class="team-info">
-									<h4>Shrijan Maharjan</h4>
+									<h4>Srijan Maharjan</h4>
 									<span>Description </span>
 									<ul class="d-flex justify-content-center py-3 social-icons">
 										<li>
@@ -236,7 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span class="far fa-sun"></span>
 							</div>
 
-							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">UV Protection</h4>
+							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Secured Transaction</h4>
 							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 							<p>
 								<a href="shop.php" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>

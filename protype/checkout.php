@@ -317,8 +317,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	?>
 	<!-- //footer -->
 	<!--jQuery-->
-	<script src="js/jquery-2.2.3.min.js"></script>
 	<script src="../js/validation.js"></script>
+	<script src="js/jquery-2.2.3.min.js"></script>
+	
 	<!-- newsletter modal -->
 	<!--search jQuery-->
 	<script src="js/modernizr-2.6.2.min.js"></script>
