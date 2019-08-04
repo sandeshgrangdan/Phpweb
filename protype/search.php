@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- // modal -->
-	<script src="../js/validation.js"></script>
+	<script src="../../alert/dist/sweetalert2.min.js"></script>
 
 	<!--search jQuery-->
 	<script src="js/modernizr-2.6.2.min.js"></script>

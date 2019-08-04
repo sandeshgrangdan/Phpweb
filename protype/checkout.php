@@ -69,11 +69,10 @@ if(isset($_GET["i_id"])){
 <html lang="zxx">
 
 <head>
-	<title>Goggles Ecommerce Category Bootstrap responsive Web Template | Checkout :: w3layouts</title>
+	<title>Dherai Sasto Deal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Goggles a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="keywords" content="Dherai Sasto Deal" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -83,6 +82,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<link rel="stylesheet" type="text/css" href="../../alert/dist/sweetalert2.css">
+	<script src="../../alert/dist/sweetalert2.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
 	<link href="css/style6.css" rel='stylesheet' type='text/css' />
@@ -245,48 +247,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<?php } ?>
 					<div class="col-md-8 address_form">
 						<?php if(!isset($_SESSION['email']) ) { ?>
-							<h4>Add a new Details</h4>
-							<form action="payment.php" method="post" class="creditly-card-form agileinfo_form">
-								<section class="creditly-wrapper wrapper">
-									<div class="information-wrapper">
-										<div class="first-row form-group">
-											<div class="controls">
-												<label class="control-label">Full name: </label>
-												<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
-											</div>
-											<div class="card_number_grids">
-												<div class="card_number_grid_left">
-													<div class="controls">
-														<label class="control-label">Mobile number:</label>
-														<input class="form-control" type="text" placeholder="Mobile number">
-													</div>
-												</div>
-												<div class="card_number_grid_right">
-													<div class="controls">
-														<label class="control-label">Landmark: </label>
-														<input class="form-control" type="text" placeholder="Landmark">
-													</div>
-												</div>
-												<div class="clear"> </div>
-											</div>
-											<div class="controls">
-												<label class="control-label">Town/City: </label>
-												<input class="form-control" type="text" placeholder="Town/City">
-											</div>
-											<div class="controls">
-												<label class="control-label">Address type: </label>
-												<select class="form-control option-w3ls">
-													<option>Office</option>
-													<option>Home</option>
-													<option>Commercial</option>
-
-												</select>
-											</div>
-										</div>
-										<button class="submit check_out">Delivery to this Address</button>
-									</div>
-								</section>
-							</form>
+							<h4>Please LOgin !</h4>
+		
+										<button class="submit check_out"  data-toggle="modal" data-target="#signin">Sign Up !</button>
+							
 						<?php } else { ?>
 						<?php if(isset($_SESSION['email']) && isset($_SESSION['shopping_cart'])){ ?>
 							<?php if( count($_SESSION["shopping_cart"]) != 0 ) { ?>
@@ -317,7 +281,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	?>
 	<!-- //footer -->
 	<!--jQuery-->
-	<script src="../js/validation.js"></script>
+	<script src="../../alert/dist/sweetalert2.min.js"></script>
 	<script src="js/jquery-2.2.3.min.js"></script>
 	
 	<!-- newsletter modal -->
@@ -591,4 +555,4 @@ if(isset($_SESSION["shopping_cart"]))
 	<!-- js file -->
 </body>
 
-</php>
+</html>

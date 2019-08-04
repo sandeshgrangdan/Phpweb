@@ -5,7 +5,7 @@ if ( isset($_SESSION['role']) ) {
 		exit();
 	}
 } elseif (isset($_SESSION['access_token'])) {
-		header('Location: adminpanel/index.php');
+		header('Location: index.php');
 		exit();
 }elseif(isset($_COOKIE['email']) && $_COOKIE['email']!= null){
 	// if (!isset($_SESSION['role']) ) {

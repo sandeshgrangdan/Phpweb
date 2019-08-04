@@ -337,7 +337,7 @@
 				</div>
 			</nav>
 			<script src="../js/regs.js"></script>
-			<script src="../js/modal.js"></script>
+			<script src="../js/validation.js"></script>
 		</header>
 	<div class="modal fade" id="logout" tabindex="-1">
         <div class="modal-dialog" role="document">

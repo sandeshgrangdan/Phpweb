@@ -17,8 +17,7 @@ include '../includes/db.php';
 	<title>Dherai Sasto Deal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Goggles a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="keywords" content="Dherai Sasto Deal" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -28,6 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<link rel="stylesheet" type="text/css" href="../../alert/dist/sweetalert2.css">
+	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
 	<link href="css/style6.css" rel='stylesheet' type='text/css' />
@@ -138,13 +139,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</section>
 	<div class="contact-map">
 
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100949.24429313939!2d-122.44206553967531!3d37.75102885910819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1472190196783"
-		    class="map" style="border:0" allowfullscreen=""></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9320005629597!2d85.33935231459154!3d27.688496482799664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1991388fadf1%3A0xb9466756a12f03b0!2z4KS44KSr4KWN4KSf4KSo4KWH4KSqIOCkquCljeCksOCkvi4g4KSy4KS_Lg!5e0!3m2!1sne!2snp!4v1557299196335!5m2!1sne!2snp" width="100%" height="100%" frameborder="0" style="border:0px; border-radius: 10px;" allowfullscreen></iframe>
 	</div>
 
 	<!--footer -->
 	<?php include'include/footer.php';?>
-	<script src="../js/validation.js"></script>
+	<script src="../../alert/dist/sweetalert2.min.js"></script>
 	<!-- //footer -->
 
 	<!--jQuery-->
@@ -276,5 +276,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/bootstrap.js"></script>
 	<!-- js file -->
 </body>
-
-</php>
+<html

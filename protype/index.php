@@ -6,7 +6,9 @@
 -->
 <?php session_start();
 require_once "config.php";
+require_once "gconfig.php";
 $loginURL = $gClient->createAuthUrl();
+$gloginURL = $ggClient->createAuthUrl();
 include 'include/session.php';
 include '../includes/db.php';
 if(isset($_POST['form'])){
@@ -142,10 +144,15 @@ if(isset($_GET['login_error'])){
 	<title>Dherai Sasto Deal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Goggles a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="keywords" content="Dherai Sasto Deal" />
+	<meta property="og:locale" content="ne_NP" />
+	<meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Your Website Title" />
+  <meta property="og:description"   content="Your description" />
+  <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
 	<script>
-		addEventListener("load", function () {
+		addEventListener("load" , function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
 
@@ -167,8 +174,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	    rel="stylesheet">
 </head>
+<?php if(!isset($_SESSION['gid'])) { ?>
+	 <!-- <body onload = "window.location = '<?php echo $gloginURL ?>'"> -->
+	 <body>
+ <?php }else { ?>
+ 	 <body>
+ <?php } ?>
 
-<body>
 	<b>
 	<div class="banner-top container-fluid" id="home">
 		<!-- header -->
@@ -641,7 +653,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- // modal -->
 
 	<!--search jQuery-->
-	<script src="../js/validation.js"></script>
+	
 	<script src="../../alert/dist/sweetalert2.min.js"></script>
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	

@@ -6,6 +6,7 @@ var app = new function() {
 	
 	function initialize() {
 		var elems = document.querySelectorAll("input[type=number], textarea");
+		console.log(elems);
 		for (var i = 0; i < elems.length; i++) {
 			if (elems[i].id.indexOf("version-") != 0)
 				elems[i].oninput = redrawQrCode;

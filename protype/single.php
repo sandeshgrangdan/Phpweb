@@ -31,6 +31,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<link rel="stylesheet" type="text/css" href="../../alert/dist/sweetalert2.css">
+	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
 	<link href="css/style6.css" rel='stylesheet' type='text/css' />
@@ -104,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<li data-thumb="images/d1.jpg">
 													<div class="thumb-image"> <img src="images/d1.jpg" data-imagezoom="true" class="img-fluid" alt=" "> </div>
 												</li>
-												<li data-thumb="images/d3.jpg">
+					get google acount from browser in website							<li data-thumb="images/d3.jpg">
 													<div class="thumb-image"> <img src="images/d3.jpg" data-imagezoom="true" class="img-fluid" alt=" "> </div>
 												</li> -->
 											</ul>
@@ -178,7 +180,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													</form>
 		
 												</div>
-									</div>
+									</div>';
+								}
+							?>
 									<ul class="footer-social text-left mt-lg-4 mt-3">
 											<li>Share On : </li>
 											<li class="mx-2">
@@ -213,16 +217,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 								</div>
 								<div class="clearfix"> </div>
-								';
-								}
-							?>
+								
 
 								<!--/tabs-->
-								<?php
-												$sel_side="SELECT Description,info,name FROM tbl_product WHERE id = $_GET[id] ";
-												$run_side=mysqli_query($conn,$sel_side);
-												while($rows=mysqli_fetch_assoc($run_side)){ 
-													echo '
+								
 								<div class="responsive_tabs">
 									<div id="horizontalTab">
 										<ul class="resp-tabs-list">
@@ -232,13 +230,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</ul>
 										<div class="resp-tabs-container">
 											<!--/tab_one-->
-											<div class="tab1">
-					
-												<div class="single_page">
-													<h6>'.ucfirst($rows['name']).'</h6>
-													<p>'.$rows['Description'].'</p>
-												</div>
-											</div>
+											<?php
+												$sel_side="SELECT Description,name FROM tbl_product WHERE id = $_GET[id] ";
+												$run_side=mysqli_query($conn,$sel_side);
+												while($rows=mysqli_fetch_assoc($run_side)){ 
+													echo '
+														<div class="tab1">
+								
+															<div class="single_page">
+																<h6>'.ucfirst($rows['name']).'</h6>
+																<p>'.$rows['Description'].'</p>
+															</div>
+														</div>';
+												}
+											?>
 											<!--//tab_one-->
 											<div class="tab2">
 					
@@ -260,29 +265,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 															<div class="clearfix"> </div>
 														</div>
 														<div class="add-review">
-															<h4>add a review</h4>
-															<form action="#" method="post">
+															<h4>Add a review</h4>
+															<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="5"></div>
+															<!-- <form action="#" method="post">
 																	<input class="form-control" type="text" name="Name" placeholder="Enter your email..." required="">
 																<input class="form-control" type="email" name="Email" placeholder="Enter your email..." required="">
 																<textarea name="Message" required=""></textarea>
 																<input type="submit" value="SEND">
-															</form>
+															</form>  -->
 														</div>
 													</div>
 					
 												</div>
 											</div>
-											<div class="tab3">
-					
-												<div class="single_page">
-													<h6>'.ucfirst($rows['name']).'  (Black)</h6>
-													<p>'.$rows['info'].'</p>
-												</div>
-											</div>
+											<!-- /tab_three -->
+											<?php
+												$sel_side="SELECT info,name FROM tbl_product WHERE id = $_GET[id] ";
+												$run_side=mysqli_query($conn,$sel_side);
+												while($rows=mysqli_fetch_assoc($run_side)){ 
+													echo '
+														<div class="tab3">
+								
+															<div class="single_page">
+																<h6>'.ucfirst($rows['name']).'  (Black)</h6>
+																<p>'.$rows['info'].'</p>
+															</div>
+														</div>';
+												}
+											?>
+											<!-- //tab_three -->
 										</div>
 									</div>
-								</div>';
-												} ?>
+								</div>
 								<!--//tabs-->
 					
 					</div>
@@ -386,8 +400,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</section>
 		<!--footer -->
 		<?php include 'include/footer.php';?>
+		<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v4.0"></script>  
 		<!-- //footer -->
-		<script src="../js/validation.js"></script>
+		<script src="../../alert/dist/sweetalert2.min.js"></script>
 		<!--jQuery-->
 		<script src="js/jquery-2.2.3.min.js"></script>
 		<!-- newsletter modal -->
@@ -610,4 +626,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- js file -->
 </body>
 
-</php>
+</html>

@@ -5,7 +5,7 @@
     var id = setInterval(frame, 2);
 
     function frame() {
-        if (loading == 100) {
+        if (loading == 10000000000000000000) {
             clearInterval(id);
             window.open("wel.html", "_self");
         } else {

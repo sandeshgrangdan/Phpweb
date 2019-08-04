@@ -30,6 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<link rel="stylesheet" type="text/css" href="../../alert/dist/sweetalert2.css">
+	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/login_overlay.css" rel='stylesheet' type='text/css' />
 	<link href="css/style6.css" rel='stylesheet' type='text/css' />
@@ -454,7 +456,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--footer -->
 		<?php include'include/footer.php';?>
 		<!-- //footer -->
-		<script src="../js/validation.js"></script>
+		<script src="../../alert/dist/sweetalert2.min.js"></script>
 		<!--jQuery-->
 		<script src="js/jquery-2.2.3.min.js"></script>
 		<!-- newsletter modal -->
@@ -636,5 +638,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script src="js/bootstrap.js"></script>
 		<!-- js file -->
 </body>
-
-</php>
+</html>
