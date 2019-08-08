@@ -10,6 +10,7 @@
      <link rel="stylesheet" href="../bootstrap-social/bootstrap-social.css">
   <title>Pay Page</title>
 </head>
+
 <body>
   <br><br>
   <div class="container">

@@ -1,9 +1,4 @@
-<!--
-	Author: W3layouts
-	Author URL: http://w3layouts.com
-	License: Creative Commons Attribution 3.0 Unported
-	License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <?php session_start();
 require_once "config.php";
 require_once "gconfig.php";
@@ -147,10 +142,10 @@ if(isset($_GET['login_error'])){
 	<meta name="keywords" content="Dherai Sasto Deal" />
 	<meta property="og:locale" content="ne_NP" />
 	<meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
-  <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="Your Website Title" />
-  <meta property="og:description"   content="Your description" />
-  <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Your Website Title" />
+	<meta property="og:description"   content="Your description" />
+	<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
 	<script>
 		addEventListener("load" , function () {
 			setTimeout(hideURLbar, 0);
@@ -172,16 +167,10 @@ if(isset($_GET['login_error'])){
 	<link href="css/fontawesome-all.css" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
-	    rel="stylesheet">
+		rel="stylesheet">
+		
 </head>
-<?php if(!isset($_SESSION['gid'])) { ?>
-	 <!-- <body onload = "window.location = '<?php echo $gloginURL ?>'"> -->
-	 <body>
- <?php }else { ?>
- 	 <body>
- <?php } ?>
-
-	<b>
+	<body onload="myFunction()">
 	<div class="banner-top container-fluid" id="home">
 		<!-- header -->
 		<?php include 'include/header.php';?>
@@ -497,23 +486,23 @@ if(isset($_GET['login_error'])){
 				<div class="row galsses-grids pt-lg-5 pt-3">
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner4.jpg" alt="" class="img-fluid">
+							<img src="../images/bijay.jpg" alt="" class="img-fluid">
 							<figcaption>
-								<h3>Editor's
+								<h3 style="color:black;"><strong>Editor's</strong>
 									<span>Pick</span>
 								</h3>
-								<p> Express your style now.</p>
+								<p style="color:black"><strong>Express your style now.</strong></p>
 							</figcaption>
 						</figure>
 					</div>
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner1.jpg" alt="" class="img-fluid">
+							<img src="../images/Arpan.jpg" alt="" class="img-fluid">
 							<figcaption>
-								<h3>Editor's
+							<h3 style="color:black;"><strong>Editor's</strong>
 									<span>Pick</span>
 								</h3>
-								<p>Express your style now.</p>
+								<p style="color:black"><strong>Express your style now.</strong></p>
 							</figcaption>
 						</figure>
 					</div>

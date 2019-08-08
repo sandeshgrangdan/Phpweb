@@ -15,8 +15,7 @@ include '../includes/db.php';
 	<title>Payment | Dherai Sasto Deal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Goggles a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="keywords" content="Dherais Sasto Deal" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -38,7 +37,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	    rel="stylesheet">
 </head>
-
+<div class="preload" id="preload">
+    <div class="logo">
+       <span style="color:#f1b62e;"> Dherai-</span><span style="color: #407831">Sasto-</span><span style="color: rgb(255, 0, 0)">Deal</span>
+    </div>
+    <div class="loader-frame">
+        <div class="loader1" id="loader1"></div>
+        <div class="loader2" id="loader2"></div>   
+        <div class="loader3" id="loader3"></div> 
+    </div>
+</div>
 <body>
 	<div class="banner-top container-fluid" id="home">
 		<!-- header -->
@@ -126,10 +134,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												       		 </div>
 														</div>
 														
-														 <div id="card-errors" role="alert"></div>
+														 <div id="card-errors" role="alert" style="color:red;">Please Insert Valid Card Number</div>
 														<button>Submit Payment</button>
 												</div>
 											</section>
+										</form>
 										
 
 									</div>
@@ -284,7 +293,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--//Payment-->
 		<!--footer -->
 		<?php include'include/footer.php';?>
-		<script src="../js/validation.js"></script>
+		
 		<!-- //footer -->
 		<!--jQuery-->
 		<script src="js/jquery-2.2.3.min.js"></script>
@@ -463,6 +472,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 		<!-- //smooth-scrolling-of-move-up -->
 		<script src="js/bootstrap.js"></script>
+		<script>
+			function myFunction() {
+				var error = document.getElementById('card-errors').value;
+				console.log(error);
+				// document.getElementById("preload").style.display = "block";
+			}
+</script>
 		<!-- js file -->
 </body>
 

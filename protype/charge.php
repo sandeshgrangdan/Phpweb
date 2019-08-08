@@ -1,4 +1,103 @@
 <?php
+echo '
+
+    
+<style>
+* {
+box-sizing:border-box;
+}
+body{
+margin: 0;
+font-family: monospace;
+}
+#preload {
+width: 100%;
+height: 100%;
+background: rgba(96,49,111,1);
+position: fixed;
+top: 0;
+left: 0;
+z-index: 99999999;
+opacity: 0.9;
+ display: block;
+
+}
+.logo {
+width: 60rem;
+height: 70px;
+margin: 150px auto 50px auto ;
+font-size: 50px;
+text-shadow: -10px 20px 20px #000000;
+text-align: center;
+color: azure;
+}
+.loader-frame {
+width: 70px;
+height: 70px;
+margin: auto;
+position: relative;
+}
+.loader1, .loader2, .loader3{
+position: absolute;
+/* border: 1rem solid transparent; */
+border-radius: 50%;
+}
+.loader1 {
+width: 8rem;
+height: 8rem;
+border-top: 6px solid #407831;
+border-bottom: 5px solid #407831;
+animation: clockwisespin 2s linear 3;
+}
+.loader2 {
+width: 6rem;
+height: 6rem;
+border-left: 5px solid #f1b62e;
+border-right: 5px solid #f1b62e;
+top: 8px;
+left: 5px;
+animation: anticlockwisespin 2s linear 3;
+}
+.loader3 {
+width: 9rem;
+height: 9rem;
+border-left: 5px solid rgb(255, 0, 0);
+border-right: 5px solid rgb(255, 0, 0);
+top: 8px;
+left: 0px;
+animation: anticlockwisespin 2s linear 3;
+}
+@keyframes clockwisespin {
+from{transform: rotate(0deg);}
+to{transform: rotate(360deg);}
+}
+@keyframes anticlockwisespin {
+from {
+    transform: rotate(0deg);
+}
+
+to {
+    transform: rotate(-360deg);
+}
+}
+@keyframes  fadeout{
+from{opacity: 1;}
+to {opacity: 0}
+}
+</style>
+ 
+    <div class="preload" id="preload">
+    <div class="logo">
+       <span style="color:#f1b62e;"> Dherai-</span><span style="color: #407831">Sasto-</span><span style="color: rgb(255, 0, 0)">Deal</span>
+    </div>
+    <div class="loader-frame">
+        <div class="loader1" id="loader1"></div>
+        <div class="loader2" id="loader2"></div>   
+        <div class="loader3" id="loader3"></div> 
+    </div>
+</div>
+';
+
 session_start();
   require_once('stripe/vendor/autoload.php');
   require_once('config/db.php');
@@ -61,35 +160,13 @@ $transaction = new Transaction();
 // Add Transaction To DB
 $transaction->addTransaction($transactionData);
 
-$mailto = $_SESSION['email'];
-    $mailSub = "Order Payment";
-    $mailMsg = 'Thank you for using Dherai Sasto Deal.
-                 Your Product is:'.$_SESSION['description'];
-   require 'PHPMailer/PHPMailerAutoload.php';
-   $mail = new PHPMailer();
-   $mail ->IsSmtp();
-   $mail ->SMTPDebug = 0;
-   $mail ->SMTPAuth = true;
-   $mail ->SMTPSecure = 'ssl';
-   $mail ->Host = "smtp.gmail.com";
-   $mail ->Port = 465; // or 587
-   $mail ->IsHTML(true);
-   $mail ->Username = "dheraisastodeal@gmail.com";
-   $mail ->Password = "dheraisastodeal123";
-   $mail ->SetFrom("dheraisastodeal@gmail.com");
-   $mail ->Subject = $mailSub;
-   $mail ->Body = $mailMsg;
-   $mail ->AddAddress($mailto);
 
-   if(!$mail->Send())
-   {
-       echo "Mail Not Send";
-       header('Location: success.php?tid='.$charge->id.'&product='.$charge->description.'&amount='.$charge->amount);
-   }
-   else
-   {
-       header('Location: success.php?tid='.$charge->id.'&product='.$charge->description.'&amount='.$charge->amount);
-       echo "Mail Sent";
-   }
+echo '
+    <script>
+        document.getElementById("preload").style.display = "none";
+    </script>
+';
 
-// Redirect to success
+header('Location: success.php?tid='.$charge->id.'&product='.$charge->description.'&amount='.$charge->amount);
+exit();
+?>

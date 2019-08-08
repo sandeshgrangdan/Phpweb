@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 18, 2019 at 06:02 AM
+-- Generation Time: Aug 08, 2019 at 07:14 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -41,8 +41,9 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`c_id`, `category_name`, `image`) VALUES
 (2, 'Guitar', 'mantra.png'),
 (4, 'Hemp Bag', 'hemp.jpg'),
-(6, 'laptop', ''),
-(7, 'mobiles', '');
+(6, 'Sarangi', ''),
+(7, 'mobiles', ''),
+(8, 'sample', '');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,23 @@ INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `created_at`)
 ('cus_EWM9Q4Ww0m004T', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '2019-02-13 14:34:39'),
 ('cus_EWRfkPwR74OC8I', 'Bijay', 'rajak', 'bijayrajak55@gmail.com', '2019-02-13 20:17:18'),
 ('cus_Exgcp94nhBt0wW', 'safal', 'tamang', 'safal@gmail.com', '2019-04-27 13:32:20'),
-('cus_ExhK0yPSjhaRiv', 'safal', 'tamang', 'safal@gmail.com', '2019-04-27 14:15:56');
+('cus_ExhK0yPSjhaRiv', 'safal', 'tamang', 'safal@gmail.com', '2019-04-27 14:15:56'),
+('cus_F6oZbBrl45ZQ4e', 'safal', 'tamang', 'safal@gmail.com', '2019-05-21 22:20:58'),
+('cus_FaOj5iPAFBmi0e', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 21:38:37'),
+('cus_FaPbKJqHC2JBXY', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:32:27'),
+('cus_FaPDHfhzkaRiMA', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:09:01'),
+('cus_FaPg4ZCC5pF4ui', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:37:35'),
+('cus_FaPKOzfrKCFXu0', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:15:57'),
+('cus_FaPlXaMjBjjhgC', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:43:04'),
+('cus_FaPnJnHFe7EID9', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:44:27'),
+('cus_FaPoYtL9NeaI0W', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:46:13'),
+('cus_FaPq1cf2Gi7Noc', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:47:44'),
+('cus_FaPyFfL2fBv78U', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-08-08 22:56:20'),
+('cus_FI2KoyclXVcES6', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-06-20 21:17:46'),
+('cus_FI2Uhax3Pc2UTM', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-06-20 21:27:45'),
+('cus_FICs6x8SGw6Rx8', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '2019-06-21 08:12:11'),
+('cus_FIE5rk1gdKoeDt', 'sandesh', 'tamang', 'sandesht801@gmail.com', '2019-06-21 09:26:37'),
+('cus_FIfWQgus7b3XuR', 'sandesh', 'tamang', 'sandesht801@gmail.com', '2019-06-22 13:47:51');
 
 -- --------------------------------------------------------
 
@@ -131,7 +148,9 @@ INSERT INTO `locations` (`id`, `lat`, `lng`, `description`, `location_status`, `
 (10, 27.696133, 85.334274, 'shai hoo', 1, 'ch_1E2wC7Cbu1nAmf4O64Lth9xp'),
 (11, 27.697412, 85.334717, 'Home', 0, 'ch_1E3JQyCbu1nAmf4OWIMfO2w6'),
 (12, 27.695370, 85.331512, 'This is my loaction  for macbook', 1, 'ch_1E3OmcCbu1nAmf4OHLR03Rsu'),
-(13, 27.695953, 85.334518, 'This is  my location', 1, 'ch_1ETlFjCbu1nAmf4OwHGjXKua');
+(13, 27.695953, 85.334518, 'This is  my location', 1, 'ch_1ETlFjCbu1nAmf4OwHGjXKua'),
+(14, 27.695971, 85.334579, 'this is my location', 0, 'ch_1EcawTCbu1nAmf4OEVy9ETwr'),
+(15, 27.696377, 85.335274, 'This is my  Location', 0, 'ch_1EnSFlCbu1nAmf4OZxFJxDp5');
 
 -- --------------------------------------------------------
 
@@ -182,12 +201,10 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`id`, `c_id`, `name`, `image`, `price`, `display`, `author`, `Description`, `info`) VALUES
-(1, 7, 'Samsung J2 Pro', '1.jpg', 100.00, 'on', 'sandesht801@gmail.com', '    Operating System. Android v6.0 (Marshmallow)     5.0 inches (12.7 cm) display.     Spreadtrum SC8830 Quad core Processor. 2 GB RAM. ...     8 MP Rear Camera. 5 MP Front Camera.     2600 mAh battery.     Dual SIM: Micro + Micro. SIM2: Supports 3G.     No Fingerprint Sensor.', 'The device is shipped with Android v6.0 (Marshmallow) operating system. Under the hood, the smartphone is equipped with 1.5GHz quad-core Spreadtrum SC8830 processor, paired with 2GB RAM and Mali-400 MP2 GPU. Performance of this device is further boosted by Turbo Speed Technology, that loads applications 40% faster.'),
-(2, 4, 'HP Notebook', '2.jpg', 299.00, 'on', 'sandesht801@gmail.com', 'Product Name	15-3040NR US Product Number	A9P60UA Microprocessor	2.20 GHz 2nd generation Intel Core i7-2670QM Processor with Turbo Boost Technology up to 3.10 GHz Memory	8GB 1600MHz DDR3 SDRAM (2 DIMM) Memory Max	Maximum supported = 8GB', 'HP Pavilion is a line of personal computers produced by Hewlett-Packard and introduced in 1995. The name is applied to both desktops and laptops for the Home and Home Office product range. ... As a result, HP sold both HP and Compaq-branded machines until 2013.'),
-(3, 7, 'Panasonic T44 Lite', '3.jpg', 125.00, 'on', 'sandesht801@gmail.com', '    Display4.00-inch.     Processor1.3GHz quad-core.     Front Camera0.3-megapixel.     Resolution800x480 pixels.     RAM512MB.     OSAndroid Marshmallow.     Battery Capacity2400mAh.', 'The Panasonic T44 Lite features a 4-inch TFT display with a pixel density of 233ppi. It has a weight of 137 grams which makes it very easy to pocket. It runs on Android v6.0 (Marshmallow) OS and is driven by a 1.3GHz quad-core processor. Paired with 512MB of RAM, it ensures decent performance.'),
-(11, 4, 'alienware', 'alian.png', 679.00, 'on', 'sandesht801@gmail.com', '    CPU: 2.9GHz Intel Core i9-8950HK (hexa-core, 12MB cache, up to 4.8GHz)     Graphics: Nvidia GeForce GTX 1080 OC (8GB GDDR5X)     RAM: 32GB DDR4 (2,666MHz)     Screen: 17.3-inch, QHD (2,560 x 1,440) 120Hz G-Sync.     Storage: 512GB PCIe SSD, 1TB HDD (7,200 rpm)', 'Alienware is an American computer hardware subsidiary of Dell. Their products are designed for gaming and can be identified by their alien-themed designs. Alienware was founded in 1996 by Nelson Gonzalez and Alex Aguila. The company\'s corporate headquarters is located in The Hammocks, in Miami, Florida.'),
-(20, 7, 'Iphone 10', 'iphone 10.jpg', 999.00, 'on', 'sandesht801@gmail.com', '    Get to know Apple\'s new iPhones. ...     Bigger screen sizes. ...     Beastly A12 Bionic processor. ...     Camera enhancements. ...     A new tool for portrait shots. ...     More colorful OLED screens. ...     Long battery life. ...     Faster Face ID.', 'The iPhone X is intended to showcase what Apple considers technology of the future, specifically adopting OLED screen technology for the first time in iPhone history, as well as using a glass and stainless-steel form factor, offering wireless charging, and removing the home button in favor of introducing a new \"bezel-less\" design, shrinking the bezels, and not having a \"chin\", unlike many Android phones. It also released a new type of password authentication called Face ID. Face ID is a new authentication method using advanced technologies to scan the user\'s face to unlock the device, as well as for the use of animated emojis called Animoji. The new, nearly bezel-less form factor marks a significant change to the iPhone user interaction, involving swipe-based gestures to navigate around the operating system rather than the typical home button used in every previous iteration of the iPhone lineup. At the time of its November 2017 launch, its price tag of US$999 also made it the most expensive iPhone ever, with even higher prices internationally due to additional local sales and import taxes. '),
-(24, 4, 'Macbook Pro', 'mac.jpg', 1704.00, 'on', 'sandesht801@gmail.com', '    6-core Intel Core i7 and Core i9 processors up to 2.9GHz    with Turbo Boost up to 4.8GHz.\r\n    Up to 32GB of DDR4 RAM.\r\n    Radeon Pro discrete graphics with 4GB of video memory.\r\n    Up to 4TB SSD storage.\r\n    True Tone display.\r\n    Apple T2 chip.\r\n    Touch Bar.', '\"MacBook\" is a term used for a brand of Mac notebook computers that Apple started producing in 2006. The American multinational corporation created MacBook computers when it consolidated its PowerBook and iBook lines during its transition to Intel processor-based products. As of 2013, there are two types of MacBook computers: the base-level MacBook Air and the upper-level MacBook Pro.');
+(37, 6, 'Nepali Sarangi', 'sarangi.jpg', 70.00, 'on', 'sandesht801@gmail.com', '', ''),
+(33, 2, 'Dim Guitar', 'guitar.jpg', 100.00, 'on', 'sandesht801@gmail.com', '', ''),
+(36, 4, 'Guitar Bag', 'guitarbag.jpg', 30.00, 'on', 'sandesht801@gmail.com', '', ''),
+(31, 4, 'Hemp Bag', 'bag1.jpg', 25.00, 'on', 'sandesht801@gmail.com', '', '');
 
 -- --------------------------------------------------------
 
@@ -229,8 +246,24 @@ INSERT INTO `transactions` (`id`, `customer_id`, `product`, `amount`, `currency`
 ('ch_1E3JOMCbu1nAmf4OiirmqrGt', 'cus_EWM6vV98tqGdyo', ' Samsung J2 Pro', '10000', 'usd', 'succeeded', '2019-02-13 14:31:55', ''),
 ('ch_1E3JQyCbu1nAmf4OWIMfO2w6', 'cus_EWM9Q4Ww0m004T', ' Samsung J2 Pro', '10000', 'usd', 'succeeded', '2019-02-13 14:34:39', ''),
 ('ch_1E3OmcCbu1nAmf4OHLR03Rsu', 'cus_EWRfkPwR74OC8I', ' Macbook Pro', '170400', 'usd', 'succeeded', '2019-02-13 20:17:18', ''),
+('ch_1EcawTCbu1nAmf4OEVy9ETwr', 'cus_F6oZbBrl45ZQ4e', ' Nepali Sarangi Guitar Bag Hemp Bag', '136', 'usd', 'succeeded', '2019-05-21 22:20:58', ''),
+('ch_1EncT4Cbu1nAmf4OZzLPI6sE', 'cus_FICs6x8SGw6Rx8', ',Guitar Bag', '3200', 'usd', 'succeeded', '2019-06-21 08:12:11', ''),
+('ch_1Endd4Cbu1nAmf4OGXV3GPMq', 'cus_FIE5rk1gdKoeDt', ',Guitar Bag', '3200', 'usd', 'succeeded', '2019-06-21 09:26:37', ''),
+('ch_1EnSFlCbu1nAmf4OZxFJxDp5', 'cus_FI2KoyclXVcES6', ',Nepali Sarangi', '72', 'usd', 'succeeded', '2019-06-20 21:17:46', ''),
+('ch_1EnSPRCbu1nAmf4OSybaIxGw', 'cus_FI2Uhax3Pc2UTM', ',Guitar Bag', '3200', 'usd', 'succeeded', '2019-06-20 21:27:46', ''),
+('ch_1Eo4BTCbu1nAmf4OIz36Lrti', 'cus_FIfWQgus7b3XuR', ',Nepali Sarangi', '36000', 'usd', 'succeeded', '2019-06-22 13:47:51', ''),
 ('ch_1ETlFjCbu1nAmf4OwHGjXKua', 'cus_Exgcp94nhBt0wW', ' Panasonic T44 Lite', '12500', 'usd', 'succeeded', '2019-04-27 13:32:20', ''),
-('ch_1ETlvvCbu1nAmf4OwetMBe11', 'cus_ExhK0yPSjhaRiv', ' Alienware', '67900', 'usd', 'succeeded', '2019-04-27 14:15:56', '');
+('ch_1ETlvvCbu1nAmf4OwetMBe11', 'cus_ExhK0yPSjhaRiv', ' Alienware', '67900', 'usd', 'succeeded', '2019-04-27 14:15:56', ''),
+('ch_1F5DvpCbu1nAmf4OpdGhqV7S', 'cus_FaOj5iPAFBmi0e', ',Hemp Bag', '2700', 'usd', 'succeeded', '2019-08-08 21:38:38', ''),
+('ch_1F5EluCbu1nAmf4O60GiNqrC', 'cus_FaPbKJqHC2JBXY', '', '3200', 'usd', 'succeeded', '2019-08-08 22:32:27', ''),
+('ch_1F5EPECbu1nAmf4OkJ4JJsSr', 'cus_FaPDHfhzkaRiMA', '', '2700', 'usd', 'succeeded', '2019-08-08 22:09:01', ''),
+('ch_1F5EqsCbu1nAmf4Ou15KDtBc', 'cus_FaPg4ZCC5pF4ui', ',Guitar Bag', '3200', 'usd', 'succeeded', '2019-08-08 22:37:35', ''),
+('ch_1F5EVxCbu1nAmf4OHyJqi89H', 'cus_FaPKOzfrKCFXu0', ',Guitar Bag', '3200', 'usd', 'succeeded', '2019-08-08 22:15:57', ''),
+('ch_1F5EwBCbu1nAmf4OeLxtkQWn', 'cus_FaPlXaMjBjjhgC', '', '3200', 'usd', 'succeeded', '2019-08-08 22:43:04', ''),
+('ch_1F5ExWCbu1nAmf4OlUBFa8uN', 'cus_FaPnJnHFe7EID9', ',Guitar Bag', '3200', 'usd', 'succeeded', '2019-08-08 22:44:27', ''),
+('ch_1F5EzFCbu1nAmf4Ot6pLZsUe', 'cus_FaPoYtL9NeaI0W', '', '3200', 'usd', 'succeeded', '2019-08-08 22:46:13', ''),
+('ch_1F5F0hCbu1nAmf4OeVHDkNVo', 'cus_FaPq1cf2Gi7Noc', ',Dim Guitar', '10200', 'usd', 'succeeded', '2019-08-08 22:47:44', ''),
+('ch_1F5F92Cbu1nAmf4OfjhYcOxB', 'cus_FaPyFfL2fBv78U', ',Guitar Bag', '3200', 'usd', 'succeeded', '2019-08-08 22:56:20', '');
 
 -- --------------------------------------------------------
 
@@ -244,9 +277,12 @@ CREATE TABLE `user` (
   `user_f_name` varchar(20) NOT NULL,
   `user_l_name` varchar(20) NOT NULL,
   `user_email` varchar(40) NOT NULL,
-  `user_password` varchar(20) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
   `user_gender` varchar(10) NOT NULL,
   `user_phone_no` text NOT NULL,
+  `Confirmed` tinyint(4) NOT NULL,
+  `token` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `reset` varchar(6) NOT NULL,
   `user_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -254,9 +290,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `role`, `user_f_name`, `user_l_name`, `user_email`, `user_password`, `user_gender`, `user_phone_no`, `user_date`) VALUES
-(1, 'admin', 'sandesh', 'tamang', 'sandesht801@gmail.com', '123', 'male', '9866558715', '2019-05-13 17:11:51'),
-(10, 'subscriber', 'safal', 'tamang', 'safal@gmail.com', '123', 'male', '9845356585', '2019-05-13 01:28:50');
+INSERT INTO `user` (`user_id`, `role`, `user_f_name`, `user_l_name`, `user_email`, `user_password`, `user_gender`, `user_phone_no`, `Confirmed`, `token`, `reset`, `user_date`) VALUES
+(1, 'admin', 'sandesh', 'tamang', 'sandesh@gmail.com', '$2y$10$yVDs31s2ZGrZJDTIST0KuOi6eNnHZbojyaNvnQvclsGKUHQ4h6XfG', 'male', '9866558716', 1, '', '', '2019-06-20 06:47:33'),
+(35, 'subscriber', 'sandesh', 'tamang', 'sgrangdan@yahoo.com', '$2y$10$kcSMRe5namlHr938w0JCDujFaQBECakJH11YiCT95ZCs8q6m2PiW2', 'male', '9866559815', 1, '', '', '2019-06-20 15:32:03'),
+(36, 'subscriber', 'sandesh', 'tamang', 'sandesht801@gmail.com', '$2y$10$12/XoNCMcvr3u6LNKmJn4.GTwOUVl9L/OW3YeEEhJyF6BhnDYxha2', 'male', '9866558715', 1, '', '', '2019-08-07 15:55:33');
 
 --
 -- Indexes for dumped tables
@@ -320,7 +357,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -332,7 +369,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `post`
@@ -344,13 +381,13 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

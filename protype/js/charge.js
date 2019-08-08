@@ -45,16 +45,20 @@ card.addEventListener('change', function(event) {
 // Handle form submission
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
+  document.getElementById("preload").style.display = "block";
   event.preventDefault();
 
   stripe.createToken(card).then(function(result) {
     if (result.error) {
       // Inform the user if there was an error
+      document.getElementById("preload").style.display = "block";
       var errorElement = document.getElementById('card-errors');
       errorElement.textContent = result.error.message;
+      document.getElementById("preload").style.display = "none";
     } else {
       // Send the token to your server
       stripeTokenHandler(result.token);
+      
     }
   });
 });

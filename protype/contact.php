@@ -139,7 +139,7 @@ include '../includes/db.php';
 	</section>
 	<div class="contact-map">
 
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.9320005629597!2d85.33935231459154!3d27.688496482799664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1991388fadf1%3A0xb9466756a12f03b0!2z4KS44KSr4KWN4KSf4KSo4KWH4KSqIOCkquCljeCksOCkvi4g4KSy4KS_Lg!5e0!3m2!1sne!2snp!4v1557299196335!5m2!1sne!2snp" width="100%" height="100%" frameborder="0" style="border:0px; border-radius: 10px;" allowfullscreen></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7065.663451236567!2d85.33854874509821!3d27.691595330855982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19921f6d004b%3A0x5a017eef8b2df616!2z4KS24KS-4KSo4KWN4KSk4KWA4KSo4KSX4KSwLCDgpJXgpL7gpKDgpK7gpL7gpKHgpYzgpIEgNDQ2MDA!5e0!3m2!1sne!2snp!4v1529916828228" width="650" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 	</div>
 
 	<!--footer -->

@@ -82,6 +82,7 @@
 										<head>
 											<title>Verify</title>
 											<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+											<link href="css/fontawesome-all.css" rel="stylesheet">
 										</head>
 										<body>
 										<br>
@@ -103,7 +104,39 @@
 	                         		';
 					 				}
 					 			}else{
-					 				echo "Your input is wrong";
+									 echo '
+									 <!DOCTYPE html>
+									 <html>
+									 <head>
+										 <title>Login-Error</title>
+										 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+										 <link href="css/style.css" rel="stylesheet" type="text/css" />
+										 <link href="css/fontawesome-all.css" rel="stylesheet">
+										 <link rel="stylesheet" href="css/bootstrap-social.css">
+									 </head>
+									 <body>
+									 <br>
+									 <br>
+										 <div class="container">
+											 <div class="row">
+												 <div class="col-lg-12">
+													 <div class="jumbotron">
+														 <h1 class="display-4">Incorect Input!</h1>
+														 <hr class="my-4">
+														 <a class="btn btn-danger btn-lg" href="reset/forget.php" role="button">Forget Passwords</a>
+														 <a class="btn btn-success btn-lg" href="index.php" role="button">Back To Homes</a>
+														 <br>
+														 <br>
+														 <a data-toggle="modal" data-target="#signin" class="btn btn-primary btn-lg" role="button">Re-Try !</a>
+													 </div>
+													
+												 </div>
+											 </div>
+										 </div>
+										 
+									 </body>
+									 </html>
+									 ';
 					 			}
 							 			
 
@@ -123,3 +156,7 @@
 	 header('Location: index.php?login_error=emptycart');
 	}
 ?>
+<?php include "include/signin.php"; ?>
+		<script src="../../bootstrap/dist/js/jquery-slim.min.js"></script>
+		<script src="../../bootstrap/dist/js/popper.min.js"></script> 
+		 <script src="../../bootstrap/dist/js/bootstrap.min.js"></script>

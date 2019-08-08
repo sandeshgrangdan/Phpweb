@@ -89,49 +89,49 @@ unset($_SESSION["shopping_cart"]);
          // $mail ->AltBody = "";
         //  $mail ->AddAddress($mailto);
 
-         if(!$mail->Send())
-         {
+        //  if(!$mail->Send())
+        //  {
          
-             echo '<style type="text/css">
-          div.messages{
-            background-color: #ff6b6b;
-            color: #f7fff7;
-            font-size: 20px;
-          }
-          ul.messages{
-            list-style-type: none;
-          }
-        </style>
+        //      echo '<style type="text/css">
+        //   div.messages{
+        //     background-color: #ff6b6b;
+        //     color: #f7fff7;
+        //     font-size: 20px;
+        //   }
+        //   ul.messages{
+        //     list-style-type: none;
+        //   }
+        // </style>
 
-          <div class="messages">
+        //   <div class="messages">
 
-          <ul class="messages">
-            <li style="text-align: center;">Please Insert Valid Email!</li>
-          </ul>
+        //   <ul class="messages">
+        //     <li style="text-align: center;">Please Insert Valid Email!</li>
+        //   </ul>
 
-          </div>';
-         }
-         else
-         {
-            echo '<style type="text/css">
-          div.messages{
-            background-color: #ff6b6b;
-            color: #f7fff7;
-            font-size: 20px;
-          }
-          ul.messages{
-            list-style-type: none;
-          }
-        </style>
+        //   </div>';
+        //  }
+        //  else
+        //  {
+        //     echo '<style type="text/css">
+        //   div.messages{
+        //     background-color: #ff6b6b;
+        //     color: #f7fff7;
+        //     font-size: 20px;
+        //   }
+        //   ul.messages{
+        //     list-style-type: none;
+        //   }
+        // </style>
 
-          <div class="messages">
+        //   <div class="messages">
 
-          <ul class="messages">
-            <li style="text-align: center;">Please cleck your email</li>
-          </ul>
+        //   <ul class="messages">
+        //     <li style="text-align: center;">Please cleck your email</li>
+        //   </ul>
 
-          </div>';
-         }
+        //   </div>';
+        //  }
 ?>
 
 <!DOCTYPE html>
