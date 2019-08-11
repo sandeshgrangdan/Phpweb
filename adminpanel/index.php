@@ -42,6 +42,7 @@ if( isset($_SESSION['role']) ) {
             ('$title', '$_POST[editor1]','$image_db_path', '$_POST[status]', '$_POST[category]', '$date', '$_SESSION[email]')";
             if(mysqli_query($conn, $ins_sql)){
               header('Location: posts.php');
+              exit();
             }
             else {
               $error = '<div class="alert alert-danger">FUCK the Query is not working</div>';
