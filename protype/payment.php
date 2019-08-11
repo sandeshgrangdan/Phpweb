@@ -15,7 +15,7 @@ include '../includes/db.php';
 	<title>Payment | Dherai Sasto Deal</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-	<meta name="keywords" content="Dherais Sasto Deal" />
+	<meta name="keywords" content="Dherai Sasto Deal" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);

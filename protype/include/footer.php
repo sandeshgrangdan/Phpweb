@@ -12,7 +12,7 @@
 						<div class="phone">
 							<h4>Contact :</h4>
 							<p>Phone : +977 9866558715</p>
-							<p>Email :
+							<p>Email : 
 								<a href="mailto:dheraisastodeal@gmail.com">dheraisastodeal@gmail.com</a>
 							</p>
 						</div>
@@ -22,8 +22,7 @@
 						<h3>About Us</h3>
 					</div>
 					<div class="footer-text">
-						<p>Curabitur non nulla sit amet nislinit tempus convallis quis ac lectus. lac inia eget consectetur sed, convallis at
-							tellus. Nulla porttitor accumsana tincidunt.</p>
+						<p>We deal with the Nepali home grown products and export them abroad.</p>
 						
 					</div>
 					
@@ -103,7 +102,7 @@
 				</div>
 				<div class="col-lg-3 footer-grid-w3ls">
 					<div class="footer-title">
-						<h3>Follow us on Twiitter</h3>
+						<h3>Follow us on Twitter</h3>
 					</div>
 					<div class="footer-text">
 							<a class="twitter-timeline" data-height="500" href="https://twitter.com/dheraisasto">Dherai Sasto Deal</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
