@@ -10,7 +10,7 @@
 	 
 	 
 	     <title>Dherai Sasto Deal</title>
-
+		 <link rel="icon" type="image/png" href="images/icon.png">
 		 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
 		 <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 		 <link rel="stylesheet" href="../bootstrap-social/bootstrap-social.css">

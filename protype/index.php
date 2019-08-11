@@ -137,6 +137,7 @@ if(isset($_GET['login_error'])){
 
 <head>
 	<title>Dherai Sasto Deal</title>
+	<link rel="icon" type="image/png" href="images/icon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<meta name="keywords" content="Dherai Sasto Deal" />
