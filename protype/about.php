@@ -76,9 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="col-lg-6 about-info">
 							<h3 class="tittle-w3layouts text-left mb-lg-5 mb-3">About Us</h3>
-							<p class="my-xl-4 my-lg-3 my-md-4 my-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-								dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-								book.
+							<p class="my-xl-4 my-lg-3 my-md-4 my-3">We are a new and most advanced E-commerce site in Nepal. We mostly deal with foreign customers.
 							</p>
 
 							<a href="shop.php" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
@@ -93,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="team-grid text-center">
 								<h3><b>Sandesh Grangdan</b></h3>
 								<div class="team-img">
-									<img class="img-fluid rounded" src="../images/sandesh.jpg" alt="" >
+									<img class="img-fluid rounded" src="../images/sandesh.jpg" alt="" width="200" height="200" >
 								</div>
 								<div class="team-info">
 									<h4>Sandesh Grangdan</h4>
@@ -126,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="team-info">
 									<h4>Srijan Maharjan</h4>
-									<span>Description </span>
+									<span>Leader </span>
 									<ul class="d-flex justify-content-center py-3 social-icons">
 										<li>
 											<a href="#">
@@ -155,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="team-info">
 									<h4>Bijay Rajak</h4>
-									<span>Description </span>
+									<span>Financial Advisor </span>
 									<ul class="d-flex justify-content-center py-3 social-icons">
 										<li>
 											<a href="#">
@@ -184,7 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="team-info">
 									<h4>Arpan Limbu</h4>
-									<span>Description </span>
+									<span>Tester </span>
 									<ul class="d-flex justify-content-center py-3 social-icons">
 										<li>
 											<a href="#">
@@ -208,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<!-- /grids -->
-				<div class="bottom-sub-grid-content py-lg-5 py-3">
+				<!-- <div class="bottom-sub-grid-content py-lg-5 py-3">
 					<div class="row">
 						<div class="col-lg-4 bottom-sub-grid text-center">
 							<div class="bt-icon">
@@ -223,32 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</p>
 						</div>
 						<!-- /.col-lg-4 -->
-						<div class="col-lg-4 bottom-sub-grid text-center">
-							<div class="bt-icon">
-								<span class="fas fa-rocket"></span>
-							</div>
-
-							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Fast Shipping</h4>
-							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-							<p>
-								<a href="shop.php" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-							</p>
-						</div>
-						<!-- /.col-lg-4 -->
-						<div class="col-lg-4 bottom-sub-grid text-center">
-							<div class="bt-icon">
-								<span class="far fa-sun"></span>
-							</div>
-
-							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Secured Transaction</h4>
-							<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-							<p>
-								<a href="shop.php" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
-							</p>
-						</div>
-						<!-- /.col-lg-4 -->
-					</div>
-				</div>
+						
 				<!-- //grids -->
 				<!--/meddle-->
 				<!-- <div class="row">
@@ -264,7 +237,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!--//meddle-->
 
 				<!-- /testimonials -->
-				<div class="testimonials py-lg-4 py-3 mt-4">
+				<!-- <div class="testimonials py-lg-4 py-3 mt-4">
 					<div class="testimonials-inner py-lg-4 py-3">
 						<h3 class="tittle-w3layouts text-center my-lg-4 my-4">Tesimonials</h3>
 						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -308,9 +281,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- //testimonials -->
-				<div class="row galsses-grids pt-lg-5 pt-3">
+				<!-- <div class="row galsses-grids pt-lg-5 pt-3">
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
 							<img src="../images/bijay.jpg" alt="" class="img-fluid">
@@ -333,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</figcaption>
 						</figure>
 					</div>
-				</div>
+				</div> -->
 				<!-- /grids -->
 				<div class="bottom-sub-grid-content py-lg-5 py-3">
 					<div class="row">

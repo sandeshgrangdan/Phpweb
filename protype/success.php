@@ -1,12 +1,19 @@
 <?php
 session_start();
 unset($_SESSION["shopping_cart"]);
+
   if( isset($_GET['tid']) && isset($_GET['product']) ) {
     $GET = filter_var_array($_GET, FILTER_SANITIZE_STRING);
 
     $_SESSION['c_id'] = $_GET['tid'];
     $amt = $_GET['amount']/100;
-  }elseif(isset($_GET['g_id'])){
+  }
+
+  $invoice =  "
+        TransactionID -> ".$GET['tid']."
+        <br>Product -> ".$GET['product']."
+        <br>Amount -> $".number_format($amt,3)."
+        <br>Email -> ".$_SESSION['email'];
 
         $mailto = $_SESSION['email'];
           $mailSub = "Please Check Your Invoice";
@@ -22,33 +29,37 @@ unset($_SESSION["shopping_cart"]);
          $mail ->Username = "dheraisastodeal@gmail.com";
          $mail ->Password = "dheraisastodeal123";
          $mail ->SetFrom("dheraisastodeal@gmail.com");
-         $mail ->addAttachment('qr/download.png');
+        //  $mail ->addAttachment('qr/download.png');
          $mail ->Subject = $mailSub;
          $mail ->Body = "
-             <body>
-            <div class='email-background' style='background: #eeeeee;padding: 10px;'>
-              <div class='pre-header' style='max-width: 500px;background: #eeeeee;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;color: #eeeeee;font-size: 5px;'>
-                  Please Check Your Invoice
-              </div>
-              <div class='email-container' style='max-width: 500px;background: white;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;'>
-                <h1>Please check your invoice! <img src='https://i.postimg.cc/9FGBbr4h/DSD.png' style='max-width: 50px;border-radius: 50%;display: block;margin-left: auto;margin-right: auto;'></h1>
-              </div>
-              <br>
-              <p style='margin: 20px;font-size: 18px;font-weight: 300;line-height: 1.5;color: #666666;text-align: center;'>Dherai Sasto Deal(DSD) send your invoice in QR code for security features,
-              Thank You!</p>
-              <div class='cat' style='margin: 20px;text-align: center;'>
-                                
-                <small>© 2019 Dhera Sasto Deal., All Rights Reserved.<br>
-                  New Baneshwor, Kathmandu Nepal, NP +(977)<br>
-                  Thanks for having us.
-                </small>
-                  <br>
-                Visit Our Page <a href='http://localhost/Phpweb/protype/index.php'>Dherai Sasto Deal</a>
-              </div>
-            </div>
-            <script type='application/javascript' src='https://www.nayuki.io/res/qr-code-generator-library/qrcodegen.js'></script>
-            <script type='application/javascript' src='https://www.nayuki.io/res/qr-code-generator-library/qrcodegen-demo.js'></script>
-           </body>
+         <body style='background-color:black'>
+         <div class='email-background' style='background: #eeeeee;padding: 10px;'>
+           <div class='pre-header' style='max-width: 500px;background: #eeeeee;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;color: #eeeeee;font-size: 5px;'>
+               Please Check Your Invoice
+           </div>
+           <div class='email-container' style='max-width: 500px;background: white;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;'>
+             <h1>Please check your invoice! <img src='https://i.postimg.cc/9FGBbr4h/DSD.png' style='max-width: 50px;border-radius: 50%;display: block;margin-left: auto;margin-right: auto;'></h1>
+           </div>
+           <br>
+           <p style='margin: 20px;font-size: 25px;font-weight: 300;line-height: 1.5;color: #666666;text-align: center;'>Dherai Sasto Deal(DSD) send your invoice in QR code for security features,
+           Thank You!</p>
+           <div style='text-align:center;'>
+
+              <img src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=".$invoice."' alt='Loading'> 
+           </div>
+           <div class='cat' style='margin: 20px;text-align: center;'>
+           
+
+                             
+             <small>© 2019 Dhera Sasto Deal., All Rights Reserved.<br>
+               New Baneshwor, Kathmandu Nepal, NP +(977)<br>
+               Thanks for having us.
+             </small>
+               <br>
+             Visit Our Page <a href='http://localhost/Phpweb/protype/index.php'>Dherai Sasto Deal</a>
+           </div>
+         </div>
+        </body>
          ";
          $mail ->AltBody = "";
          $mail ->AddAddress($mailto);
@@ -61,21 +72,11 @@ unset($_SESSION["shopping_cart"]);
          }
          else
          {
-          if(move_uploaded_file('qr/download.png','qr/send/') ){
-               header('Location: user_map.php?c_id='.$_SESSION["c_id"]);
-              exit();
-            }else{
-              header('Location: user_map.php?c_id='.$_SESSION["c_id"]);
-              exit();
               echo 'Send';
-          }
+          
         }
-  }
-  $invoice =  "
-        TransactionID -> ".$GET['tid']."
-        <br>Product -> ".$GET['product']."
-        <br>Amount -> $".number_format($amt,3)."
-        <br>Email -> ".$_SESSION['email'];
+
+  
 
 ?>
 
@@ -111,7 +112,7 @@ unset($_SESSION["shopping_cart"]);
           <h1 style="color:white;">Check Your Invoice With Scanner</h1>
 
           <!-- <a href="user_map.php?c_id=<?php echo $_GET["tid"];?>" class="btn btn-success" >Continue</a> -->
-          <a href="success.php?g_id=result" class="btn btn-success" >Continue</a>
+          <a href="user_map.php?c_id=<?php echo $_SESSION["c_id"] ?>" class="btn btn-success" >Continue</a>
           <br>
           <br>
           <form action="#" method="get" onsubmit="return false;">

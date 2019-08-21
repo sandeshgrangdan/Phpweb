@@ -207,7 +207,7 @@
 													<h5>View more pages</h5>
 												</li>
 												<li>
-													<a href="customer.php">Registration</a>
+													<a href="contact.php">Contact Us</a>
 												</li>
 												<li class="mt-2">
 													<a href="about.php">About</a>
@@ -238,7 +238,7 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true"
+							<a class="nav-link dropdown-toggle" href="shop.php" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true"
 							    aria-expanded="false">
 								Shop
 							</a>
@@ -246,7 +246,22 @@
 								<li>
 									<div class="row">
 										<div class="col-md-4 media-list span4 text-left">
-											<h5 class="tittle-w3layouts-sub"> Tittle goes here </h5>
+										<?php
+													$i = 0;
+													$sample = array();
+													 $sel_side="SELECT c_id,category_name FROM category ";
+													 $run_side=mysqli_query($conn,$sel_side);
+													 while($rows=mysqli_fetch_assoc($run_side)){
+														 $sample[$i] = $rows;
+														 $i++;
+													 }
+
+														?>
+												<?php
+												// echo "<pre>"; 
+												// print_r($sample); 
+												?>
+											<h5 class="tittle-w3layouts-sub"><?php echo $sample[0]['category_name']; ?></h5>
 											<ul>
 												<li class="media-mini mt-3">
 													<a href="shop.php">Designer Glasses</a>
@@ -278,7 +293,7 @@
 											</ul>
 										</div>
 										<div class="col-md-4 media-list span4 text-left">
-											<h5 class="tittle-w3layouts-sub"> Tittle goes here </h5>
+										<h5 class="tittle-w3layouts-sub"><?php echo $sample[1]['category_name']; ?></h5>
 											<ul>
 												<li class="media-mini mt-3">
 
@@ -316,7 +331,7 @@
 										</div>
 										<div class="col-md-4 media-list span4 text-left">
 
-											<h5 class="tittle-w3layouts-sub-nav">Tittle goes here </h5>
+										<h5 class="tittle-w3layouts-sub"><?php echo $sample[3]['category_name']; ?></h5>
 											<div class="media-mini mt-3">
 												<a href="shop.php">
 													<img src="images/g1.jpg" class="img-fluid" alt="">

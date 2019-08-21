@@ -1,104 +1,40 @@
+<?php
+$invoice = "TransactionID -> ch_1F9wMgCbu1nAmf4O83oveVnM<br>
+            Product -> ,Nepali Sarangi<br>
+            Amount -> $72.000<br>
+            Email -> sandesht801@gmail.com                    
+          ";
+?>
+<html>
+    <head></head>
 
-<?php echo '
+<body style='background-color:black'>
+            <div class='email-background' style='background: #eeeeee;padding: 10px;'>
+              <div class='pre-header' style='max-width: 500px;background: #eeeeee;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;color: #eeeeee;font-size: 5px;'>
+                  Please Check Your Invoice
+              </div>
+              <div class='email-container' style='max-width: 500px;background: white;font-family: sans-serif;margin: 0 auto;overflow: hidden;border-radius: 5px;text-align: center;'>
+                <h1>Please check your invoice! <img src='https://i.postimg.cc/9FGBbr4h/DSD.png' style='max-width: 50px;border-radius: 50%;display: block;margin-left: auto;margin-right: auto;'></h1>
+              </div>
+              <br>
+              <p style='margin: 20px;font-size: 25px;font-weight: 300;line-height: 1.5;color: #666666;text-align: center;'>Dherai Sasto Deal(DSD) send your invoice in QR code for security features,
+              Thank You!</p>
+              <div style='text-align:center;'>
 
-    
-<style>
-* {
-box-sizing:border-box;
-}
-body{
-margin: 0;
-font-family: monospace;
-}
-#preload {
-width: 100%;
-height: 100%;
-background: rgba(96,49,111,1);
-position: fixed;
-top: 0;
-left: 0;
-z-index: 99999999;
-opacity: 0.9;
- display: block;
+                 <img src='https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=sandesh' alt='Loading'> 
+              </div>
+              <div class='cat' style='margin: 20px;text-align: center;'>
+              
 
-}
-.logo {
-width: 60rem;
-height: 70px;
-margin: 150px auto 50px auto ;
-font-size: 50px;
-text-shadow: -10px 20px 20px #000000;
-text-align: center;
-color: azure;
-}
-.loader-frame {
-width: 70px;
-height: 70px;
-margin: auto;
-position: relative;
-}
-.loader1, .loader2, .loader3{
-position: absolute;
-/* border: 1rem solid transparent; */
-border-radius: 50%;
-}
-.loader1 {
-width: 8rem;
-height: 8rem;
-border-top: 6px solid #407831;
-border-bottom: 5px solid #407831;
-animation: clockwisespin 2s linear 3;
-}
-.loader2 {
-width: 6rem;
-height: 6rem;
-border-left: 5px solid #f1b62e;
-border-right: 5px solid #f1b62e;
-top: 8px;
-left: 5px;
-animation: anticlockwisespin 2s linear 3;
-}
-.loader3 {
-width: 9rem;
-height: 9rem;
-border-left: 5px solid rgb(255, 0, 0);
-border-right: 5px solid rgb(255, 0, 0);
-top: 8px;
-left: 0px;
-animation: anticlockwisespin 2s linear 3;
-}
-@keyframes clockwisespin {
-from{transform: rotate(0deg);}
-to{transform: rotate(360deg);}
-}
-@keyframes anticlockwisespin {
-from {
-    transform: rotate(0deg);
-}
+                                
+                <small>© 2019 Dhera Sasto Deal., All Rights Reserved.<br>
+                  New Baneshwor, Kathmandu Nepal, NP +(977)<br>
+                  Thanks for having us.
+                </small>
+                  <br>
+                Visit Our Page <a href='http://localhost/Phpweb/protype/index.php'>Dherai Sasto Deal</a>
+              </div>
+            </div>
+</body>
 
-to {
-    transform: rotate(-360deg);
-}
-}
-@keyframes  fadeout{
-from{opacity: 1;}
-to {opacity: 0}
-}
-</style>
- 
-
-';
-
-echo '
-    <script>
-    var i = 1
-    if( i == 1){
-        for( i= 1 : i <= 10000 : i++){
-            var j = 1;
-        }
-    }else{
-        document.getElementById("preload").style.display = "none";
-    }
-    </script>
-';
- ?>
+</html>
