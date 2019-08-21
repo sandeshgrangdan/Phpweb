@@ -9,10 +9,12 @@ var app = new function() {
 		for (var i = 0; i < elems.length; i++) {
 			if (elems[i].id.indexOf("version-") != 0)
 				elems[i].oninput = redrawQrCode;
+				console.log(elems[i]);
 		}
 		elems = document.querySelectorAll("input[type=radio], input[type=checkbox]");
 		for (var i = 0; i < elems.length; i++)
 			elems[i].onchange = redrawQrCode;
+			//console.log(elems[i]);
 		redrawQrCode();
 	}
 	
@@ -20,8 +22,11 @@ var app = new function() {
 	function redrawQrCode() {
 		// Show/hide rows based on bitmap/vector image output
 		var bitmapOutput = document.getElementById("output-format-bitmap").checked;
+		// console.log(bitmapOutput);
 		var scaleRow = document.getElementById("scale-row");
+		// console.log(scaleRow);
 		var svgXmlRow = document.getElementById("svg-xml-row");
+		// console.log(svgXmlRow);
 		if (bitmapOutput) {
 			scaleRow.style.removeProperty("display");
 			svgXmlRow.style.display = "none";
@@ -38,7 +43,7 @@ var app = new function() {
 		canvas.style.display = "none";
 		svg.style.display = "none";
 		
-		// Returns a QrCode.Ecc object based on the radio buttons in the HTML form.
+		// Returns a QrCoconsole.log(elems[i]);de.Ecc object based on the radio buttons in the HTML form.
 		function getInputErrorCorrectionLevel() {
 			if (document.getElementById("errcorlvl-medium").checked)
 				return qrcodegen.QrCode.Ecc.MEDIUM;
@@ -52,13 +57,21 @@ var app = new function() {
 		
 		// Get form inputs and compute QR Code
 		var ecl = getInputErrorCorrectionLevel();
+		// console.log(ecl);
 		var text = document.getElementById("text-input").value;
+		// console.log(text);
 		var segs = qrcodegen.QrSegment.makeSegments(text);
+		// console.log(segs);
 		var minVer = parseInt(document.getElementById("version-min-input").value, 10);
+		// console.log(minVer);
 		var maxVer = parseInt(document.getElementById("version-max-input").value, 10);
+		// console.log(maxVer);
 		var mask = parseInt(document.getElementById("mask-input").value, 10);
+		// console.log(mask);
 		var boostEcc = document.getElementById("boost-ecc-input").checked;
+		// console.log(boostEcc);
 		var qr = qrcodegen.QrCode.encodeSegments(segs, ecl, minVer, maxVer, mask, boostEcc);
+		// console.log(qr);
 		
 		// Draw image output
 		var border = parseInt(document.getElementById("border-input").value, 10);

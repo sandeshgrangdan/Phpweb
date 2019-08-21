@@ -271,32 +271,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="carousel-inner" role="listbox">
 								<div class="carousel-item active">
 									<div class="testimonials_grid text-center">
-										<h3>Anamaria
+										<h3>Dikesh Prajapati
 											<span>Customer</span>
 										</h3>
 										<label>United States</label>
-										<p>Maecenas interdum, metus vitae tincidunt porttitor, magna quam egestas sem, ac scelerisque nisl nibh vel lacus.
-											Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+										<p>I was happy with the project.</p>
 									</div>
 								</div>
 								<div class="carousel-item">
 									<div class="testimonials_grid text-center">
-										<h3>Esmeralda
+										<h3>Ruchan Maharjan
 											<span>Customer</span>
 										</h3>
 										<label>United States</label>
-										<p>Maecenas interdum, metus vitae tincidunt porttitor, magna quam egestas sem, ac scelerisque nisl nibh vel lacus.
-											Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+										<p>My project was delivered very quickly.</p>
 									</div>
 								</div>
 								<div class="carousel-item">
 									<div class="testimonials_grid text-center">
-										<h3>Gretchen
+										<h3>Bijay Rajaks
 											<span>Customer</span>
 										</h3>
 										<label>United States</label>
-										<p>Maecenas interdum, metus vitae tincidunt porttitor, magna quam egestas sem, ac scelerisque nisl nibh vel lacus.
-											Proin eget gravida odio. Donec ullamcorper est eu accumsan cursus.</p>
+										<p>I loved the quality of the products.</p>
 									</div>
 								</div>
 								<a class="carousel-control-prev test" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -316,28 +313,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="row galsses-grids pt-lg-5 pt-3">
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner4.jpg" alt="" class="img-fluid">
+							<img src="../images/bijay.jpg" alt="" class="img-fluid">
 							<figcaption>
-								<h3>Editor's
+								<h3 style="color:black;"><strong>Editor's</strong>
 									<span>Pick</span>
 								</h3>
-								<p> Express your style now.</p>
+								<p style="color:black"><strong>Express your style now.</strong></p>
 							</figcaption>
 						</figure>
 					</div>
 					<div class="col-lg-6 galsses-grid-left">
 						<figure class="effect-lexi">
-							<img src="images/banner1.jpg" alt="" class="img-fluid">
+							<img src="../images/Arpan.jpg" alt="" class="img-fluid">
 							<figcaption>
-								<h3>Editor's
+							<h3 style="color:black;"><strong>Editor's</strong>
 									<span>Pick</span>
 								</h3>
-								<p>Express your style now.</p>
+								<p style="color:black"><strong>Express your style now.</strong></p>
 							</figcaption>
 						</figure>
 					</div>
 				</div>
+				<!-- /grids -->
+				<div class="bottom-sub-grid-content py-lg-5 py-3">
+					<div class="row">
+						<div class="col-lg-4 bottom-sub-grid text-center">
+							<div class="bt-icon">
 
+								<span class="far fa-hand-paper"></span>
+							</div>
+
+							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Satisfaction Guaranteed</h4>
+				
+							<p>
+								<a href="shop.php" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+							</p>
+						</div>
+						<!-- /.col-lg-4 -->
+						<div class="col-lg-4 bottom-sub-grid text-center">
+							<div class="bt-icon">
+								<span class="fas fa-rocket"></span>
+							</div>
+
+							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Fast Shipping</h4>
+							
+							<p>
+								<a href="shop.php" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+							</p>
+						</div>
+						<!-- /.col-lg-4 -->
+						<div class="col-lg-4 bottom-sub-grid text-center">
+							<div class="bt-icon">
+								<span class="far fa-map"></span>
+							</div>
+
+							<h4 class="sub-tittle-w3layouts my-lg-4 my-3">Use Map</h4>
+							
+							<p>
+								<a href="shop.php" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+							</p>
+						</div>
+						<!-- /.col-lg-4 -->
+					</div>
+				</div>
+				<!-- //grids -->
 				<!-- /clients-sec -->
 				<div class="testimonials p-lg-5 p-3 mt-4">
 					<div class="row last-section">
@@ -347,7 +386,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="mail-grid-text-info">
 								<h3>Genuine Product</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur</p>
+								<p>We pride ourself on having most genuine products.</p>
 							</div>
 						</div>
 						<div class="col-lg-3 footer-top-w3layouts-grid-sec">
@@ -356,7 +395,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="mail-grid-text-info">
 								<h3>Secure Products</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur</p>
+								<p>Stripe checkout ensures the secure transaction for the customer</p>
 							</div>
 						</div>
 						<div class="col-lg-3 footer-top-w3layouts-grid-sec">
@@ -364,8 +403,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<i class="fas fa-dollar-sign"></i>
 							</div>
 							<div class="mail-grid-text-info">
-								<h3>Cash on Delivery</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur</p>
+								<h3>Online Payment</h3>
+								<p>Online payment allows the user to pay fot their goods online.</p>
 							</div>
 						</div>
 						<div class="col-lg-3 footer-top-w3layouts-grid-sec">
@@ -374,7 +413,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="mail-grid-text-info">
 								<h3>Easy Delivery</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur</p>
+								<p>We guarantee that the products will be delivered within 3-4 working days.</p>
 							</div>
 						</div>
 					</div>

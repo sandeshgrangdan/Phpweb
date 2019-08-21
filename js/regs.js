@@ -52,7 +52,7 @@ function formvalidate(){
 
     if (password == '') {
     	document.form.password.focus();
-      swal ( "Email is empty!" ,  "Please Enter Password" ,  "error" );
+      swal ( "Password is empty!" ,  "Please Enter Password" ,  "error" );
       return false;
     }
 
@@ -84,7 +84,9 @@ function formvalidate(){
       return false;
     }
 
-    return true
+    document.getElementById('regButton').setAttribute("disabled", true);
+
+    return true;
 
 
 

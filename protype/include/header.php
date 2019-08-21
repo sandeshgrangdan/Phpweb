@@ -82,16 +82,16 @@
 								<form class="form-horizontal" action="index.php" method="post" role="form" name="form" onsubmit="return formvalidate()">
 									<div class="form-group">
 					                   <label class="mb-2" for="first_name" >First Name </label>
-					                   <input type="text" class="form-control" name="first" id="first_name" >
+					                   <input type="text" class="form-control" name="first" id="first_name" placeholder="First Name">
 					                </div>
 					                <div class="form-group">
 					                	<label for="last_name" class="mb-2">Last Name </label>
-					                	<input type="text" class="form-control" name="last" id="last_name">
+					                	<input type="text" class="form-control" name="last" id="last_name" placeholder="Last Name">
 					                </div>
 									<div class="form-group">
 										
 										<label class="mb-2" for="email">Email address</label>
-										<input type="text" id="emailHelps" class="form-control" name="email" id="email">
+										<input type="text" id="emailHelps" class="form-control" name="email" id="email" placeholder="Email">
 										<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 										<span id="alertemail">
 											
@@ -99,7 +99,7 @@
 									</div>
 									<div class="form-group">
 										<label class="mb-2" for="passwor">Password</label>
-										<input type="password" class="form-control" name="password" id="passwor">
+										<input placeholder="Password" type="password" class="form-control" name="password" id="passwor">
 									</div>
 									<div class="form-group">
 										<label class="mb-2" for="con_password">Confirm password </label>
@@ -117,13 +117,13 @@
 					                </div>
 					                <div class="form-group">
 					                	<label class="mb-2" for="phone_no" >Phone Number: </label>
-					                	<input type="number" class="form-control" name="phone_no"  id="phone_no">
+					                	<input type="number" class="form-control" name="phone_no"  id="phone_no" placeholder="Number">
 					                	<span id="phone_num">
 					                		
 					                	</span>
 					                </div>
 									
-									<button type="submit" class="btn btn-primary submit mb-4" name="form">Sign-Up</button>
+									<button type="submit" id="regButton" class="btn btn-primary submit mb-4" name="form">Sign-Up</button>
 
 								</form>
 							</div>

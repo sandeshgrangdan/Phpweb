@@ -53,7 +53,7 @@ include '../includes/db.php';
 		<?php include'include/header.php';?>
     </div>
 		<!-- banner -->
-		<div class="banner_inner">
+		<!-- <div class="banner_inner">
 			<div class="services-breadcrumb">
 				<div class="inner_breadcrumb">
 
@@ -67,7 +67,7 @@ include '../includes/db.php';
 				</div>
 			</div>
 
-		</div>
+		</div> -->
 		<!--//banner -->
 		<!--// header_top -->
 		<!--Payment-->

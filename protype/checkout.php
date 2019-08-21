@@ -1,9 +1,4 @@
-<!--
-	Author: W3layouts
-	Author URL: http://w3layouts.com
-	License: Creative Commons Attribution 3.0 Unported
-	License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <?php session_start();
 include '../includes/db.php'; 
 	  require_once "config.php";
@@ -247,7 +242,7 @@ if(isset($_GET["i_id"])){
 					</div>
 					<?php } ?>
 					<div class="col-md-8 address_form">
-						<?php if(!isset($_SESSION['email']) ) { ?>
+						<?php if(!isset($_SESSION['email']) && !empty($_SESSION["shopping_cart"]) ) { ?>
 							<h4>Please LOgin !</h4>
 		
 										<button class="submit check_out"  data-toggle="modal" data-target="#signin">Sign Up !</button>

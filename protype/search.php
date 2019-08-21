@@ -74,6 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- Modal -->
 	<!-- Modal -->
 	<script>
+	document.getElementById('text_search').focus();
 		$(document).ready(function () {
 			$("#myModal").modal();
 		});

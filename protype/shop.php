@@ -94,7 +94,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li>
 
 										<div id="slider-range"></div>
-										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;"/>
+
 									</li>
 								</ul>
 							</div>
@@ -456,6 +457,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--footer -->
 		<?php include'include/footer.php';?>
 		<!-- //footer -->
+		<script>
+			var test = document.getElementById('amount').value;
+			console.log(test+"sandesh");
+		</script>
 		<script src="../../alert/dist/sweetalert2.min.js"></script>
 		<!--jQuery-->
 		<script src="js/jquery-2.2.3.min.js"></script>

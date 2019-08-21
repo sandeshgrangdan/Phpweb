@@ -69,11 +69,18 @@
 											 		}
 											 		header('Location: adminpanel/index.php?nocookie=set');  
 										}else{ 
+											if(isset($_GET['cart'])){
 
 												if( isset($_POST['remember']) ){
 					 		   	                       setcookie("email",$_POST['email'],time()+7*24*60*60 );
 										         }
-												header('Location: index.php');			   			
+												header('Location: payment.php');		
+											}else{
+												if( isset($_POST['remember']) ){
+													setcookie("email",$_POST['email'],time()+7*24*60*60 );
+										  		}
+										 		header('Location: index.php');	
+											} 			
 								        }
 					 				}else{
 					 					echo '

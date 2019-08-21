@@ -1,4 +1,9 @@
-    <div class="modal fade" id="signin" tabindex="-1">
+<?php $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+$uri_segments = explode('/', $uri_path);
+
+?>
+  <div class="modal fade" id="signin" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -8,7 +13,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-          <form class=" form-horizontal" role="form" action="login.php" method="post" name="signin" onsubmit="return signinValidation()">
+          <form class=" form-horizontal" role="form" action="
+                                                             <?php 
+                                                                if($uri_segments[3] == "checkout.php")
+                                                                  echo 'login.php?cart=login';
+                                                                else
+                                                                  echo 'login.php';
+                                                              ?>
+                                                            "
+           method="post" name="signin" onsubmit="return signinValidation()">
 
             <div class="card ">
                 <div class="card-header">

@@ -769,7 +769,17 @@ if(isset($_GET['login_error'])){
 						data:{valid:email},
 						dataType:"text",
 						success:function(data){
-							$('#alertemail').html(data);
+
+							if(data != ''){
+								var value = data.split(',');
+								$('#alertemail').html(value[0]);
+								$('#regButton').attr(value[1],true);
+							}else{
+								$('#alertemail').html('');
+								$('#regButton').attr("disabled",false);
+							}
+
+
 						}
 					});
 				}else{
@@ -789,7 +799,17 @@ if(isset($_GET['login_error'])){
 						data:{num:number},
 						dataType:"text",
 						success:function(data){
-							$('#phone_num').html(data);
+
+							if(data != ''){
+								var value = data.split(',');
+								$('#phone_num').html(value[0]);
+								$('#regButton').attr(value[1],true);
+							}else{
+								$('#phone_num').html('');
+								$('#regButton').attr("disabled",false);
+							}
+
+							
 						}
 					});
 				}else{

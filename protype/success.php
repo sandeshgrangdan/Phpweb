@@ -62,7 +62,7 @@ unset($_SESSION["shopping_cart"]);
          else
          {
           if(move_uploaded_file('qr/download.png','qr/send/') ){
-            header('Location: user_map.php?c_id='.$_SESSION["c_id"]);
+               header('Location: user_map.php?c_id='.$_SESSION["c_id"]);
               exit();
             }else{
               header('Location: user_map.php?c_id='.$_SESSION["c_id"]);

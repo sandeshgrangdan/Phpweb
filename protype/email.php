@@ -5,7 +5,7 @@
 		if ($sql->num_rows > 0) {
 			echo '<div class="alert alert-info" role="alert">
 					This email is already existed!
-				  </div>';
+				  </div>,disabled';
 		}else{
 			echo '';
 		}
@@ -14,7 +14,7 @@
 		if ($sql->num_rows > 0) {
 			 			echo '<div class="alert alert-info" role="alert">
 					This phone number is existed!
-				  </div>';
+					</div>,disabled';
 
 		}else{
 			echo '';
